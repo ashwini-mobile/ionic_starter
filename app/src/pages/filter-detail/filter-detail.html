@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="detail-filter">
+    <div class="sub-header-filter mix-xy" *ngIf="titleCategoryFilter">
+      <a href="javascript:;" class="btn-back" (click)="dimissFunc()">
+        <img src="assets/img/id120-back.png" alt="Ionic">
+      </a>
+      <h1>{{titleCategoryFilter}}</h1>
+    </div>
+    <!-- end /sub-header-filter -->
+
+    <div class="main-filter-detail" *ngIf="listFilters" [style.height.px]="heighSet">
+      <div class="bigbox-value" *ngFor="let filter of listFilters">
+        <div class="list-option" *ngFor="let group of filter.groups">
+          <span class="top-title">{{group.title}}</span>
+          <div class="cover-all">
+            <ul class="gen01">
+              <li class="gen-child01" *ngFor="let item of group.data; let i = index" [ngClass]="{hide : i >= filter.limitItem}">
+                <ion-item>
+                  <ion-label>{{item.title || item.value}}</ion-label>
+                  <ion-checkbox checked="{{item.active}}" (click)="item.active = !item.active"></ion-checkbox>
+                </ion-item>
+              </li>
+            </ul>
+          </div>
+          <!-- end /cover-all -->
+        </div>
+        <!-- end /list-option -->
+        <a href="javascript:;" class="btn-more mix-xy" (click)="loadMoreFilter(filter, $event)" *ngIf="filter.showMore">More</a>
+      </div>
+      <!-- end /bigbox-value -->
+    </div>
+    <!-- end /main-filter-detail -->
+  </div>
+</ion-content>

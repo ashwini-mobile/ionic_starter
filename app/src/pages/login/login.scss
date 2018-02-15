@@ -1,0 +1,227 @@
+page-login {
+	background-color: transparent;
+	// Unique
+	.scroll-content {
+		display:flex;
+		flex-direction:column;
+	}
+	.hol-x {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+	.ver-y {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	.mix-xy {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+	.clear, .clear:before, .clear:after {
+		clear: both;
+	}
+	@mixin iinput ($color,$fontsize,$colorplace) {
+		display: block;
+		height: 100%;
+		width: 100%;
+		color: $color;
+		font-size: $fontsize;
+		border: none;
+		outline: none;
+		background:transparent;
+		margin: 0;
+		padding: 0;
+		&::-webkit-input-placeholder {
+			color: $colorplace;
+			opacity: 1;
+		}
+		&::-moz-placeholder  {
+			color: $colorplace;
+			opacity: 1;
+		}
+		&:-ms-input-placeholder {
+			color: $colorplace;
+			opacity:1;
+		}
+		&:-moz-placeholder {
+			color: $colorplace;
+			opacity: 1;
+		}
+		&:focus::-webkit-input-placeholder {
+			color: transparent;
+		}
+		&:focus:-moz-placeholder {
+			color: transparent;
+		}
+		&:focus::-moz-placeholder {
+			color: transparent;
+		}
+		&:focus:-ms-input-placeholder {
+			color: transparent;
+		}
+	}
+
+	// SignUp Page
+	.login-page {
+		height: 100%;
+		width: 100%;
+		padding-top: 0px;
+		flex:1;
+		display:flex;
+		flex-direction:column;
+		// background-image: url(../assets/img/bgc.png);
+		// background-size: cover;
+		position: relative;
+		* {
+			font-family: 'Myriad Pro';
+			font-weight: normal;
+		}
+		&:before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 100%;
+			// background : rgba(44, 62, 80, 0.84);
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.main-logo {
+			display: block;
+			flex:0 0 auto;
+			width: 124px;
+			height: 130px;
+			margin: 27px auto 12px;
+			background-size: cover;
+			position: relative;
+			z-index: 10;
+			margin-top: 100px;
+		}
+		.group-btn {
+			margin-bottom: 1px;
+			position: relative;
+			flex:0 0 auto;
+			z-index: 10;
+			.btn-white {
+				width: 44px;
+				height: 44px;
+				margin-right: 10px;
+				border-radius: 50%;
+				background-color: #fff;
+				position: relative;
+				img {
+					display: block;
+					width: 12px;
+					height: auto;
+					background-size: cover;
+				}
+			}
+			.twin {
+				display: block;
+				width: 182px;
+				height: 44px;
+				line-height: 44px;
+				font-size: 15px;
+				text-align: center;
+				text-decoration: none;
+				border-radius: 20px;
+				background-color: #fff;
+				text-transform: none;
+				&.signup {
+					color: #fff;
+					background : -moz-linear-gradient(0% 50% 0deg,rgba(0, 196, 255, 1) 0%,rgba(0, 187, 255, 1) 19.98%,rgba(0, 161, 255, 1) 53.2%,rgba(0, 120, 255, 1) 95.33%,rgba(0, 115, 255, 1) 100%);
+					background : -webkit-linear-gradient(0deg, rgba(0, 196, 255, 1) 0%, rgba(0, 187, 255, 1) 19.98%, rgba(0, 161, 255, 1) 53.2%, rgba(0, 120, 255, 1) 95.33%, rgba(0, 115, 255, 1) 100%);
+					background : linear-gradient(90deg, rgba(0, 196, 255, 1) 0%, rgba(0, 187, 255, 1) 19.98%, rgba(0, 161, 255, 1) 53.2%, rgba(0, 120, 255, 1) 95.33%, rgba(0, 115, 255, 1) 100%);
+				}
+			}
+		}
+		.basic-form {
+			width: calc(100% - 146px);
+			margin: 0 auto 22px;
+			flex:0 0 auto;
+			position: relative;
+			.typing-here {
+				width: 100%;
+				height: 37px;
+				margin-bottom: 18px;
+				padding: 0 10px;
+				border-radius: 6px;
+				border: 1px solid rgba(255,255,255,0.65);
+				position: relative;
+				&.only {
+					margin-bottom: 0;
+				}
+				input {
+					@include iinput(#fff,15px,rgba(255,255,255,0.35));
+				}
+				&.error-ver {
+					border: 1px solid #ff022c;
+				}
+	}
+	p.error {
+		color: #ff022c;
+	}
+		}
+		.register-here {
+			width: 100%;
+			flex:0 0 auto;
+			margin-top:69px;
+			margin-bottom:10px;
+			/*display:flex;
+			flex-direction:column;
+			justify-content:center;*/
+			position: relative;
+			z-index: 10;
+			.title {
+				display: block;
+				width: 100%;
+				margin-bottom: 14px;
+				font-size: 15px;
+				color: #fff;
+				text-align: center;
+				opacity: 0.35;
+			}
+			.choose-acc {
+				position: relative;
+				.acc01, .acc02 {
+					display: block;
+					float: left;
+				}
+				.acc01 {
+					margin-right: 35px;
+					img {
+						display: block;
+						width: 89px;
+						height: auto;
+						background-size: cover;
+					}
+				}
+				.acc02 {
+					img {
+						display: block;
+						width: 99px;
+						height: auto;
+						background-size: cover;
+					}
+				}
+			}
+		}
+	}
+	
+}

@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-title>Send a Message</ion-title>
+  <div class="basic-form">
+    <textarea type="text" name="text" placeholder="What's your message?" [(ngModel)]="message"></textarea>
+  </div>
+  <!-- end /basic-form -->
+</ion-content> 
+<ion-footer>
+  <button (click)="dismiss()">Send</button>
+</ion-footer>

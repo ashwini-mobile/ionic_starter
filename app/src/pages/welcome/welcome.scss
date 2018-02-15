@@ -1,0 +1,139 @@
+page-welcome {
+	.background-image {
+		background-image: url(../assets/img/bgc.png);
+		background-size: cover;
+	}
+	ion-content {
+		background : transparent !important;
+		.scroll-content {
+			background : transparent !important;
+			margin-top: 0 !important;
+			padding-top: 0 !important;
+		}
+		.fixed-content {
+			background : transparent !important;
+		}
+		video.video {
+			@media only screen 
+    			and (device-width : 375px) 
+    			and (device-height : 812px) 
+    			and (-webkit-device-pixel-ratio : 3) { 
+					width: auto;
+					height: 100%;
+				}
+			position: fixed;
+			min-width: 100%;
+			min-height: 100%;
+			width: 100%;
+			height: auto;
+			z-index: 2;
+		}
+		.background-color {
+			background : rgba(44, 62, 80, 1);
+			position: fixed;
+			width: 100%;
+			height: 100%;
+		}
+		page-login {
+			// iphonex
+			@media only screen 
+    			and (device-width : 375px) 
+    			and (device-height : 812px) 
+    			and (-webkit-device-pixel-ratio : 3) { 
+					top: 20px;
+				}
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+		}
+		page-signup {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			display: table;
+			z-index: 2;
+		}
+		// Unique
+		.hol-x {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.ver-y {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+		}
+		.mix-xy {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+
+		// Welcome Page
+		.welcome-page {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			* {
+				font-family: 'Myriad Pro';
+				font-weight: normal;
+			}
+			&:before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			.main-logo {
+				display: block;
+				width: 142px;
+				height: auto;
+				margin: 0 auto 110px;
+				background-size: cover;
+				position: relative;
+				z-index: 10;
+			}
+			.group-btn {
+				position: relative;
+				z-index: 10;
+				.twin {
+					display: block;
+					width: 160px;
+					height: 40px;
+					font-size: 15px;
+					color: #446DB3;;
+					text-align: center;
+					margin: 0 auto 20px;
+					border-radius: 20px;
+					background-color: #fff;
+					text-transform: none;
+					&.signup {
+						color: #fff;
+						background : -moz-linear-gradient(0% 50% 0deg,rgba(0, 196, 255, 1) 0%,rgba(0, 187, 255, 1) 19.98%,rgba(0, 161, 255, 1) 53.2%,rgba(0, 120, 255, 1) 95.33%,rgba(0, 115, 255, 1) 100%);
+						background : -webkit-linear-gradient(0deg, rgba(0, 196, 255, 1) 0%, rgba(0, 187, 255, 1) 19.98%, rgba(0, 161, 255, 1) 53.2%, rgba(0, 120, 255, 1) 95.33%, rgba(0, 115, 255, 1) 100%);
+						background : linear-gradient(90deg, rgba(0, 196, 255, 1) 0%, rgba(0, 187, 255, 1) 19.98%, rgba(0, 161, 255, 1) 53.2%, rgba(0, 120, 255, 1) 95.33%, rgba(0, 115, 255, 1) 100%);
+					}
+				}
+			}
+		}
+
+	}
+}

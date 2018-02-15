@@ -1,0 +1,18 @@
+.modal-messages-page{
+	background-color: transparent;
+	ion-backdrop {
+		background-color: transparent;
+	}
+	.modal-wrapper {
+		.ion-page {
+			&.show-page {
+				background-color: transparent;
+				.content {
+					background-color: transparent;
+				}
+			}
+		}
+		page-messages {
+		}
+	}
+}

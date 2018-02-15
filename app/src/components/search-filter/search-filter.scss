@@ -1,0 +1,225 @@
+search-filter {
+    .mainn-content-filter {
+        width: 100%;
+        position: relative;
+        flex:1;
+        display:flex;
+        flex-direction:column;
+        overflow-y: auto;
+        .parent-div {
+            position: relative;
+            ul.listParam {
+                * {
+                    font-size: 18px;
+                    font-weight: 400;
+                    font-family: 'Myriad Pro';
+                }
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,.8);
+                border-radius: 8px;
+                max-width: 100%;
+                padding: 5px 0;
+                z-index: 100;
+                margin: 0;
+                list-style-type: none;
+                overflow-y: auto;
+                position: absolute;
+                li {
+                    width: 100%;
+                    float: none;
+                    margin: 0;
+                    position: relative;
+                    white-space: nowrap;
+                    &.selected {
+                        background-color: hsla(0,0%,100%,.26);
+                        border-left: 4px solid #fff;
+                    }
+                    a {
+                        margin: 0 14px;
+                        color: #fff;
+                        display: block;
+                        height: 25px;
+                        line-height: 25px;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+        }
+        .filter-content {
+            color: #fff;
+            font-size: 18px;
+            padding: 0 37px;
+            .sub-text {
+                font-size: 18px;
+                font-weight: 400;
+                font-family: 'Myriad Pro';
+                color: #fff;
+                opacity: 0.56;
+            }
+            .text-filter {
+                display: inline-block;
+                height: 28px;
+                line-height: 30px;
+                background-color: rgba(255,255,255,0.18);
+                padding: 0 12px;
+                border-radius: 14px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 400;
+                font-family: 'Myriad Pro';
+                color: #fff;
+                margin-top: 5px;
+            }
+        }
+        .gen01 {
+            width: 320px;
+            margin: 0 auto;
+            padding: 0;
+            list-style-type: none;
+            position: relative;
+            .gen-child01 {
+                width: 100%;
+                height: 54px;
+                margin-bottom: 8px;
+                position: relative;
+                .left-group {
+                    width: 54px;
+                    height: 100%;
+                    float: left;
+                    background-color: rgba(255,255,255,0.27);
+                    border-radius : 5px 0 0 5px;
+                    position: relative;
+                    .i-info {
+                        display: block;
+                        width: 18.5px;
+                        height: auto;
+                        background-size: cover;
+                    }
+                    .i-tech {
+                        display: block;
+                        width: 21.5px;
+                        height: auto;
+                        background-size: cover;
+                    }
+                    .i-training {
+                        display: block;
+                        width: 18px;
+                        height: auto;
+                        background-size: cover;
+                    }
+                    .i-save {
+                        display: block;
+                        width: 20.5px;
+                        height: auto;
+                        background-size: cover;
+                    }
+                }
+                .right-group {
+                    width: calc(100% - 54px);
+                    height: 100%;
+                    float: left;
+                    padding-left: 15px;
+                    border-radius : 0 5px 5px 0;
+                    background-color: rgba(255,255,255,0.15);
+                    position: relative;
+                    p {
+                        line-height: 1;
+                        margin: 0;
+                        padding: 0;
+                        font-size: 16px;
+                        font-family: 'Myriad Pro';
+                        font-weight: 500;
+                        color: #fff;
+                    }
+                    .icon-next {
+                        display: block;
+                        width: 8px;
+                        height: auto;
+                        background-size: cover;
+                        position: absolute;
+                        top: calc(50% - 7.25px);
+                        right: 15px;
+                        z-index: 10;
+                    }
+                    .icon-plus {
+                        display: none;
+                        width: 16px;
+                        height: auto;
+                        background-size: cover;
+                        position: absolute;
+                        top: calc(50% - 8px);
+                        right: 15px;
+                        z-index: 10;
+                    }
+                }
+                &.active {
+                    .left-group {
+                        background-color: #2dcc70;
+                    }
+                }
+                &.fix-icon {
+                    .right-group {
+                        .icon-next {
+                            display: none;
+                        }
+                        .icon-plus {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+        .btn-save {
+            width: 145px;
+            height: 30px;
+            margin: 30px auto;
+            font-size: 16px;
+            font-family: 'Myriad Pro';
+            font-weight: 500;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: 5px;
+            background-color: rgba(255,255,255,0.15);
+            position: relative;
+        }
+        .btn-search {
+            flex:0 0 auto;
+            width: 100%;
+            height: 56px;
+            font-size: 16px;
+            font-family: 'Myriad Pro';
+            font-weight: 500;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: rgba(51,51,51,0.22);
+            /*position: absolute;*/
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .btn-close {
+            flex:0 0 auto;
+            width: 100%;
+            height: 56px;
+            font-size: 16px;
+            font-family: 'Myriad Pro';
+            font-weight: 500;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: rgba(51,51,51,0.12);
+            /*position: absolute;*/
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+    }
+}

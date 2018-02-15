@@ -1,0 +1,112 @@
+
+<div class="mainn-content-filter" *ngIf="isShowFilterContent && titleTabSearch === 'friends'" [style.height.px]="heightIndex - 165">
+  <div class="parent-div" style="flex:1;overflow-y:auto;">
+  <p class="filter-content">
+    <a href="javascript:;" class="text-filter text-filter-0" (click)="highlightClicked('0');">{{ filterService.paramData[0].value }}</a>
+    <span class="sub-text">having experience of</span>
+    <a href="javascript:;" class="text-filter text-filter-1" (click)="highlightClicked('1');">{{ filterService.paramData[1].value }}</a>
+    <span class="sub-text">within</span>
+    <a href="javascript:;" class="text-filter text-filter-2" (click)="highlightClicked('2');">{{ filterService.paramData[2].value }}</a>
+    <span class="sub-text">of</span>
+    <a href="javascript:;" class="text-filter text-filter-3" (click)="highlightClicked('3');">{{ filterService.paramData[3].value }}</a>
+    <span class="sub-text">online within the</span>
+    <a href="javascript:;" class="text-filter text-filter-4" (click)="highlightClicked('4');">{{ filterService.paramData[4].value }}</a>
+  </p>
+  <ul class="listParam">
+      <li *ngFor="let item of filterService.listParam" [ngClass]="{'selected':item===filterService.paramData[selectedHighlighIndex].value}"><a href="javascript:;" (click)="filterService.listParam=[]; filterService.paramData[selectedHighlighIndex].value=item;">{{item}}</a></li>
+  </ul>
+  <ul class="gen01">
+    <!--
+    <li class="gen-child01 fix-icon" (click)="saveCustomerFilter()">
+      <div class="left-group mix-xy">
+        <img class="i-info" src="assets/img/id120-filter-d.png" alt="Ionic">
+      </div>
+      <div class="right-group ver-y">
+        <p>Saved Custom Filters</p>
+        <img class="icon-next" src="assets/img/id38-next.png" alt="Ionic">
+        <img class="icon-plus" src="assets/img/id38-plus.png" alt="Ionic">
+      </div>
+      <div class="clear"></div>
+    </li>
+    -->
+    <li class="gen-child01" *ngFor="let item of filterService.listCatFiltersFriends" (click)="selectedFilterFunc(item)">
+      <div class="left-group mix-xy">
+        <img class="i-info" [src]="item.image" alt="Ionic">
+      </div>
+      <div class="right-group ver-y">
+        <p>{{item.title}}</p>
+        <img class="icon-next" src="assets/img/id38-next.png" alt="Ionic">
+        <img class="icon-plus" src="assets/img/id38-plus.png" alt="Ionic">
+      </div>
+      <div class="clear"></div>
+    </li>
+    <li class="gen-child01" (click)="showSavedFilters()">
+      <div class="left-group mix-xy">
+        <img class="i-info" src="assets/img/id120-filter-d.png" alt="Ionic">
+      </div>
+      <div class="right-group ver-y">
+        <p>Saved Custom Filters</p>
+        <img class="icon-next" src="assets/img/id38-next.png" alt="Ionic">
+        <img class="icon-plus" src="assets/img/id38-plus.png" alt="Ionic">
+      </div>
+      <div class="clear"></div>
+    </li>
+    <div class="clear"></div>
+  </ul>
+  <div class="clear"></div>
+  <a href="javascript:;" class="btn-save mix-xy" (click)="saveCustomerFilter()">Save Filter</a>
+  </div>
+  <a href="javascript:;" class="btn-search mix-xy" (click)="search();isShowFilterContent=false">Search</a>
+  <a *ngIf="isShowCloseBtn" href="javascript:;" class="btn-close mix-xy" (click)="closeFilterView.emit();">Close</a>
+</div>
+<!-- end /mainn-content -->
+<div class="mainn-content-filter" *ngIf="isShowFilterContent  && titleTabSearch !== 'friends'" [style.height.px]="heightIndex - 165">
+  <div class="parent-div" style="flex:1;overflow-y:auto;">
+  <p class="filter-content">
+    <a href="javascript:;" class="text-filter text-filter-5" (click)="highlightClicked('5');">{{ filterService.paramData[5].value }}</a>
+    <span class="sub-text">looking for</span>
+    <a href="javascript:;" class="text-filter text-filter-6" (click)="highlightClicked('6');">{{ filterService.paramData[6].value }}</a>
+    <span class="sub-text">in</span>
+    <a href="javascript:;" class="text-filter text-filter-7" (click)="highlightClicked('7');">{{ filterService.paramData[7].value }}</a>
+    <span class="sub-text">with</span>
+    <a href="javascript:;" class="text-filter text-filter-1" (click)="highlightClicked('1');">{{ filterService.paramData[1].value }}</a>
+    <span class="sub-text">exp. Within</span>
+    <a href="javascript:;" class="text-filter text-filter-2" (click)="highlightClicked('2');">{{ filterService.paramData[2].value }}</a>
+    <span class="sub-text">of</span>
+    <a href="javascript:;" class="text-filter text-filter-3" (click)="highlightClicked('3');">{{ filterService.paramData[3].value }}</a>
+  </p>
+  <ul class="listParam">
+      <li *ngFor="let item of filterService.listParam" [ngClass]="{'selected':item===filterService.paramData[selectedHighlighIndex].value}"><a href="javascript:;" (click)="filterService.listParam=[]; filterService.paramData[selectedHighlighIndex].value=item;">{{item}}</a></li>
+  </ul>
+  <ul class="gen01"> 
+    <li class="gen-child01" *ngFor="let item of filterService.listCatFiltersOpp" (click)="selectedFilterFunc(item)">
+      <div class="left-group mix-xy">
+        <img class="i-info" [src]="item.image" alt="Ionic">
+      </div>
+      <div class="right-group ver-y">
+        <p>{{item.title}}</p>
+        <img class="icon-next" src="assets/img/id38-next.png" alt="Ionic">
+        <img class="icon-plus" src="assets/img/id38-plus.png" alt="Ionic">
+      </div>
+      <div class="clear"></div>
+    </li>
+    <li class="gen-child01" (click)="showSavedFilters()">
+      <div class="left-group mix-xy">
+        <img class="i-info" src="assets/img/id120-filter-d.png" alt="Ionic">
+      </div>
+      <div class="right-group ver-y">
+        <p>Saved Custom Filters</p>
+        <img class="icon-next" src="assets/img/id38-next.png" alt="Ionic">
+        <img class="icon-plus" src="assets/img/id38-plus.png" alt="Ionic">
+      </div>
+      <div class="clear"></div>
+    </li>
+    <div class="clear"></div>
+  </ul>
+  <div class="clear"></div>
+  <a href="javascript:;" class="btn-save mix-xy" (click)="saveCustomerFilter()">Save Filter</a>
+  </div>
+  <a href="javascript:;" class="btn-search mix-xy" (click)="search();isShowFilterContent=false">Search</a>
+  <a *ngIf="isShowCloseBtn" href="javascript:;" class="btn-close mix-xy" (click)="closeFilterView.emit();">Close</a>
+</div>
+<!-- end /mainn-content -->

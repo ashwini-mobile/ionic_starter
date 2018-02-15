@@ -1,0 +1,116 @@
+<ion-content *ngIf="arrayFriendsList">
+	<div class="tab-friends-page">
+		<div class="top-status">
+			<span class="title">Matches</span>
+			<div class="count-acc mix-xy" *ngIf="arrayFriendsList.length > 0">
+				<span class="w-number">{{indexCardSelected + 1}} / {{arrayFriendsList.length}}</span>
+			</div>
+			<!-- end /count-acc -->
+		</div>
+		<!-- end /top-status -->
+		<div class="middle-slide" *ngIf="arrayFriendsList.length > 0">
+			<slick-carousel class="carousel" typeSlick="wide">
+				<div slick-carousel-item class="group-card" *ngFor="let item of arrayFriendsList;let i=index" (swipe)="swiperFunc(i)">
+					<img [src]="item.card_avatar" alt="Ionic">
+					<div class="group-text">
+						<p class="title"><span>{{item.name}}</span><img src="assets/img/social-tick.png" alt="Ionic"></p>
+						<div class="text-name">
+							<p class="name">{{item.status}}<span *ngIf="item.year_exp">{{item.year_exp}}yr.<i class="text">exp</i></span></p>
+						</div>
+						<span class="btn btn-online"></span>
+						<div class="group-ll">
+							<ion-fab edge>
+								<button (click)="callThePerson(item)" ion-fab><img src="assets/img/call.png" alt="Ionic"></button>
+							</ion-fab>
+							<ion-fab edge>
+								<button ion-fab><img src="assets/img/messenger.png" alt="Ionic" (click)="sendMessage(item)"></button>
+							</ion-fab>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</slick-carousel>
+		</div>
+		<!-- end /middle-slide -->
+		<div class="bottom-statistics">
+			<div class="about-group-request">
+				<div class="entire-all-content">
+					<div class="top-status-clone">
+						<span class="title">Endorsement Requests</span>
+						<div class="count-acc mix-xy">
+							<span class="w-number">2 / 9</span>
+						</div>
+						<!-- end /count-acc -->
+					</div>
+					<!-- end /top-status -->
+					<div class="bottom-members">
+						<slick-carousel class="carousel">
+							<li slick-carousel-item  *ngFor="let item of arrayFriendsEndorsement" class="slide">
+								<div class="wapper-all">
+									<img [src]="item.avata" alt="Ionic" />
+								</div>
+							</li> 
+						</slick-carousel>
+						<div class="clear"></div>
+					</div>
+					<!-- end /bottom-members -->
+				</div>
+				<!-- end /entire-all-content -->
+				<div class="entire-all-content clone" *ngIf="arrayFriendRequests.length > 0">
+					<div class="top-status-clone">
+						<span class="title">Friend Requests</span>
+						<div class="count-acc mix-xy">
+							<span class="w-number">1 / {{arrayFriendRequests.length}}</span>
+						</div>
+						<!-- end /count-acc -->
+					</div>
+					<!-- end /top-status -->
+					<div class="bottom-members">
+						<slick-carousel class="carousel">
+							<li slick-carousel-item  *ngFor="let item of arrayFriendRequests" class="slide">
+								<div class="wapper-all">
+									<img [src]="item.avatar" alt="Ionic" />
+								</div>
+							</li> 
+						</slick-carousel>
+						<div class="clear"></div>
+					</div>
+					<!-- end /bottom-members -->
+				</div>
+				<!-- end /entire-all-content -->
+			</div>
+			<!-- end /about-group-request -->
+			<div class="about-group-messages" *ngIf="arrayMessageList.length > 0">
+				<div class="top-status-clone">
+					<span class="title">Messages</span>
+				</div>
+				<!-- end /top-status -->
+				<div class="bottom-main-content">
+					<ul>
+						<li *ngFor="let item of arrayMessageList">
+							<span class="blue-circle mix-xy" *ngIf="item.newMessageCount > 0">{{item.newMessageCount}}</span>
+							<div class="left-ava">
+								<div class="wapper-all">
+									<img [src]="item.avatar" alt="Ionic" (click)="goDetailProfileFromMessage(item)"/>
+								</div>
+							</div>
+							<!-- end /left-ava -->
+							<div class="more-details" (click)="showMessageScreen(item)">
+								<p class="line-one">{{item.name}} <i>at {{item.latestMessageDatetime}}</i></p>
+								<p class="line-two">{{item.latestMessage}}</p>
+							</div>
+							<!-- end /more-details -->
+						</li>
+					</ul>
+				</div>
+				<!-- end /bottom-main-content -->
+			</div>
+			<!-- end /about-group-message -->
+			<div class="clear"></div>
+		</div>
+		<!-- end /bottom-statistics -->
+	</div>
+	<!-- end /tab-friends-page -->
+
+</ion-content>
+<!-- end /ion-content -->

@@ -1,0 +1,93 @@
+<ion-content>
+	<div class="tab-benches-page">
+		<div class="top-status">
+			<span class="title">New Matches</span>
+			<div class="count-acc mix-xy" *ngIf="arrayFriends.length > 0">
+				<span class="w-number">{{indexCardSelected + 1}} / {{arrayFriends.length}}</span>
+			</div>
+			<!-- end /count-acc -->
+		</div>
+		<!-- end /top-status -->
+		<div class="middle-slide" *ngIf="arrayFriends.length > 0">
+			<slick-carousel class="carousel" typeSlick="wide">
+				<div slick-carousel-item (swipe)="swiperFunc(i)" *ngFor="let item of arrayFriends;let i=index">
+					<div class="group-card" [dragula]='"eighth-bag"'>
+						<img [src]="item.card_avatar" alt="Ionic">
+						<div class="group-text">
+							<p class="title"><span>{{item.status}} <i class="icons-chart"></i></span></p>
+							<div class="text-name">
+								<p class="name">{{item.name}}<span *ngIf="item.year_exp">{{item.year_exp}}yr.<i class="text">exp</i></span></p>
+							</div>
+							<div class="group-ll">
+								<ion-fab edge>
+									<button (click)="callThePerson(item)" ion-fab><img src="assets/img/call.png" alt="Ionic"></button>
+								</ion-fab>
+								<ion-fab edge>
+									<button ion-fab><img src="assets/img/messenger.png" alt="Ionic" (click)="sendMessage(item)"></button>
+								</ion-fab>
+								<div class="clear"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</slick-carousel>
+		</div>
+		<!-- end /middle-slide -->
+		<div class="bottom-statistics" [style.height.px]="heightConentCard">
+			<ul class="gen01" [dragula]='"seventh-bag"' [dragulaModel]='arrayBenches'>
+				<li class="gen01-child" *ngFor="let item of arrayBenches; let i = index">
+					<a href="javascript:;" class="right-point mix-xy" (click)="clickPointEdit(i)">
+						<img src="assets/img/dot.png" alt="Ionic" />
+					</a>
+					<a href="javascript:;" class="group-card-benches ver-y" (click)="goBenchesDetail(item)" [dragula]='"eighth-bag"' [id]="item.id">
+						<div class="left-group" [ngClass]="{selected: item.title === 'You Like'}">
+							<p>{{item.title}} <img src="assets/img/clock.png" alt="Ionic"></p>
+							<p><i class="num">{{item.matches}}</i> matches</p>
+						</div>
+						<!-- end /left-group -->
+						<div class="right-group" *ngIf="item.friends.length > 3">
+							<ul class="gen02">
+								<li class="gen02-child" *ngFor="let friend of item.friends | slice:0:3 ; let i=index">
+									<img [src]="friend.avata" alt="Ionic">
+								</li>
+								<li class="gen02-child only" *ngIf="item.friends.length>3">
+									<span class="total">+{{item.friends.length-3}}</span>
+								</li>
+							</ul>
+						</div>
+                        <div class="right-group" *ngIf="item.friends.length === 1">
+                            <ul class="gen02">
+                                <li class="gen02-child-one" *ngFor="let friend of item.friends | slice:0:3 ; let i=index">
+                                    <img [src]="friend.avata" alt="Ionic">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right-group" *ngIf="item.friends.length === 2">
+                            <ul class="gen02">
+                                <li class="gen02-child-two" *ngFor="let friend of item.friends | slice:0:3 ; let i=index">
+                                    <img [src]="friend.avata" alt="Ionic">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right-group" *ngIf="item.friends.length === 3">
+                            <ul class="gen02">
+                                <li class="gen02-child-three" *ngFor="let friend of item.friends | slice:0:3 ; let i=index">
+                                    <img [src]="friend.avata" alt="Ionic">
+                                </li>
+                            </ul>
+                        </div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- end /bottom-statistics -->
+	</div>
+	<!-- end /tab-benches-page -->
+	<ion-fab bottom right>
+		<button class="green-circle" ion-fab mini (click)="addBenches()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+	<ion-fab bottom right class="btn-sos" *ngIf="dashboardCtr.roleUser==='employee'">
+		<button class="gradient-circle" ion-fab (click)="showModalSOS()">SOS</button>
+	</ion-fab>
+</ion-content>
+<!-- end /ion-content -->

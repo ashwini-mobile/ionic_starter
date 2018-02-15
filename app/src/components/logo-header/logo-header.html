@@ -1,0 +1,17 @@
+<ion-navbar class="navigation_bar" color="primary" no-border>
+	<ion-buttons *ngIf="modalView">
+		<button class="navigation_bar__button" ion-button icon-only (click)="closeModal()">
+			<ion-icon name="close"></ion-icon>
+		</button>
+	</ion-buttons>
+	<ion-title>
+		<img class="navigation_bar__logo" src="assets/img/logo.png" />
+	</ion-title>
+</ion-navbar>
+
+<ion-toolbar color="white" *ngIf="toolbarButtons && toolbarButtons.length">
+	<button-toolbar [toolbarButtons]="toolbarButtons"
+					[(selected)]="selectedOption"
+					(selectedChange)="select($event)">
+	</button-toolbar>
+</ion-toolbar>

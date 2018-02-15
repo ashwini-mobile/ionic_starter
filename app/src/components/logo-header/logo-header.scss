@@ -1,0 +1,31 @@
+ion-header[logo-header] {
+	ion-navbar {
+	    z-index: 99;
+	}
+
+	.navigation_bar {
+		position: relative;
+		min-height: 50px;
+		overflow: visible;
+		contain: none;
+
+		.navigation_bar__button {
+			min-width: 32px;
+		}
+
+		.toolbar-title {
+			padding-top: 10px;
+
+			.navigation_bar__logo {
+				position: relative;
+				z-index: 1;
+				margin-top: 10px;
+				height: 52px !important;
+			}
+		}
+	}
+
+	ion-toolbar {
+		z-index: 0;
+	}
+}

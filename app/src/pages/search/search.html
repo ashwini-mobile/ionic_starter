@@ -1,0 +1,60 @@
+<ion-content *ngIf="!dashboardCtr.isShowDetailFilter && !dashboardCtr.isShowSaveFilter">
+	<div class="search-page">
+		<div style="flex:0 0 auto;">
+		<div class="sub-header">
+			<a href="javascript:;" class="ilegacy" [ngClass]="{active: isShowFilterContent}">
+				<img src="assets/img/id310-legacy.png" alt="Ionic" (click)="toggleFilterContent()">
+			</a>
+			<div class="search-here">
+				<input type="text" name="Search" placeholder="Search..." [(ngModel)]="querySearchFriend" (keyup)="searchFriend()">
+			</div>
+			<!-- end /search-here -->
+		</div>
+		<!-- end /sub-header (ionChange)="segmentChanged($event)" value="friends" value="PotentialHires-->	
+		<div class="switch-tab">
+			<div class="toolbar-content">
+				<div class="segment">
+					<button class="segment-button segment-friend" [ngClass]="{'segment-activated': titleTabSearchUI === 'friends'}">Friends</button>
+					<button class="segment-button segment-opp" [ngClass]="{'segment-activated': titleTabSearchUI === 'PotentialHires'}">{{getTitleTab()}}</button>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- end /switch-tab -->
+		<div class="mainn-content" *ngIf="!isShowFilterContent" [style.height.px]="heightIndex-165" [ngSwitch]="titleTabSearch">
+			<ul class="gen01 searchGen01" *ngSwitchCase="'friends'">
+				<li class="gen-child01" *ngFor="let item of filterService.listFriendsUI; let i=index" (click)="goDetailProfile(item)">
+					<div class="top-avatar">
+						<img [src]="item.photo" alt="Ionic">
+					</div>
+					<!-- end /top-avatar -->
+					<div class="bottom-info">
+						<span class="name">{{item.name}}</span>
+						<span class="location">{{item.location}}</span>
+						<img src="assets/img/social-tick.png" alt="Ionic">
+					</div>
+					<!-- end /bottom-info -->
+				</li>
+			</ul>
+			<ul class="gen01 searchGen01" *ngSwitchCase="'PotentialHires'">
+				<li class="gen-child01" *ngFor="let item of filterService.listOpportunitiesUI" (click)="goDetailProfile(item)">
+					<div class="top-avatar">
+						<img [src]="item.photo" alt="Ionic">
+					</div>
+					<!-- end /top-avatar -->
+					<div class="bottom-info">
+						<span class="name">{{item.name}}</span>
+						<span class="location">{{item.location}}</span>
+						<img src="assets/img/social-tick.png" alt="Ionic">
+					</div>
+					<!-- end /bottom-info -->
+				</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<!-- end /mainn-content -->
+		<search-filter *ngIf="isShowFilterContent" class="search-filter-param" [isShowFilterContent]="isShowFilterContent" [titleTabSearch]="titleTabSearch" (closeFilterView)="isShowFilterContent=false;"></search-filter>
+	</div>
+	<!-- end /search-page -->
+</ion-content>
+<!-- end /ion-content -->

@@ -1,0 +1,20 @@
+<!--ion content-->
+<ion-content>
+	<ion-title>Edit Benches</ion-title>
+	<div class="group-input">
+		<div>
+			<div class="input-content">
+				<input type="text" placeholder="Enter Name" [(ngModel)]="titleBenches">
+			</div>
+			<div class="input-content">
+				<a href="javascript:;" class="click-me mix-xy" (click)="deleteFunc()">Delete</a>
+			</div>
+			<div class="input-content">
+				<a href="javascript:;" class="click-me mix-xy" (click)="renameFunc()">Rename</a>
+			</div>
+			<div class="input-content">
+				<a href="javascript:;" class="click-me mix-xy" (click)="cancelFunc()">Cancel</a>
+			</div>
+		</div>
+	</div>
+</ion-content>

@@ -1,0 +1,112 @@
+.modal-add-alert {
+	.modal-wrapper {
+		page-add-alert.ion-page {
+			width: 243px;
+			height: 185px;
+			border-radius: 20px;
+			overflow: hidden;
+			left: calc(50% - 122px);
+			top: calc(50% - 109px);
+			ion-content {
+				* {
+					font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+				}
+				background: transparent;
+				.fixed-content {
+					background-color: #fff;
+				}
+				.scroll-content {
+					overflow-y: hidden;
+					ion-title {
+						display: -webkit-box;
+						display: -ms-flexbox;
+						display: flex;
+						-webkit-box-align: center;
+						-ms-flex-align: center;
+						align-items: center;
+						height: 60px;
+						.toolbar-title {
+							font-family: 'Myriad Pro';
+							font-weight: 400;
+							text-align: left;
+							color: #606060;
+							font-size: 17px;
+							padding: 0 0 0 21px;
+							text-align: left;
+						}
+					}
+					.title-input {
+						display: block;
+						font-size: 16px;
+						position: absolute;
+						top: 30px;
+					}
+					.group-input {
+						padding: 0 20px;
+						margin-top: 5px;
+						.input-content {
+							width: 100%;
+							height: 40px;
+							margin-bottom: 15px;
+							&:last-child {
+								margin-bottom: 22px;
+							}
+							input {
+								display: block;
+								height: 100%;
+								width: 100%;
+								color: #606060;
+								font-size: 15px;
+								border: 1px solid #bebebe;
+								border-radius: 6px;
+								outline: none;
+								background: transparent;
+								margin: 0;
+								font-family: 'Myriad Pro';
+								font-weight: 400;
+								padding: 0 0 0 14px;
+								&.error-ver {
+									border: 1px solid #e23200;
+								}
+							}
+						}
+					}
+				}
+			}
+			ion-footer {
+				height: 50px;
+				padding: 0;
+				overflow: hidden;
+				&:before {
+					content: '';
+					display: block;
+					width: 100%;
+					height: 100%;
+					background : -moz-linear-gradient(34.04% -97.02% -60deg,rgba(0, 121, 145, 1) 0%,rgba(120, 255, 214, 1) 100%);
+					background : -webkit-linear-gradient(-60deg, rgba(0, 121, 145, 1) 0%, rgba(120, 255, 214, 1) 100%);
+					background : -webkit-gradient(linear,34.04% -97.02% ,66.74% 182.52% ,color-stop(0,rgba(0, 121, 145, 1) ),color-stop(1,rgba(120, 255, 214, 1) ));
+					background : linear-gradient(150deg, rgba(0, 121, 145, 1) 0%, rgba(120, 255, 214, 1) 100%);
+
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 1;
+				}
+				button {
+					width: 50%;
+					height: 100%;
+					color: #fff;
+					font-size: 18px;
+					font-family: 'Myriad Pro';
+					font-weight: 400;
+					float: left;
+					padding: 0;
+					margin: 0;
+					background-color: transparent;
+					position: relative;
+					z-index: 10;
+				}
+			}
+		}
+	}
+}

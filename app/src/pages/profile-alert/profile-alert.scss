@@ -1,0 +1,31 @@
+.modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    page-profile-alert.ion-page {
+        ion-content {
+            div {
+                ion-title {
+                    div {//Motorola Moto G 3rd Gen 
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+        ion-footer {
+            button {
+                width: 100px;
+                height: 31px;
+                padding: 0;
+                margin: 0;
+                border-radius: 6px;
+                color: #fff;
+                font-weight: 500;
+                background-color: #1ac88d;
+                text-transform: uppercase;
+                margin: 0 5px;
+            }
+        }
+    }
+}

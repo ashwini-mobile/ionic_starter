@@ -1,0 +1,34 @@
+{
+	"android": {
+		"debug": {
+			"keystore": "debug.keystore",
+			"storePassword": "welcome",
+			"alias": "app_debug",
+			"password": "welcome",
+			"keystoreType": ""
+		}
+	},
+
+	"ios": {
+		"debug": {
+			"codeSignIdentity": "iPhone Developer",
+			"developmentTeam": "C32246M7VY",
+			"packageType": "ad-hoc",
+			"buildFlag": [
+				"EMBEDDED_CONTENT_CONTAINS_SWIFT = YES",
+				"ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO",
+				"LD_RUNPATH_SEARCH_PATHS = \"@executable_path/Frameworks\""
+			]
+		},
+		"release": {
+			"codeSignIdentity": "iPhone Developer",
+			"developmentTeam": "C32246M7VY",
+			"packageType": "app-store",
+			"buildFlag": [
+				"EMBEDDED_CONTENT_CONTAINS_SWIFT = YES",
+				"ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO",
+				"LD_RUNPATH_SEARCH_PATHS = \"@executable_path/Frameworks\""
+			]
+		}
+	}
+}

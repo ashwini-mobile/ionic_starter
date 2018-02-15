@@ -1,0 +1,139 @@
+.modal-page-ask {
+	.modal-wrapper {
+		page-ask-alert.ion-page {
+			width: 244px;
+			height: 336px;
+			border-radius: 15px;
+			// top: calc(50% - 168px);
+			// left: calc(50% - 122px);
+			background: #fff;
+			overflow: hidden;
+			position: relative;
+			ion-content.content  {
+				width: 100%;
+				height: 100%;
+				background: #fff;
+				position: relative;
+				.scroll-content {
+					width: 100%;
+					height: 100%;
+					overflow-y: hidden;
+					position: relative;
+					// Main Content
+					.mainn-content {
+						width: 100%;
+						height: 100%;
+						position: relative;
+						.top-question {
+							margin: 0;
+							margin-bottom: 18px;
+							padding: 18px 20px 0;
+							font-size: 16px;
+							font-family: 'Myriad Pro';
+							color: #606060;
+						}
+						.choose-value {
+							width: 100%;
+							padding: 0 20px;
+							margin-bottom: 15px;
+							position: relative;
+							z-index: 100;
+							.item-input {
+								width: 96px;
+								height: 33px;
+								border: 1px solid #d0d0d0;
+								border-radius: 7px;
+								padding: 0;
+								float: left;
+								margin-right: 12px;
+								&:nth-child(2) {
+									margin-right: 0;
+								}
+								&:nth-child(3) {
+									width: 100%;
+									margin-top: 13px;
+									margin-right: 0;
+								}
+								&.item-textarea {
+									width: 100%;
+									height: 105px;
+									margin-top: 13px;
+									margin-right: 0;
+									.item-inner {
+										.input-wrapper {
+											ion-textarea {
+												textarea {
+													@include iinput(#000, 14px, #828282);
+													width: 100%;
+													height: 100%;
+													padding: 10px 10px;
+												}
+											}
+										}
+									}
+								}
+								.item-inner {
+									width: 100%;
+									height: 100%;
+									padding: 0;
+									border: none;
+									.input-wrapper {
+										ion-input {
+											input {
+												@include iinput(#000, 14px, #828282);
+												width: 100%;
+												height: 100%;
+												padding: 0 10px;
+											}
+										}
+									}
+								}
+							}
+						}
+						.group-btn {
+							width: 100%;
+							height: 48px;
+							font-size: 16px;
+							font-family: 'Myriad Pro';
+							font-weight: 500;
+							color: #fff;
+							text-align: center;
+							text-transform: uppercase;
+							text-decoration: none;
+							border-radius: 0 0 15px 15px;
+
+							background : -moz-linear-gradient(0% 50% 0deg,rgba(19, 106, 138, 1) 0%,rgba(150, 228, 176, 1) 100%);
+							background : -webkit-linear-gradient(0deg, rgba(19, 106, 138, 1) 0%, rgba(150, 228, 176, 1) 100%);
+							background : -webkit-gradient(linear,0% 50% ,100% 50% ,color-stop(0,rgba(19, 106, 138, 1) ),color-stop(1,rgba(150, 228, 176, 1) ));
+							background : linear-gradient(90deg, rgba(19, 106, 138, 1) 0%, rgba(150, 228, 176, 1) 100%);
+							.btn-back {
+								width: 50%;
+								height: 100%;
+								font-size: 18px;
+								font-family: 'Myriad Pro';
+								font-weight: 500;
+								color: #fff;
+								text-align: center;
+								text-transform: capitalize;
+								text-decoration: none;
+								float: left;
+							}
+							.btn-send {
+								width: 50%;
+								height: 100%;
+								font-size: 18px;
+								font-family: 'Myriad Pro';
+								font-weight: 500;
+								color: #fff;
+								text-align: center;
+								text-transform: capitalize;
+								text-decoration: none;
+								float: left;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,328 @@
+.modal-page-settings{
+    top: 70px;
+    background-color: transparent;
+    ion-backdrop {
+        background-color: transparent;
+    }
+    .modal-wrapper {
+        .ion-page {
+            &.show-page {
+                background-color: transparent;
+                .content {
+                    background-color: transparent;
+                }
+            }
+        }
+        page-settings {
+            height: calc(100vh - 70px);
+            ion-content {
+                // Offices Page
+                .settings-page {
+                    width: 100%;
+                    position: relative;
+                    * {
+                        font-family: 'Myriad Pro';
+                        font-weight: normal;
+                    }
+                    .sub-header {
+                        margin: 0 auto 25px;
+                        position: relative;
+                        .group-one {
+                            width: 100%;
+                            height: 30px;
+                            position: relative;
+                            h1 {
+                                line-height: 30px;
+                                margin: 0;
+                                padding: 0;
+                                font-size: 15px;
+                                font-weight: 500;
+                                color: #fff;
+                                text-transform: uppercase;
+                                left: 46%;
+                                position: absolute;
+                            }
+                            .iback {
+                                display: block;
+                                opacity: 0.65;
+                                position: absolute;
+                                top: 5px;
+                                left: 0;
+                                z-index: 10;
+                                img {
+                                    display: block;
+                                    width: 10px;
+                                    height: auto;
+                                    background-size: cover;
+                                    margin-left: 50px;
+                                }
+                            }
+                            .i-settings {
+                                background-image: url(../assets/icon/icon-settings.png);
+                                background-size: 30px;
+                                display: block;
+                                width: 25px;
+                                height: 25px;
+                                position: absolute;
+                                top: 0;
+                                left: calc(46% - 35px);
+                            }
+                        }
+                    }
+                    .group-content {
+                        .card-group {
+                            margin-bottom: 0;
+                            padding: 0 20px;
+                            overflow-y: auto;
+                            ion-item-group {
+                                overflow: initial;
+                                border: none;
+                                ion-item-divider {
+                                    height: 36px;
+                                    position: relative;
+                                    font-size: 16px;
+                                    color: #fff;
+                                    font-weight: 300;
+                                    line-height: 19px;
+                                    background: transparent;
+                                    border-bottom: none;
+                                    .main-content {
+                                        height: 100%;
+                                        padding-left: 5px;
+                                        img {
+                                            width: 26px;
+                                            height: 26px;
+                                        }
+                                        .text-content {
+                                            display: block;
+                                            color: #fff;
+                                            font-size: 15px;
+                                            margin: 5px;
+                                            overflow: hidden;
+                                            white-space: nowrap;
+                                            text-overflow: ellipsis;
+                                        }
+                                        .icons {
+                                            display: none;
+                                            width: 36px;
+                                            height: 36px;
+                                            background-size: 36px;
+                                            position: absolute;
+                                            top: 7px;
+                                            right: 0;
+                                        }
+                                        a.save {
+                                            position: absolute;
+                                            right: 15px;
+                                            width: 50px;
+                                            height: 20px;
+                                            text-align: center;
+                                            font-size: 14px;
+                                            color: #446db4;
+                                            background: #fff;
+                                            border-radius: 4px;
+                                            text-decoration: none;
+                                        }
+                                    }
+                                }
+                                .item-group {
+                                    // width: 298px;
+                                    width: 100%;
+                                    max-height: 0;
+                                    overflow: hidden;
+                                    transition: max-height 0.1s;
+                                    padding-left: 53px;
+                                    padding-right: 0;
+                                    background: transparent;
+                                    border: none;
+                                    .item {
+                                        max-height: 24px;
+                                        background: transparent;
+                                        color: #fff;
+                                        font-size: 14.5px;
+                                        font-weight: 300;
+                                        min-height: 0;
+                                        padding-left: 0;
+                                        position: relative;
+                                        z-index: 10;
+                                        img {
+                                            width: 14px;
+                                            height: 14px;
+                                            margin-left: 10px;
+                                        }
+                                        input {
+                                            width: 100%;
+                                            background: rgba(255, 255, 255, .15);
+                                            border: 1px solid rgba(255, 255, 255, .5);
+                                            border-radius: 4px;
+                                            font-size: 14px;
+                                            color: #fff;
+                                            height: 24px;
+                                            padding: 3px 10px;
+                                            margin: 0;
+                                            &::-webkit-input-placeholder {
+                                                color: #fff;
+                                                opacity: 1;
+                                            }
+                                            &.error-ver {
+                                                border: 1px solid #e23200;
+                                            }
+                                        }
+                                        .text-left {
+                                            left: 0;
+                                        }
+                                        .text-right {
+                                            position: absolute;
+                                            right: 0;
+                                        }
+                                        .text-label {
+                                            left: 0;
+                                            margin-top: 5px;
+                                        }
+                                    }
+                                    ion-toggle {
+                                        position: absolute;
+                                        right: 10px;
+                                        top: -9px;
+                                        width: 32px;
+                                        .toggle-icon {
+                                            height: 16px;
+                                            .toggle-inner {
+                                                top: 0px;
+                                                height: 16px;
+                                                width: 16px;
+                                                background-color: #fff;
+                                            }
+                                        }
+                                        &.toggle-checked {
+                                            .toggle-icon {
+                                                background-color: #32c24d;
+                                            }
+                                        }
+                                    }
+                                    .item-ios {
+                                        .text-right {
+                                            position: absolute;
+                                            right: 0;
+                                            top: 0;
+                                        }
+                                        ion-toggle {
+                                            position: absolute;
+                                            right: 10px;
+                                            top: -2px;
+                                            width: 40px;
+                                            .toggle-icon {
+                                                height: 18px;
+                                                .toggle-inner {
+                                                    top: 0px;
+                                                    height: 18px;
+                                                    width: 18px;
+                                                    background-color: #fff;
+                                                }
+                                            }
+                                            &.toggle-checked {
+                                                .toggle-icon {
+                                                    background-color: #32c24d;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.open {
+                                        max-height: 100%;
+                                    }
+                                }
+                            }
+                            .item-card {
+                                position: relative;
+                                height: 36px;
+                                background-color: transparent;
+                                list-style-type: none;
+                                overflow: initial;
+                                .item-inner {
+                                    border: none;
+                                    overflow: initial;
+                                    .input-wrapper {
+                                        height: 100%;
+                                        .main-content {
+                                            height: 100%;
+                                            padding-left: 5px;
+                                            img {
+                                                width: 26px;
+                                                height: 26px;
+                                            }
+                                            .text-content {
+                                                display: block;
+                                                color: #fff;
+                                                font-size: 15px;
+                                                margin: 5px;
+                                                overflow: hidden;
+                                                white-space: nowrap;
+                                                text-overflow: ellipsis;
+                                            }
+                                            .icons {
+                                                display: none;
+                                                width: 36px;
+                                                height: 36px;
+                                                background-size: 36px;
+                                                position: absolute;
+                                                top: 7px;
+                                                right: 0;
+                                            }
+                                        }
+                                        .item-group {
+                                            padding-left: 5px;
+                                            width: 100%;
+                                            max-height: 100%;
+                                            overflow: hidden;
+                                            transition: max-height .2s;
+                                            .item {
+                                                background: transparent;
+                                                color: #fff;
+                                                font-size: 16.5px;
+                                                font-weight: 300;
+                                                min-height: 0;
+                                                padding-left: 0;
+                                                position: relative;
+                                                z-index: 10;
+                                                max-height: 36px;
+                                                .text-content {
+                                                    display: block;
+                                                    color: #fff;
+                                                    font-size: 15px;
+                                                    margin: 5px;
+                                                    overflow: hidden;
+                                                    white-space: nowrap;
+                                                    text-overflow: ellipsis;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .footer {
+                        margin: 20px auto 15px;
+                        .footer-img {
+                            width: 44px;
+                            height: 44px;
+                            margin: auto;
+                            display: block;
+                        }
+                        .footer-text {
+                            width: 100%;
+                            color: #fff;
+                            font-family: 'Myriad Pro';
+                            font-size: 14px;
+                            font-weight: 300;
+                            display: block;
+                            text-align: center;
+                            margin-bottom: 5px;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

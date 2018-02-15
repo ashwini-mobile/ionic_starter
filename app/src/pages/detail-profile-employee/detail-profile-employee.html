@@ -1,0 +1,319 @@
+<a href="javascript:;" class="btn-back" (click)="dismiss()">
+	<img src="assets/img/id101-back02.png" alt="Ionic">
+</a>
+<ion-content *ngIf="dataProfileDetail">
+	<div class="page-employee-profile" [ngClass]="{'subs-ver':isSubcription}">
+			<div class="moon-slides">
+				<ion-slides pager >
+					<ion-slide *ngFor="let slide of employeeProfile.photos; let index = index">
+						<div class="small-piece"  [ngClass]="{'diff-ver': index!==0}">
+							<div class="top-info mix-xy" >
+								<div>
+									<h1>{{slide.url}}</h1>
+									<p>{{slide.description}}</p>
+								</div>
+							</div>
+							<!-- end /top-info -->
+							<div class="bottom-img">
+								<img [src]="slide.url" alt="Ionic" [ngClass]="{'big-logo': index===0, 'same-size': index!==0}">
+							</div>
+							<!-- end /bottom-img -->
+						</div>
+						<!-- end /small-piece -->
+					</ion-slide>
+				</ion-slides>
+				<div class="group-curve">
+					<svg class="main-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 50.01"><defs></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1 cls-2" d="M0,0C200.12,98.53,375,0,375,0V195H.12Z"/></g></g></svg>
+				</div>
+			</div>
+			<!-- end /moon-slides -->
+		<!-- end /moon-slides -->
+		<div class="mainn-content">
+			<div class="part-one">
+				<div class="group-info">
+					<span class="text01">{{dataProfileDetail.name}}<img src="assets/img/social-tick.png" alt="Ionic"></span>
+					<span class="text02">{{employeeProfile.occupation.value}}</span>
+					<span class="text03"><img src="assets/img/id101-loca.png" alt="Ionic"> {{employeeProfile.employeeLocation.locality}}, {{employeeProfile.employeeLocation.state}}</span>
+					<span class="text04"><img src="assets/img/id101-clock.png" alt="Ionic"> {{dataProfileDetail.dateOpen}}</span>
+
+					<a href="javascript:;" class="edit-me">
+						<img src="assets/img/id101-edit.png" alt="Ionic">
+					</a>
+				</div>
+				<!-- end /group-info -->
+				<div class="group-description">
+					<p>{{employeeProfile.aboutMe}}</p>
+					<textarea [(ngModel)]="employeeProfile.aboutMe"></textarea>
+				</div>
+				<!-- end /group-description -->
+			</div>
+			<!-- end /part-one -->
+			<div class="part-two">
+				<div class="top-title">
+					<img src="assets/img/id71-history.png" alt="Ionic">
+					<span class="name">EMPLOYMENT HISTORY</span>
+					<a href="javascript:;" class="edit-me">
+						<img src="assets/img/id101-edit.png" alt="Ionic">
+					</a>
+					<div class="clear"></div>
+				</div>
+				<!-- end /top-title -->
+				<div class="group-employment">
+					<ul class="gen01">
+						<li class="gen-child01" *ngFor="let item of dataProfileDetail.employmentHistory">
+							<img src="assets/img/id101-line.png" alt="Ionic">
+							<span class="text01">{{item.otherEmployer}}</span>
+							<span class="text02">{{item.note}}</span>
+							<span class="text03">{{item.year}}</span>
+						</li>
+					</ul>
+				</div>
+				<!-- end /group-employment -->
+			</div>
+			<!-- end /part-two -->
+			<div class="part-two clone">
+				<div class="top-title">
+					<img src="assets/img/id71-history.png" alt="Ionic">
+					<span class="name">EDUCATION	 HISTORY</span>
+					<a href="javascript:;" class="edit-me">
+						<img src="assets/img/id101-edit.png" alt="Ionic">
+					</a>
+					<div class="clear"></div>
+				</div>
+				<!-- end /top-title -->
+				<div class="group-employment">
+					<ul class="gen01">
+						<li class="gen-child01" *ngFor="let item of dataProfileDetail.educationHistory">
+							<img src="assets/img/id101-line.png" alt="Ionic">
+							<span class="text01">{{item.name}}</span>
+							<span class="text02">{{item.note}}</span>
+							<span class="text03">{{item.year}}</span>
+						</li>
+					</ul>
+				</div>
+				<!-- end /group-employment -->
+			</div>
+			<!-- end /part-two -->
+			<div class="part-four">
+				<div class="list-members">
+					<div class="top-title">
+						<img src="assets/img/id101-chat.png" alt="Ionic">
+						<span class="name">EXTERNAL ENDORSEMENTS</span>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="bottom-members">
+						<div class="wrapper-all">
+							<a href="javascript:;" class="btn-total mix-xy" *ngIf="!isShowViewMoreFriend" (click)="isShowViewMoreFriend=true">+{{dataProfileDetail.endorsements.length-7}}</a>
+							<ul class="gen01" *ngIf="!isShowViewMoreFriend">
+									<li class="gen-child01" *ngFor="let item of dataProfileDetail.endorsements; let i=index" 
+									[ngClass]="{hide:i>=7}" [ngStyle]="{'z-index':dataProfileDetail.endorsements.length+i,'left':'-'+(15*i)+'px'}">
+										<img [src]="item.avata" alt="Ionic" >
+									</li>
+							</ul>
+							<slick-carousel class="carousel gen01" typeSlick="endorsement" *ngIf="isShowViewMoreFriend">
+								<div slick-carousel-item  *ngFor="let item of dataProfileDetail.endorsements">
+									<li class="gen-child01">
+										<img [src]="item.avata" alt="Ionic" >
+									</li>
+								</div>
+							</slick-carousel>
+							<div class="clear"></div>
+						</div>
+						<!-- end /wrapper-all -->
+						<div class="clear"></div>
+					</div>
+					<!-- end /bottom-members -->
+				</div>
+				<!-- end /list-members -->
+				<div class="bottom-feedback">
+					<ul class="gen01">
+						<li class="gen-child01" *ngFor="let item of dataProfileDetail.recentReviews">
+							<div class="about-acc">
+								<div class="left-group">
+									<div class="your-ava">
+										<img [src]="item.avata" alt="Ionic">
+										<span class="point"></span>
+									</div>
+								</div>
+								<!-- end /left-group -->
+								<div class="right-group ver-y">
+									<div>
+									<div class="name-star">
+										<p>Kylie Bourne</p>
+										<div class="clear"></div>
+									</div>
+									<span class="jobs">{{item.status}}</span>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<!-- end /about-acc -->
+							<div class="about-feedback">
+								<p>{{item.desc}}</p>
+								<img src="assets/img/id101-triangle.png" alt="Ionic">
+							</div>
+							<!-- end /about-feedback -->
+						</li>
+					</ul>
+				</div>
+				<!-- end /bottom-feedback -->
+			</div>
+			<!-- end /part-four -->
+			<div class="part-five">
+				<div class="practice-management">
+					<div class="top-title">
+						<img class="icloud" src="assets/img/icons8-Cloud-64.png" alt="Ionic">
+						<span class="name">PRACTICE MANAGEMENT SOFTWARES</span>
+						<a href="javascript:;" class="edit-me">
+							<img src="assets/img/id101-edit.png" alt="Ionic">
+						</a>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="bottom-info">
+						<ul class="gen01">
+							<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.practiceSoft">
+								<img src="assets/img/id101-line.png" alt="Ionic">
+								<span class="title">{{item.name}}</span>
+							</li>
+						</ul>
+					</div>
+					<!-- end /bottom-info -->
+				</div>
+				<!-- end /practice-management -->
+				<div class="practice-management fix-bgc">
+					<div class="top-title">
+						<img class="icloud" src="assets/img/icons8-Cloud-64.png" alt="Ionic">
+						<span class="name">DENTAL TECHNOLOGY SKILLS</span>
+						<a href="javascript:;" class="edit-me">
+							<img src="assets/img/id101-edit.png" alt="Ionic">
+						</a>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="bottom-info">
+						<ul class="gen01">
+							<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.dentalTechSkills">
+								<img src="assets/img/id101-line.png" alt="Ionic">
+								<span class="title">{{item.name}}</span>
+							</li>
+						</ul>
+					</div>
+					<!-- end /bottom-info -->
+				</div>
+				<!-- end /practice-management -->
+				<div class="practice-management">
+					<div class="top-title">
+						<img class="icloud" src="assets/img/icons8-Cloud-64.png" alt="Ionic">
+						<span class="name">OTHER SOFTWARE SKILLS I KNOW AND USE</span>
+						<a href="javascript:;" class="edit-me">
+							<img src="assets/img/id101-edit.png" alt="Ionic">
+						</a>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="bottom-info">
+						<ul class="gen01">
+							<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.ortherSoft">
+								<img src="assets/img/id101-line.png" alt="Ionic">
+								<span class="title">{{item.name}}</span>
+							</li>
+						</ul>
+					</div>
+					<!-- end /bottom-info -->
+				</div>
+				<!-- end /practice-management -->
+				<div class="practice-management fix-bgc">
+					<div class="top-title">
+						<img class="inote" src="assets/img/icons8-Resume-64.png" alt="Ionic">
+						<span class="name">GENERAL SKILLS I KNOW AND USE</span>
+						<a href="javascript:;" class="edit-me">
+							<img src="assets/img/id101-edit.png" alt="Ionic">
+						</a>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="bottom-info">
+						<ul class="gen01">
+							<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.generalSkills">
+								<img src="assets/img/id101-line.png" alt="Ionic">
+								<span class="title">{{item.name}}</span>
+							</li>
+						</ul>
+					</div>
+					<!-- end /bottom-info -->
+				</div>
+				<!-- end /practice-management -->
+				<div class="practice-management">
+					<div class="top-title">
+						<img class="inote" src="assets/img/icons8-Resume-64.png" alt="Ionic">
+						<span class="name">ADMINISTRTIVE SKILLS I HAVE AND EXCEL</span>
+						<a href="javascript:;" class="edit-me">
+							<img src="assets/img/id101-edit.png" alt="Ionic">
+						</a>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="bottom-info">
+						<ul class="gen01">
+							<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.administrtiveSkill">
+								<img src="assets/img/id101-line.png" alt="Ionic">
+								<span class="title">{{item.name}}</span>
+							</li>
+						</ul>
+					</div>
+					<!-- end /bottom-info -->
+				</div>
+				<!-- end /practice-management -->
+				<div class="practice-management fix-bgc">
+					<div class="top-title">
+						<img class="inote" src="assets/img/icons8-Resume-64.png" alt="Ionic">
+						<span class="name">DENTAL PHILOSOPHIES I HAVE STUDIED</span>
+						<a href="javascript:;" class="edit-me">
+							<img src="assets/img/id101-edit.png" alt="Ionic">
+						</a>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="bottom-info">
+						<ul class="gen01">
+							<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.dentalPhil">
+								<img src="assets/img/id101-line.png" alt="Ionic">
+								<span class="title">{{item.name}}</span>
+							</li>
+						</ul>
+					</div>
+					<!-- end /bottom-info -->
+				</div>
+				<!-- end /practice-management -->
+				<div class="bottom-logo">
+					<img src="assets/img/id101-logo.png" alt="Ionic">
+				</div>
+				<!-- end /bottom-logo -->
+			</div>
+			<!-- end /part-five -->
+		</div>
+		<!-- end /mainn-content -->
+	</div>
+	<!-- end /menu-page -->
+</ion-content>
+<!-- end /ion-content -->
+
+<div class="beautiful-buttons">
+	<ion-fab left bottom edge>
+		<button ion-fab mini><img src="assets/img/id101-circle01.png" alt="Ionic"></button>
+		<ion-fab-list side="top">
+			<button ion-fab>Request Endorsement</button>
+			<button ion-fab (click)="showModalShareFunc()">Share Profile</button>
+			<button ion-fab >Flag as Inapporpriate</button>
+		</ion-fab-list>
+	</ion-fab>
+	<ion-fab left bottom edge>
+		<button ion-fab mini><img src="assets/img/id101-circle02.png" alt="Ionic"></button>
+	</ion-fab>
+	<ion-fab left bottom edge>
+		<button ion-fab mini><img src="assets/img/id101-circle03.png" alt="Ionic"></button>
+	</ion-fab>
+</div>
+<!-- end /beautiful-buttons -->

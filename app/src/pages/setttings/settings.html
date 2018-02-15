@@ -1,0 +1,165 @@
+<ion-content>
+    <div class="settings-page">
+        <div class="sub-header">
+            <div class="group-one">
+                <a href="javascript:;" class="iback">
+                    <img src="assets/img/id120-back.png" alt="Ionic" (click)="dismiss()">
+                </a>
+                <span class="i-settings"></span>
+                <h1>Settings</h1>
+            </div>
+            <!-- end /group-one -->
+        </div>
+        <div class="group-content">
+            <div class="card-group" [style.height.px]="heightIndex">
+                <ion-item-group>
+                    <ion-item-divider>
+                        <div class="main-content ver-y" (click)="selectSetting('notification')">
+                            <img src="assets/icon/icon-settings-notifications.png" alt="Ionic">
+                            <span class="text-content">Notifications</span>
+                        </div>
+                    </ion-item-divider>
+                    <div class="item-group" [ngClass]="{'open': currentSetting === 'notification'}">
+                        <ion-item class="item-card" *ngFor="let item of notifications">
+                            <ion-label>{{item.name}}</ion-label>
+                            <ion-toggle [(ngModel)]="item.enabled" (ionChange)="togglePreferences(item.code, $event)"></ion-toggle>
+                        </ion-item>
+                    </div>
+                </ion-item-group>
+                <ion-item-group>
+                    <ion-item-divider>
+                        <div class="main-content ver-y" (click)="selectSetting('email')">
+                            <img src="assets/icon/icon-settings-email-address.png" alt="Ionic">
+                            <span class="text-content">Email Address</span>
+                            <a href="javascript:" class="save" (click)="saveEmail()" *ngIf="currentSetting === 'email' && !updateIsDisabledSinceUserIsSocial">SAVE</a>
+                        </div>
+                    </ion-item-divider>
+                    <div class="item-group" [ngClass]="{'open': currentSetting === 'email'}">
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <span class="text-label">Current Email Address</span>
+                            </div>
+                        </ion-item>
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <input type="text" placeholder="Enter Current Email" [(ngModel)]="txtCurrentEmail" disabled="true">
+                            </div>
+                        </ion-item>
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <span class="text-label">New Email Address</span>
+                            </div>
+                        </ion-item>
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <input type="text" placeholder="Enter New Email" [(ngModel)]="txtNewEmail" [(disabled)]="updateIsDisabledSinceUserIsSocial" [(required)]="!updateIsDisabledSinceUserIsSocial" [ngClass]="{'error-ver': errorNewEmail}" (focus)="errorNewEmail = false">
+                            </div>
+                        </ion-item>
+                    </div>
+                </ion-item-group>
+                <ion-item-group>
+                    <ion-item-divider>
+                        <div class="main-content ver-y" (click)="selectSetting('password')">
+                            <img src="assets/icon/icon-settings-password.png" alt="Ionic">
+                            <span class="text-content">Password</span>
+                            <a href="javascript:" class="save" (click)="savePassword()" *ngIf="currentSetting === 'password' && !updateIsDisabledSinceUserIsSocial">SAVE</a>
+                        </div>
+                    </ion-item-divider>
+                    <div class="item-group" [ngClass]="{'open': currentSetting === 'password'}">
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <input type="password" placeholder="Enter Old Password" [(ngModel)]="txtCurrentPassword" [(disabled)]="updateIsDisabledSinceUserIsSocial" [ngClass]="{'error-ver': errorCurrentPassword}" (focus)="errorCurrentPassword = false">
+                            </div>
+                        </ion-item>
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <span class="text-label">New Password</span>
+                            </div>
+                        </ion-item>
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <input type="password" placeholder="Enter New Password" [(ngModel)]="txtNewPassword" [(disabled)]="updateIsDisabledSinceUserIsSocial" [ngClass]="{'error-ver': errorNewPassword}" (focus)="errorNewPassword = false">
+                            </div>
+                        </ion-item>
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <span class="text-label">Confirm New Password</span>
+                            </div>
+                        </ion-item>
+                        <ion-item class="item-card">
+                            <div class="item ver-y">
+                                <input type="password" placeholder="Confirm New Password" [(ngModel)]="txtConfirmNewPassword" [(disabled)]="updateIsDisabledSinceUserIsSocial" [ngClass]="{'error-ver': errorConfirmNewPassword}" (focus)="errorConfirmNewPassword = false">
+                            </div>
+                        </ion-item>
+                    </div>
+                </ion-item-group>
+                <ion-item-group>
+                    <ion-item-divider>
+                        <div class="main-content ver-y"  (click)="selectSetting('purchases')">
+                            <img src="assets/icon/icon-settings-purchases.png" alt="Ionic">
+                            <span class="text-content">Purchases</span>
+                        </div>
+                    </ion-item-divider>
+                    <div class="item-group" [ngClass]="{'open': currentSetting === 'purchases'}">
+                        <ion-item class="item-card" *ngFor="let item of purchases">
+                            <div class="item ver-y">
+                                <span class="text-left">{{item.title}}</span>
+                                <span class="text-right">{{item.value}}</span>
+                            </div>
+                        </ion-item>
+                    </div>
+                </ion-item-group>
+                <ion-item class="item-card">
+                    <div class="main-content ver-y" (click)="getHelp()">
+                        <img src="assets/icon/icon-settings-help.png" alt="Ionic">
+                        <span class="text-content">Help</span>
+                    </div>
+                </ion-item>
+                <ion-item class="item-card">
+                    <div class="main-content ver-y" (click)="contactUs()">
+                        <img src="assets/icon/icon-settings-contact-us.png" alt="Ionic">
+                        <span class="text-content">Contact Us</span>
+                    </div>
+                </ion-item>
+                <ion-item-group>
+                    <ion-item-divider>
+                        <div class="main-content ver-y"  (click)="selectSetting('legal')">
+                            <img src="assets/icon/icon-settings-legal.png" alt="Ionic">
+                            <span class="text-content">Legal</span>
+                        </div>
+                    </ion-item-divider>
+                    <div class="item-group" [ngClass]="{'open': currentSetting === 'legal'}">
+                        <ion-item class="item-card" *ngFor="let item of legal">
+                            <div class="item ver-y">
+                                <span class="text-content">{{item.name}}</span>
+                                <img src="assets/icon/icon-arrow-right.png" alt="Ionic">
+                            </div>
+                        </ion-item>
+                    </div>
+                </ion-item-group>
+                <ion-item class="item-card">
+                    <div class="main-content ver-y" (click)="makeASuggestion()">
+                        <img src="assets/icon/icon-settings-make-a-suggestion.png" alt="Ionic">
+                        <span class="text-content">Make a Suggestion</span>
+                    </div>
+                </ion-item>
+                <ion-item class="item-card">
+                    <div class="main-content ver-y" (click)="logout()">
+                        <img src="assets/icon/icon-settings-password.png" alt="Ionic">
+                        <span class="text-content">Logout</span>
+                    </div>
+                </ion-item>
+                <div class="footer">
+                    <div>
+                        <img src="assets/icon/icon-share.png" alt="Ionic" class="footer-img">
+                    </div>
+                    <span class="footer-text">Share One Dental Match</span>
+                    <div>
+                        <img src="assets/img/gray-logo.png" alt="Ionic" class="footer-img">
+                    </div>
+                </div>
+            </div>
+            <!-- end /group-content -->
+        </div>
+	</div>
+</ion-content>

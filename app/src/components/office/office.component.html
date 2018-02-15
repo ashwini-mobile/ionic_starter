@@ -1,0 +1,22 @@
+<ion-item *ngIf="typeCard!=='grid'" class="item-content">
+  <div>
+  <span class="centre">{{office.name}}</span>
+  <span class="location">{{office.city}}, {{office.state}}</span>
+  </div>
+  <img src="assets/img/id38-next.png" alt="Ionic">
+  <a href="javascript:;" class="big-hand" (click)="goDashboard()"></a>
+</ion-item>
+
+
+<li *ngIf="typeCard==='grid'">
+  <div class="top-thumbnail">
+    <img src="assets/img/id38-thumb.png" alt="Ionic">
+    <a href="javascript:;" class="big-hand" (click)="goDashboard()"></a>
+  </div>
+  <!-- end /top-thumbnail -->
+  <div class="bottom-desc">
+    <span class="centre">{{office.name}}</span>
+    <span class="location">{{office.city}}, {{office.state}}</span>
+  </div>
+  <!-- end /bottom-desc -->
+</li>

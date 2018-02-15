@@ -1,0 +1,1737 @@
+{
+	"variables": [],
+	"info": {
+		"name": "mjolnir-backend",
+		"_postman_id": "6964252c-984b-3868-24be-096c28394641",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users api",
+			"description": "",
+			"item": [
+				{
+					"name": "errors",
+					"description": "",
+					"item": [
+						{
+							"name": "{{URL}}/signup 400 - input error",
+							"request": {
+								"url": "{{URL}}/signup",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"local\":{\n\t\t\"email\":\"error-email\",\n\t\t\"username\":\"jiangliwu\",\n\t\t\"password\":\"123456\"\n\t}\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/signup 400 - email already exist",
+							"request": {
+								"url": "{{URL}}/signup",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"local\":{\n\t\t\"email\":\"email0@email.com\",\n\t\t\"username\":\"jiangliwu\",\n\t\t\"password\":\"123456\"\n\t}\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/login 400 - input error",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"accessToken\", \"Bearer \"+jsonData.accessToken);"
+										]
+									}
+								}
+							],
+							"request": {
+								"url": "{{URL}}/login",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"email\",\n\t\"password\":\"123456\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/login 409- email or password error",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"accessToken\", \"Bearer \"+jsonData.accessToken);"
+										]
+									}
+								}
+							],
+							"request": {
+								"url": "{{URL}}/login",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"email0@email.com\",\n\t\"password\":\"1234567\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/userEmail/:email/verify 400 - already verified.",
+							"request": {
+								"url": {
+									"raw": "{{URL}}/userEmail/email0@email.com/verify?verificationToken=code",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"userEmail",
+										"email0@email.com",
+										"verify"
+									],
+									"query": [
+										{
+											"key": "verificationToken",
+											"value": "code",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"verificationToken\":\"m6BZWQ\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/userEmail/:email/verify 400 - input error",
+							"request": {
+								"url": {
+									"raw": "{{URL}}/userEmail/email/verify?verificationToken=code",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"userEmail",
+										"email",
+										"verify"
+									],
+									"query": [
+										{
+											"key": "verificationToken",
+											"value": "code",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"verificationToken\":\"m6BZWQ\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/userEmail/:email/verify 400 - not found",
+							"request": {
+								"url": {
+									"raw": "{{URL}}/userEmail/email404@email.com/verify?verificationToken=code",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"userEmail",
+										"email404@email.com",
+										"verify"
+									],
+									"query": [
+										{
+											"key": "verificationToken",
+											"value": "code",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"verificationToken\":\"m6BZWQ\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/users/:id  403 - not permission",
+							"request": {
+								"url": "{{URL}}/users/9",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"local\":{\n\t\t\"username\":\"test03\"\n\t},\n\t\"google\":{\n\t\t\"email\":\"email02@google.com\",\n\t\t\"username\":\"test04\",\n\t\t\"googleId\":\"zz\",\n\t\t\"token\":\"token\"\n\t},\n\t\"facebook\":{\n\t\t\"email\":\"email02@facebook.com\",\n\t\t\"username\":\"test04\",\n\t\t\"facebookId\":\"zz\",\n\t\t\"token\":\"token\"\n\t},\n\t\"linkedIn\":{\n\t\t\"email\":\"email02@linkedIn.com\",\n\t\t\"username\":\"test04\",\n\t\t\"linkedInId\":\"zz\",\n\t\t\"token\":\"token\"\n\t}\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/currentUser 401",
+							"request": {
+								"url": "{{URL}}/currentUser",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": "",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/updatePassword 400 - old password error",
+							"request": {
+								"url": "{{URL}}/updatePassword",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"newPassword\":\"1234569\",\n\t\"oldPassword\":\"1234569\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "{{URL}}/signup",
+					"request": {
+						"url": "{{URL}}/signup",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"local\":{\n\t\t\"email\":\"jiangliwu.ipple@gmail.com\",\n\t\t\"username\":\"jiangliwu\",\n\t\t\"password\":\"123456\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", \"Bearer \"+jsonData.accessToken);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{URL}}/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"email1@email.com\",\n\t\"password\":\"123456\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/userEmail/:email/verify - verify email",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/userEmail/jiangliwu.ipple@gmail.com/verify?verificationToken=code",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userEmail",
+								"jiangliwu.ipple@gmail.com",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "verificationToken",
+									"value": "code",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"verificationToken\":\"m6BZWQ\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/users - search users",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/users?pageSize=20",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "20",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/users/:id - update user by id",
+					"request": {
+						"url": "{{URL}}/users/2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"local\":{\n\t\t\"username\":\"test03\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/users/:id - get user by id",
+					"request": {
+						"url": "{{URL}}/users/4",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/currentUser",
+					"request": {
+						"url": "{{URL}}/currentUser",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/updatePassword",
+					"request": {
+						"url": "{{URL}}/updatePassword",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"newPassword\":\"123456\",\n\t\"oldPassword\":\"123456\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/logout",
+					"request": {
+						"url": "{{URL}}/logout",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "suggestionRequest api",
+			"description": "",
+			"item": [
+				{
+					"name": "errors",
+					"description": "",
+					"item": [
+						{
+							"name": "{{URL}}/suggestionRequests 400 - query required",
+							"request": {
+								"url": "{{URL}}/suggestionRequests",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "{{URL}}/suggestionRequests",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/suggestionRequests?pageIndex=0&pageSize=11",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"suggestionRequests"
+							],
+							"query": [
+								{
+									"key": "pageIndex",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "pageSize",
+									"value": "11",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/suggestionRequests",
+					"request": {
+						"url": "{{URL}}/suggestionRequests",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"query-values\",\n\t\"email\":\"zz@zz.com\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "helpRequest api",
+			"description": "",
+			"item": [
+				{
+					"name": "errors",
+					"description": "",
+					"item": [
+						{
+							"name": "{{URL}}/helpRequests 400 - query is required",
+							"request": {
+								"url": "{{URL}}/helpRequests",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "{{URL}}/helpRequests",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/helpRequests?pageIndex=0&pageSize=5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"helpRequests"
+							],
+							"query": [
+								{
+									"key": "pageIndex",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "pageSize",
+									"value": "5",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/helpRequests",
+					"request": {
+						"url": "{{URL}}/helpRequests",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\":\"query-values\",\n\t\"email\":\"zz@zz.com\",\n\t\"requestorUserId\":10\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employerProfiles api",
+			"description": "",
+			"item": [
+				{
+					"name": "errors",
+					"description": "",
+					"item": [
+						{
+							"name": "{{URL}}/employerProfiles 403 - only create one",
+							"request": {
+								"url": "{{URL}}/employerProfiles",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/employerProfiles 400 - input error",
+							"request": {
+								"url": "{{URL}}/employerProfiles",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"preferredContactOption\":\"emailz\",\n\t\"contactEmail\":\"email@email.com\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/employerProfiles/:id 403 - only can update self",
+							"request": {
+								"url": "{{URL}}/employerProfiles/9",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"preferredContactOption\":\"phone\",\n\t\"alternateContactOption\":\"email\",\n\t\"contactEmail\":\"test@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-501\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n      \"employerProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/cc.png\",\n      \"type\": \"profile\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    },{\n    \"url\": \"http://google.com/dd.png\",\n     \"type\": \"profile\"\t\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \t\"employerProfileId\": 21\n\t }\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "{{URL}}/employerProfiles",
+					"request": {
+						"url": "{{URL}}/employerProfiles",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"work 0 4\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"2066-2070 University Avenue, Berkeley, CA 94704\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n      \"employerProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerProfiles",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/employerProfiles?userId=2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"employerProfiles"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n       \"employeeProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerProfiles/:id",
+					"request": {
+						"url": "{{URL}}/employerProfiles/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n       \"employeeProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerProfiles/:id",
+					"request": {
+						"url": "{{URL}}/employerProfiles/2",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerProfiles/:id",
+					"request": {
+						"url": "{{URL}}/employerProfiles/11",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"phone\",\n\t\"alternateContactOption\":\"email\",\n\t\"contactEmail\":\"test@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-501\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"2066-2070 University Avenue, Berkeley, CA 94704\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n      \"employerProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/cc.png\",\n      \"type\": \"profile\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    },{\n    \"url\": \"http://google.com/dd.png\",\n     \"type\": \"profile\"\t\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \t\"employerProfileId\": 21\n\t }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employerSearchFilter api",
+			"description": "",
+			"item": [
+				{
+					"name": "errors",
+					"description": "",
+					"item": [
+						{
+							"name": "{{URL}}/employerSearchFilters/:id 404 - cannot found",
+							"request": {
+								"url": "{{URL}}/employerSearchFilters/100",
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/employerProfiles/:id 404",
+							"request": {
+								"url": "{{URL}}/employerSearchFilters/110",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"filter09\",\n\t\"distance\": 12,\n\t\"degree\":\"doctor\",\n\t\"employerName\": \"07\",\n\t\"occupationId\":15,\n\t\"closeTo\":{\n\t\t\"locality\":\"locality--bbb\",\n\t\t\"state\":\"China\",\n\t\t\"postalCode\":\"123123\"\n\t}\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "{{URL}}/employerProfiles/:id/use 404",
+							"request": {
+								"url": {
+									"raw": "{{URL}}/employerSearchFilters/1002/use?pageSize=1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"employerSearchFilters",
+										"1002",
+										"use"
+									],
+									"query": [
+										{
+											"key": "pageSize",
+											"value": "1",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{accessToken}}",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"filter09\",\n\t\"distance\": 12,\n\t\"degree\":\"doctor\",\n\t\"employerName\":\"employerName\",\n\t\"occupationId\":2,\n\t\"closeTo\":{\n\t\t\"locality\":\"locality--bbb\",\n\t\t\"state\":\"China\",\n\t\t\"postalCode\":\"123123\"\n\t}\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "{{URL}}/employerSearchFilters",
+					"request": {
+						"url": "{{URL}}/employerSearchFilters",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"filter02\",\n\t\"distance\": 1000,\n\t\"employerName\":\"0\",\n\t\"answers\":[\n\t\t{\"questionId\":10,\"matchingAnswerOptions\":[7]}\n\t],\n\t\"closeTo\":{\n\t\t\"locality\":\"Los Angeles, CA\",\n\t\t\"state\":\"USA\",\n\t\t\"postalCode\":\"123123\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerSearchFilters",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/employerSearchFilters?name=f&pageSize=15",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"employerSearchFilters"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "f",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "pageSize",
+									"value": "15",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n       \"employeeProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerSearchFilters/:id",
+					"request": {
+						"url": "{{URL}}/employerSearchFilters/3",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n       \"employeeProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerSearchFilters/:id",
+					"request": {
+						"url": "{{URL}}/employerSearchFilters/2",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerProfiles/:id",
+					"request": {
+						"url": "{{URL}}/employerSearchFilters/10",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"filter02\",\n\t\"distance\": 1000,\n\t\"employerName\":\"0\",\n\t\"answers\":[\n\t\t{\"questionId\":10,\"matchingAnswerOptions\":[7]}\n\t],\n\t\"closeTo\":{\n\t\t\"locality\":\"Los Angeles, CA\",\n\t\t\"state\":\"USA\",\n\t\t\"postalCode\":\"123123\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employerProfiles/:id/use",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/employerSearchFilters/5/use?pageSize=5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"employerSearchFilters",
+								"5",
+								"use"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "5",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employeeSearchFilter api",
+			"description": "",
+			"item": [
+				{
+					"name": "{{URL}}/employeeSearchFilters",
+					"request": {
+						"url": "{{URL}}/employeeSearchFilters",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"filter02\",\n\t\"distance\": 100,\n\t\"answers\":[{\"questionId\":10}],\n\t\"closeTo\":{\n\t\t\"locality\":\"Octavia Boulevard, San Francisco, CA 94102\",\n\t\t\"state\":\"USA\",\n\t\t\"postalCode\":\"123123\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeSearchFilters",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/employeeSearchFilters?pageSize=20",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"employeeSearchFilters"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "20",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n       \"employeeProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeSearchFilters/:id",
+					"request": {
+						"url": "{{URL}}/employeeSearchFilters/10",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n       \"employeeProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeSearchFilters/:id",
+					"request": {
+						"url": "{{URL}}/employeeSearchFilters/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeProfiles/:id",
+					"request": {
+						"url": "{{URL}}/employeeSearchFilters/2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"filter09\",\n\t\"distance\": 14,\n\t\"degree\":\"bachelor\",\n\t\"answers\":[{\"questionId\":10}],\n\t\"occupationId\":22,\n\t\"closeTo\":{\n\t\t\"locality\":\"Octavia Boulevard, San Francisco, CA 94102\",\n\t\t\"state\":\"USA\",\n\t\t\"postalCode\":\"123123\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeProfiles/:id/use",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/employeeSearchFilters/5/use?pageSize=5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"employeeSearchFilters",
+								"5",
+								"use"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "5",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employeeProfiles api",
+			"description": "",
+			"item": [
+				{
+					"name": "{{URL}}/employeeProfiles",
+					"request": {
+						"url": "{{URL}}/employeeProfiles",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"hehe,worker\",\n\t\"dateOfBirth\":\"2010-05-10\",\n\t\"employeeLocation\":{\n\t\t\"locality\":\"Octavia Boulevard, San Francisco, CA 94102\",\n\t\t\"postalCode\":\"000111\",\n\t\t\"state\":\"USA\"\n\t},\n\t\"availability\":{\n\t\t\"mondayStart\": \"06:00\",\n\t\t\"mondayAvailabilityType\":\"partTime\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"employementHistory\":[{\n\t\t\"employerProfileId\": 1,\n    \t\"otherEmployer\": \"otherEmployer\",\n    \t\"startDate\": \"2011-05-06\",\n    \t\"endDate\":\"2015-08-11\"\n\t}],\n\t\"educationHistory\":[{\n\t\t\"name\": \"school-001\",\n\t    \"degree\": \"bachelor\",\n\t    \"startDate\": \"2011-05-06\",\n\t    \"endDate\": \"2015-04-06\",\n\t    \"activitiesAndSocieties\": \"read,hike\",\n\t    \"description\": \"description\"\n\t}],\n\t\"potentialEmployeeLocations\":[{\n\t\t\"locality\":\"Guangdong\",\n\t\t\"postalCode\":\"000111\",\n\t\t\"state\":\"USA\"\n\t\t\n\t},{\n\t\t\"locality\":\"NewYork\",\n\t\t\"postalCode\":\"000111\",\n\t\t\"state\":\"USA\"\n\t}],\n\t\"occupation\":{\"value\":\"occupation\"},\n\t\"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeProfiles",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/employeeProfiles?userId=2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"employeeProfiles"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n       \"employeeProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeProfiles/:id",
+					"request": {
+						"url": "{{URL}}/employeeProfiles/2",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preferredContactOption\":\"email\",\n\t\"contactEmail\":\"email@email.com\",\n\t\"offices\":[{\n\t\t\"businessName\":\"businessName--\",\n\t\t\"address\":{\n\t\t\t\"street\":\"street,street,street-401\",\n\t\t\t\"locality\":{\n\t\t\t\t\"locality\":\"Guangdong\",\n\t\t\t\t\"postalCode\":\"000111\",\n\t\t\t\t\"state\":\"USA\"\n\t\t\t}\n\t\t}\n\t}],\n\t\"specializations\":[{\"value\":\"sp1\"},{\"value\":\"sp2\"}],\n\t\"areasToStaff\":[{\"value\":\"st1\"},{\"value\":\"st2\"}],\n\t\"schedule\":{\n\t\t\"mondayStart\": \"06:00\",\n\t    \"mondayEnd\": \"16:00\",\n\t    \"tuesdayStart\": \"06:00\",\n\t    \"tuesdayEnd\": \"16:00\",\n\t    \"wednesdayStart\": \"06:00\",\n\t    \"wednesdayEnd\": \"16:00\",\n\t    \"thursdayStart\": \"06:00\",\n\t    \"thursdayEnd\": \"16:00\",\n\t    \"fridayStart\": \"06:00\",\n\t    \"fridayEnd\": \"16:00\",\n\t    \"saturdayStart\": \"06:00\",\n\t    \"saturdayEnd\": \"16:00\",\n\t    \"sundayStart\": \"06:00\",\n\t    \"sundayEnd\": \"16:00\"\n\t},\n\t\"officeManagers\": [{\n      \"firstName\": \"firstName\",\n      \"email\": \"email@email.com\",\n       \"employeeProfileId\": 10,\n      \"permissions\": [\n        {\n          \"value\": \"work1\"\n        },\n        {\n          \"value\": \"work2\"\n        }\n      ]\n    }],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    }],\n    \"profileQuestionAnswers\": [{\n      \"questionId\": 10,\n      \"selectedAnswerOptions\": [{\n          \"value\": \"a\",\n          \"questionId\": 10\n        },{\n          \"value\": \"b\",\n          \"questionId\": 10\n        }],\n      \"otherAnswer\": \"other String ..\"\n    }],\n    \"employeeOrganization\": {\n    \"employerProfileId\": 21,\n    \"root\": {\n      \"title\": \"R\",\n      \"number\": 1,\n      \"children\": [\n        {\"title\":\"A1\",\"children\":[{\"title\":\"A2\"}]},\n        {\"title\":\"B1\",\"children\":[{\"title\":\"B2\"}]}\n      ]\n    }\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeProfiles/:id",
+					"request": {
+						"url": "{{URL}}/employeeProfiles/2",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/employeeProfiles/:id",
+					"request": {
+						"url": "{{URL}}/employeeProfiles/2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"hehe,worker\",\n\t\"dateOfBirth\":\"2010-08-02\",\n\t\"employeeLocation\":{\n\t\t\"locality\":\"Octavia Boulevard, San Francisco, CA 94102\",\n\t\t\"postalCode\":\"000111\",\n\t\t\"state\":\"USA\"\n\t},\n\t\"employementHistory\":[{\n\t\t\"employerProfileId\": 8,\n    \t\"otherEmployer\": \"otherEmployer\",\n    \t\"startDate\": \"2011-05-06\",\n    \t\"endDate\":\"2015-08-11\"\n\t}],\n\t\"educationHistory\":[{\n\t\t\"name\": \"school-001\",\n\t    \"degree\": \"bachelor\",\n\t    \"startDate\": \"2011-05-06\",\n\t    \"endDate\": \"2015-04-06\",\n\t    \"activitiesAndSocieties\": \"read,hike\",\n\t    \"description\": \"description\"\n\t}],\n    \"photos\": [{\n      \"url\": \"http://google.com/a.png\",\n      \"type\": \"regular\"\n    },{\n      \"url\": \"http://google.com/b.png\",\n      \"type\": \"profile\"\n    },{\n      \"url\": \"http://google.com/c.png\",\n      \"type\": \"profile\"\n    }]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lookup api",
+			"description": "",
+			"item": [
+				{
+					"name": "{{URL}}/occupations",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/occupations?pageIndex=2&pageSize=3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"occupations"
+							],
+							"query": [
+								{
+									"key": "pageIndex",
+									"value": "2",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "pageSize",
+									"value": "3",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/specializations",
+					"request": {
+						"url": {
+							"raw": "{{URL}}/specializations?pageSize=100&pageIndex=0",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"specializations"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "100",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "pageIndex",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "{{URL}}/error - 404",
+			"request": {
+				"url": "{{URL}}/404",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}/error - 405",
+			"request": {
+				"url": "{{URL}}/signup",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

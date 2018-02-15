@@ -1,0 +1,18 @@
+<ion-content no-bounce class = "background-image" ion-fixed>
+	<div id="background-color" class="background-color"></div>
+	<!-- <video class="video" playsinline muted></video> -->
+	<div *ngIf="!isShowLogin && !isShowSignup" class="welcome-page mix-xy">
+		<div>
+		<img class="main-logo" src="assets/img/logo02.png" alt="Ionic">
+		<div class="group-btn">
+			<button class="twin signup" ion-button round (click)="isShowSignup = true">Sign Up</button>
+			<button class="twin login" ion-button round (click)="isShowLogin = true">Login</button>
+		</div>
+		</div>
+	</div>
+	<page-login [nav]="nav" (closeLogin)="isShowLogin=false;" *ngIf="isShowLogin && isIos" ion-fixed></page-login>
+	<page-login [nav]="nav" (closeLogin)="isShowLogin=false;" *ngIf="isShowLogin && !isIos"></page-login>
+	<page-signup [nav]="nav" (showLogin)="isShowLogin=true;isShowSignup=false;" (closeSignup)="isShowSignup=false;" *ngIf="isShowSignup && isIos" ion-fixed></page-signup>
+	<page-signup [nav]="nav" (showLogin)="isShowLogin=true;isShowSignup=false;" (closeSignup)="isShowSignup=false;" *ngIf="isShowSignup && !isIos"></page-signup>
+</ion-content>
+<!-- end /ion-content -->

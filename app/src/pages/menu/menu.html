@@ -1,0 +1,71 @@
+<ion-content *ngIf="!dashboardCtr.isShowDetailOffices && !dashboardCtr.isShowDetailActivity && !dashboardCtr.isShowSettings">
+	<div class="menu-page">
+		<div class="top-cards mix-xy">
+			<div class="parent-card wrapper-all tab-employee" *ngIf="dashboardCtr.roleUser==='employer' || dashboardCtr.roleUser==='employee'">
+				<div class="mainn-card" (click)="changeToEmployer()">
+					<img class="img-shape" src="assets/img/id38-shape01.png" alt="Ionic">
+					<img class="img-thumb" src="assets/img/id38-thumb.png" alt="Ionic">
+					<a href="javascript:;" class="btn-edit mix-xy" (click)="showEditPageFunc()">
+						<img src="assets/img/id38-pen.png" alt="Ionic">
+					</a>
+					<a href="javascript:;" class="btn-add mix-xy" (click)="showOfficesFunc()">
+						<img src="assets/img/id38-plus.png" alt="Ionic">
+					</a>
+					<a href="javascript:;" class="istatus mix-xy">75%</a>
+				</div>
+				<!-- end /mainn-card -->
+				<div class="subb-card" (click)="changeToEmployee()">
+					<img class="img-shape" src="assets/img/id38-shape02.png" alt="Ionic">
+					<img class="img-thumb" src="assets/img/profile-00.png" alt="Ionic">
+					<a href="javascript:;" class="btn-edit mix-xy" (click)="showEditPageEmployeeFunc()">
+						<img src="assets/img/id38-pen.png" alt="Ionic">
+					</a>
+					<a href="javascript:;" class="btn-add mix-xy" (click)="showOfficesFunc()">
+						<img src="assets/img/id38-plus.png" alt="Ionic">
+					</a>
+					<a href="javascript:;" class="istatus mix-xy">25%</a>
+				</div>
+				<!-- end /subb-card -->
+
+			</div>
+			<!-- end /wrapper-all -->
+		</div>
+		<!-- end /top-cards -->
+		<div class="bottom-buttons mix-xy">
+			<div class="wrapper-all">
+				<div class="button-one">
+					<span class="title">Settings</span>
+					<a href="javascript:;" class="blue-btn mix-xy">
+						<img src="assets/img/id38-setting02.png" alt="Ionic" (click)="showSettings()">
+					</a>
+				</div>
+				<!-- end /button-one -->
+				<div class="button-one button-two">
+					<span class="title">Activity</span>
+					<a href="javascript:;" class="blue-btn mix-xy" (click)="showActivityFunc()">
+						<img src="assets/img/id38-activity.png" alt="Ionic">
+					</a>
+				</div>
+				<!-- end /button-one -->
+				<div class="button-one button-three" *ngIf="roleUser==='employer'">
+					<a href="javascript:;" class="blue-btn mix-xy" (click)="showOfficesMoDal()">
+						<img src="assets/img/id38-offices.png" alt="Ionic">
+					</a>
+					<span class="title">Offices</span>
+				</div>
+				<div class="button-one button-three" *ngIf="roleUser==='employee'">
+					<a href="javascript:;" class="blue-btn mix-xy">
+						<img src="assets/img/id38-premium.png" alt="Ionic">
+					</a>
+					<span class="title">Upgrade to Premium</span>
+				</div>
+				<!-- end /button-one -->
+			</div>
+			<!-- end /wrapper-all -->
+		</div>
+		<!-- end /bottom-buttons -->
+	</div>
+	<!-- end /menu-page -->
+
+</ion-content>
+<!-- end /ion-content -->

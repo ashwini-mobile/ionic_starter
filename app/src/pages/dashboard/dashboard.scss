@@ -1,0 +1,282 @@
+page-dashboard {
+
+	ion-content {
+		.mask-background-color {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+		}
+		.background-color-dashboard {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			&.tab-menu {
+				background : -moz-linear-gradient(1.31% 2.45% -63.83deg,rgba(161, 118, 182, 1) 0%,rgba(82, 133, 194, 1) 100%);
+				background : -webkit-linear-gradient(-63.83deg, rgba(161, 118, 182, 1) 0%, rgba(82, 133, 194, 1) 100%);
+				background : -webkit-gradient(linear,1.31% 2.45% ,97.97% 96.85% ,color-stop(0,rgba(161, 118, 182, 1) ),color-stop(1,rgba(82, 133, 194, 1) ));
+				background : linear-gradient(153.83deg, rgba(161, 118, 182, 1) 0%, rgba(82, 133, 194, 1) 100%);
+			}
+			&.tab-friends {
+				background : -moz-linear-gradient(-3.01% 12.86% -51.25deg,rgba(144, 132, 218, 1) 0%,rgba(90, 189, 196, 1) 85%);
+				background : -webkit-linear-gradient(-51.25deg, rgba(144, 132, 218, 1) 0%, rgba(90, 189, 196, 1) 85%);
+				background : linear-gradient(141.25deg, rgba(144, 132, 218, 1) 0%, rgba(90, 189, 196, 1) 85%);
+			}
+			&.tab-profiles {
+				background : -moz-linear-gradient(-21.5% 6.27% -47.41deg,rgba(66, 111, 181, 1) 0%,rgba(90, 189, 196, 1) 100%);
+				background : -webkit-linear-gradient(-47.41deg, rgba(66, 111, 181, 1) 0%, rgba(90, 189, 196, 1) 100%);
+				background : linear-gradient(137.41deg, rgba(66, 111, 181, 1) 0%, rgba(90, 189, 196, 1) 100%);
+			}
+			&.tab-benches {
+				background : -moz-linear-gradient(0.56% 3.33% -59.22deg,rgba(19, 106, 138, 1) 0%,rgba(150, 228, 176, 1) 100%);
+				background : -webkit-linear-gradient(-59.22deg, rgba(19, 106, 138, 1) 0%, rgba(150, 228, 176, 1) 100%);
+				background : linear-gradient(149.22deg, rgba(19, 106, 138, 1) 0%, rgba(150, 228, 176, 1) 100%);
+			}
+			&.tab-search {
+				background : -moz-linear-gradient(18.47% 7.6% -67.31deg,rgba(0, 121, 145, 1) 0%,rgba(120, 255, 214, 1) 100%);
+				background : -webkit-linear-gradient(-67.31deg, rgba(0, 121, 145, 1) 0%, rgba(120, 255, 214, 1) 100%);
+				background : linear-gradient(157.31deg, rgba(0, 121, 145, 1) 0%, rgba(120, 255, 214, 1) 100%);
+			}
+		}
+		// Unique
+		.hol-x {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+			.ver-y {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+			}
+			.mix-xy {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+			}
+			.clear, .clear:before, .clear:after {
+				clear: both;
+			}
+			@mixin iinput ($color,$fontsize,$colorplace) {
+				display: block;
+				height: 100%;
+				width: 100%;
+				color: $color;
+				font-size: $fontsize;
+				border: none;
+				outline: none;
+				background:transparent;
+				margin: 0;
+				padding: 0;
+				&::-webkit-input-placeholder {
+					color: $colorplace;
+					opacity: 1;
+				}
+				&::-moz-placeholder  {
+					color: $colorplace;
+					opacity: 1;
+				}
+				&:-ms-input-placeholder {
+					color: $colorplace;
+					opacity:1;
+				}
+				&:-moz-placeholder {
+					color: $colorplace;
+					opacity: 1;
+				}
+				&:focus::-webkit-input-placeholder {
+					color: transparent; 
+				}
+				&:focus:-moz-placeholder {
+					color: transparent; 
+				}
+				&:focus::-moz-placeholder {
+					color: transparent; 
+				}
+				&:focus:-ms-input-placeholder {
+					color: transparent; 
+				}
+			}
+
+		// Dashboard Page
+		&.dashboard-page {
+			position: relative;
+			* {
+				font-family: 'Myriad Pro';
+				font-weight: normal;
+				
+			}
+			&.content {
+				.scroll-content {
+					super-tabs {
+						super-tabs-toolbar {
+							/*position: fixed;
+							top: 20px;*/
+							flex-basis:8%;
+							-webkit-flex-basis: 8%;
+							margin-top:20px;
+							left: 0;
+							ion-toolbar.toolbar {
+								// overflow: auto;
+								contain:content;
+								.toolbar-background {
+									border: 0;
+									background: transparent;
+								}
+								.toolbar-content {
+									.tab-buttons-container {
+										.tab-buttons {
+											-webkit-box-pack: space-between;
+											-ms-flex-pack: space-between;
+											justify-content: space-between;
+											super-tab-button {
+												min-width: 0;
+												height: 24px;
+												padding: 0;
+												flex: 0 1 auto;
+												-webkit-box-flex:0 1 auto;
+    												-webkit-flex:0 1 auto;
+												&.icon-only {
+													min-width: 37px;
+													&.selected {
+														border-radius: 12px;
+														background-color: rgba(255,255,255,0.38);
+													}
+													ion-icon {
+														&.ion-ios-menu{
+															line-height: 24px;
+															opacity: 1;
+															&:before {
+																content: '';
+																width: 25px;
+																height: 10px;
+																background-image: url(../assets/img/imenu.png);
+																background-size: cover;
+																position: relative;
+																bottom: 1px;
+															}
+														}
+														&.ion-md-menu {
+															line-height: 24px;
+															opacity: 1;
+															&:before {
+																content: '';
+																width: 25px;
+																height: 10px;
+																background-image: url(../assets/img/imenu.png);
+																background-size: cover;
+																position: relative;
+																bottom: 1px;
+															}
+														}
+														&.ion-ios-search {
+															line-height: 24px;
+															opacity: 1;
+															&:before {
+																content: '';
+																width: 15px;
+																height: 15px;
+																background-image: url(../assets/img/isearch.png);
+																background-size: cover;
+																position: relative;
+																bottom: -1px;
+															}
+														}
+														&.ion-md-search {
+															line-height: 24px;
+															opacity: 1;
+															&:before {
+																content: '';
+																width: 15px;
+																height: 15px;
+																background-image: url(../assets/img/isearch.png);
+																background-size: cover;
+																position: relative;
+																bottom: -1px;
+															}
+														}
+													}
+												}
+												&.title-only {
+													margin: 0 2px;
+													left: 4px;
+													-webkit-transition:all 0.5s ease-in;
+													-moz-transition:all 0.5s ease-in;
+													-o-transition:all 0.5s ease-in;
+													-ms-transition:all 0.5s ease-in;
+													transition:all 0.5s ease-in;
+													opacity: 0.7;
+													&.selected {
+														opacity: 1;
+														border-radius: 12px;
+														background-color: rgba(51,171,225,0.75);
+													}
+													.title {
+														display: block;
+														height: 100%;
+														line-height: 24px;
+														padding: 0 6px;
+														font-size: 12px;
+														font-weight: 400;
+														color: #fff;
+														opacity: 1;
+													}
+												}
+												.touch-button{
+													width: 100%;
+													height: 100%;
+													position: absolute;
+													bottom: 0;
+													border-radius: 12px;
+													background-color: rgba(255,255,255,0.38);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						super-tabs-container {
+							// IphoneX
+							@media only screen 
+								and (device-width : 375px) 
+								and (device-height : 812px) 
+								and (-webkit-device-pixel-ratio : 3) {
+									margin-top: -20px;
+								}
+							height: 100% !important;
+							flex-basis:94%;
+							background-color: transparent;
+							ion-content, .nav-decor {
+							        background-color: transparent;
+							}
+							div {
+								super-tab.tab-profile {
+									// IphoneX
+									@media only screen 
+										and (device-width : 375px) 
+										and (device-height : 812px) 
+										and (-webkit-device-pixel-ratio : 3) {
+											// margin-top: -30px;
+										}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+}

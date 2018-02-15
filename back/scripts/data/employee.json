@@ -1,0 +1,84 @@
+{
+  "username": "hehe,worker",
+  "dateOfBirth": "2018",
+  "employeeLocation": {
+    "locality": "2066-2070 University Avenue, Berkeley, CA 94704",
+    "postalCode": "000111",
+    "state": "USA"
+  },
+  "availability": {
+    "mondayStart": "06:00",
+    "mondayEnd": "16:00",
+    "tuesdayStart": "06:00",
+    "tuesdayEnd": "16:00",
+    "wednesdayStart": "06:00",
+    "wednesdayEnd": "16:00",
+    "thursdayStart": "06:00",
+    "thursdayEnd": "16:00",
+    "fridayStart": "06:00",
+    "fridayEnd": "16:00",
+    "saturdayStart": "06:00",
+    "saturdayEnd": "16:00",
+    "sundayStart": "06:00",
+    "sundayEnd": "16:00"
+  },
+  "employementHistory": [
+    {
+      "employerProfileId": 11,
+      "otherEmployer": "otherEmployer",
+      "startDate": "2011-05-06",
+      "endDate": "2015-08-11"
+    }
+  ],
+  "educationHistory": [
+    {
+      "name": "school-001",
+      "degree": "bachelor",
+      "startDate": "2011-05-06",
+      "endDate": "2015-04-06",
+      "activitiesAndSocieties": "read,hike",
+      "description": "description"
+    }
+  ],
+  "potentialEmployeeLocations": [
+    {
+      "locality": "Guangdong",
+      "postalCode": "000111",
+      "state": "USA"
+    },
+    {
+      "locality": "NewYork",
+      "postalCode": "000111",
+      "state": "USA"
+    }
+  ],
+  "occupation": {
+    "value": "occupation"
+  },
+  "profileQuestionAnswers": [
+    {
+      "questionId": 10,
+      "selectedAnswerOptions": [
+        {
+          "value": "a",
+          "questionId": 10
+        },
+        {
+          "value": "b",
+          "questionId": 10
+        }
+      ],
+      "otherAnswer": "other String .."
+    }
+  ],
+  "photos": [
+    {
+      "url": "http://google.com/a.png",
+      "type": "regular"
+    },
+    {
+      "url": "http://google.com/b.png",
+      "type": "profile"
+    }
+  ]
+}

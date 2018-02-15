@@ -1,0 +1,114 @@
+{
+  "preferredContactOption": "email",
+  "contactEmail": "email@email.com",
+  "offices": [
+    {
+      "businessName": "businessName--",
+      "address": {
+        "street": "street,street,street-401",
+        "locality": {
+          "locality": "2066-2070 University Avenue, Berkeley, CA 94704",
+          "postalCode": "000111",
+          "state": "USA"
+        }
+      }
+    }
+  ],
+  "specializations": [
+    {
+      "value": "sp1"
+    },
+    {
+      "value": "sp2"
+    }
+  ],
+  "areasToStaff": [
+    {
+      "value": "st1"
+    },
+    {
+      "value": "st2"
+    }
+  ],
+  "schedule": {
+    "mondayStart": "06:00",
+    "mondayEnd": "16:00",
+    "tuesdayStart": "06:00",
+    "tuesdayEnd": "16:00",
+    "wednesdayStart": "06:00",
+    "wednesdayEnd": "16:00",
+    "thursdayStart": "06:00",
+    "thursdayEnd": "16:00",
+    "fridayStart": "06:00",
+    "fridayEnd": "16:00",
+    "saturdayStart": "06:00",
+    "saturdayEnd": "16:00",
+    "sundayStart": "06:00",
+    "sundayEnd": "16:00"
+  },
+  "officeManagers": [
+    {
+      "firstName": "firstName",
+      "email": "email@email.com",
+      "permissions": [
+        {
+          "value": "work1"
+        },
+        {
+          "value": "work2"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "url": "http://google.com/a.png",
+      "type": "regular"
+    },
+    {
+      "url": "http://google.com/b.png",
+      "type": "profile"
+    }
+  ],
+  "profileQuestionAnswers": [
+    {
+      "questionId": 10,
+      "selectedAnswerOptions": [
+        {
+          "value": "a",
+          "questionId": 10
+        },
+        {
+          "value": "b",
+          "questionId": 10
+        }
+      ],
+      "otherAnswer": "other String .."
+    }
+  ],
+  "employeeOrganization": {
+    "employerProfileId": 21,
+    "root": {
+      "title": "R",
+      "number": 1,
+      "children": [
+        {
+          "title": "A1",
+          "children": [
+            {
+              "title": "A2"
+            }
+          ]
+        },
+        {
+          "title": "B1",
+          "children": [
+            {
+              "title": "B2"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

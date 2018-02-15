@@ -1,0 +1,172 @@
+<ion-content ion-fixed no-bounce *ngIf="!dashboardCtr.isShowDetailFilter && !dashboardCtr.isShowSaveFilter">
+	<div class="tab-profiles-page">
+		<div class="top-status">
+			<div class="toolbar-content">
+				<div class="segment">
+					<button class="segment-button segment-friend" [ngClass]="{'active': tabSlected === 'friends'}">
+						Friends
+					</button>
+					<button class="segment-button segment-opp" [ngClass]="{'active': tabSlected === 'opportunities'}">
+						Opportunities
+					</button>
+					<div class="clear"></div>
+				</div>
+			</div>
+
+			<ion-content ion-fixed no-bounce>
+				<search-filter *ngIf="isShowFilterContent" class="search-filter-param" [isShowFilterContent]="isShowFilterContent" isShowCloseBtn="true" [titleTabSearch]="tabSlected" (closeFilterView)="isShowFilterContent=false;"></search-filter>
+			  <div class="img-card" *ngIf="!isShowFilterContent" #contentCard>
+					<!-- tab 1 -->
+			    <ion-list [ngClass]="{hide: tabSlected !== 'friends'}">
+						<div swing-stack #myswing [stackConfig]="stackConfig" (throwoutup)="sendFriendRequest(false)" (throwoutleft)="voteUp(false)" (throwoutright)="voteUp(true)" (throwoutend)="endDragFunc()" id="card-stack">
+								<div  class="card card-number">
+									<ion-card (click)="goDetailProfile(item)" swing-on-throwoutleft="swiperFunc(item)" (swipe)="swiperFunc(i)" swing-card *ngFor="let item of arrayFriends | slice:0:2 ;let i=index" [ngClass]="{'card-1':i===0,'card-2':i!==0}">
+										<img [src]="item.big_avata" alt="Ionic"/>
+										<img class="circle-like notify-icon-on-profile" src="assets/img/social-like.png" alt="Ionic">
+										<img class="circle-heart notify-icon-on-profile" src="assets/img/social-heart.png" alt="Ionic">
+										<img class="circle-unlike notify-icon-on-profile" src="assets/img/social-unlike.png" alt="Ionic">
+										<ion-card-content>
+											<ion-card-title>
+												{{item.name}}
+												<img src="assets/img/social-tick.png">
+											</ion-card-title>
+											<p>
+												{{item.status}}
+												<span class="right-text">{{item.year_exp}} <i class="yr-label">yr.</i><i class="exp-label"> EXP</i></span>
+											</p>
+										</ion-card-content>
+										<span class="line-main"></span>
+										<div class="bottom-statistics">
+											<ul class="gen01">
+												<li class="gen01-child">
+													<div class="left-group">
+														<p>4,8 mi</p>
+														<p>{{item.city}}, {{item.state}}</p>
+													</div>
+													<!-- end /left-group -->
+													<div class="right-group">
+														<ul class="gen02">
+															<li class="gen02-child">
+																<img src="assets/img/sm-thumbnail01.png" alt="Ionic">
+															</li>
+															<li class="gen02-child">
+																<img src="assets/img/sm-thumbnail01.png" alt="Ionic">
+															</li>
+															<li class="gen02-child">
+																<img src="assets/img/sm-thumbnail01.png" alt="Ionic">
+															</li>
+															<li class="gen02-child only">
+																<span class="total">+47</span>
+															</li>
+														</ul>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<!-- end /bottom-statistics -->
+									</ion-card>
+									<div class="overlay-one"></div>
+									<div class="overlay-two"></div>
+								</div>  
+						</div>
+			    	  	
+			    </ion-list>
+					<!-- tab 2 -->
+			    <ion-list class="tab-opportunities" [ngClass]="{hide: tabSlected !== 'opportunities'}">
+						<div swing-stack #myswing2 [stackConfig]="stackConfig" (throwoutup)="sendFriendRequest(false)" (throwoutleft)="voteUp(false)" (throwoutright)="voteUp(true)" (throwoutend)="endDragFunc()" id="card-stack">
+							<div class="card card-number">
+								<ion-card (click)="goDetailProfile(item)" swing-on-throwoutleft="swiperFunc(item)" (swipe)="swiperFunc(i)" swing-card *ngFor="let item of arrayOpportunities | slice:0:2 ;let i=index" [ngClass]="{'card-1':i===0,'card-2':i!==0}">
+									<img [src]="item.image" alt="Ionic"/>
+									<img class="circle-like notify-icon-on-profile" src="assets/img/social-like.png" alt="Ionic">
+									<img class="circle-heart" src="assets/img/social-heart.png" alt="Ionic">
+									<img class="circle-unlike notify-icon-on-profile" src="assets/img/social-unlike.png" alt="Ionic">
+									<ion-card-content>
+										<ion-card-title>
+											{{item.name}}
+											<img src="assets/img/social-tick.png">
+										</ion-card-title>
+										<div class="group-bottom">
+											<div class="location-left">
+												<p>{{item.status}}</p>
+											</div>
+											<div class="start-right">
+												<ul style="margin-right:-4px;">
+													<li><span class="icons" [ngClass]="{star:item.rate<1}"></span></li>
+													<li><span class="icons" [ngClass]="{star:item.rate<2}"></span></li>
+													<li><span class="icons" [ngClass]="{star:item.rate<3}"></span></li>
+													<li><span class="icons" [ngClass]="{star:item.rate<4}"></span></li>
+													<li><span class="icons" [ngClass]="{star:item.rate<5}"></span></li>
+													<div class="clear"></div>
+												</ul>
+												<p class="text-right">{{item.employees.length}} <span> employees</span></p>
+											</div>
+											<div class="clear"></div>
+										</div>
+									</ion-card-content>
+									<span class="line-main"></span>
+									<div class="bottom-statistics">
+										<ul class="gen01">
+											<li class="gen01-child">
+												<div class="left-group">
+													<p>{{item.distance}}</p>
+													<p> {{item.city}}, {{item.state}}</p>
+												</div>
+												<!-- end /left-group -->
+												<div class="right-group">
+													<ul class="gen02">
+														<li class="gen02-child" *ngFor="let us of item.employees;let i=index" [ngClass]="{hide:i>2}">
+															<img [src]="us.image" alt="Ionic">
+														</li>
+														<li class="gen02-child only">
+															<span class="total">+{{item.employees.length-3}}</span>
+														</li>
+													</ul>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<!-- end /bottom-statistics -->
+								</ion-card>
+								<div class="overlay-one"></div>
+								<div class="overlay-two"></div>
+							</div>  
+						</div>
+  		    	 
+			    </ion-list>
+			    <a class="shape-one" href="javascript:;" (click)="swipeToleft()"><span class="icons-left"></span></a>
+					<a class="shape-two" href="javascript:;" (click)="swipeToRight()"><span class="icons-right"></span></a>
+					<!-- end tab2		 -->
+					<div class="social-selected">
+						<ion-fab left bottom edge #fab (click)="$event.stopPropagation();">
+							<button ion-fab mini (click)="closeMultiUse();"><img src="assets/img/social-menu.png" alt="Ionic"></button>
+							<ion-fab-list side="top" *ngIf="dashboardCtr.roleUser === 'employer'">
+								<button ion-fab class="btn1" (click)="showModalShareEndorsementFunc()">Request Endorsement</button>
+								<button ion-fab class="btn2 transition-delay" (click)="showModalShareFunc()">Share Profile</button>
+							</ion-fab-list>
+							<ion-fab-list side="top" *ngIf="dashboardCtr.roleUser === 'employee'">
+								<button ion-fab class="btn1" (click)="showModalShareEndorsementFunc()">Request Endorsement</button>
+								<button ion-fab class="btn2 transition-delay" (click)="showModalShareFunc()">Share Profile</button>
+							</ion-fab-list>
+						</ion-fab>
+
+						<ion-fab left bottom edge>
+							<button ion-fab mini><img src="assets/img/social-time.png" alt="Ionic" (click)="watchLater()"></button>
+						</ion-fab>
+
+						<ion-fab left bottom edge>
+							<button ion-fab mini><img src="assets/img/social-heart.png" alt="Ionic" (click)="sendFriendRequest(true)"></button>
+						</ion-fab>
+
+						<ion-fab left bottom edge>
+							<button ion-fab mini><img src="assets/img/social-shape.png" alt="Ionic" (click)="toggleFilterContent()"></button>
+						</ion-fab>
+						<div class="clear"></div>
+					</div>
+					<!-- end social button -->
+			  </div>
+			</ion-content>
+		</div>
+	</div>
+	<!-- end /signup-page -->
+</ion-content>
+<!-- end /ion-content -->

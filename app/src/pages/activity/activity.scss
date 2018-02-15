@@ -1,0 +1,175 @@
+.modal-page-activity{
+	top: 70px;
+	background-color: transparent;
+	ion-backdrop {
+		background-color: transparent;
+	}
+	.modal-wrapper {
+		.ion-page {
+			&.show-page {
+				background-color: transparent;
+				.content {
+					background-color: transparent;
+				}
+			}
+		}
+		page-activity {
+			height: calc(100vh - 70px);
+			ion-content {		
+				// Offices Page
+				.activity-page {
+					width: 100%;
+					position: relative;
+					* {
+						font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+					}
+					.sub-header {
+						width: 314px;
+						margin: 0 auto 25px;
+						position: relative;
+						.group-one {
+							width: 100%;
+							height: 30px;
+							margin-bottom: 20px;
+							position: relative;
+							h1 {
+								line-height: 30px;
+								margin: 0;
+								padding: 0;
+								font-size: 15px;
+								font-weight: 500;
+								color: #fff;
+								text-transform: uppercase;
+								float: right;
+								right: 103px;
+								position: relative;
+							}
+							.iback {
+								display: block;
+								opacity: 0.65;
+								position: absolute;
+								top: 5px;
+								left: 0;
+								z-index: 10;
+								img {
+									display: block;
+									width: 10px;
+									height: auto;
+									background-size: cover;
+								}
+							}
+							.i-activity {
+								background-image: url(../assets/img/id31-activity.png);
+								background-size: 30px;
+								display: block;
+								width: 30px;
+								height: 30px;
+								position: absolute;
+								top: 0;
+								left: 105px;
+							}
+						}
+					}
+					.group-content {
+						.card-group {
+							margin-bottom: 0;
+							padding: 0 20px;
+							overflow-y: auto;
+							.item-card {
+								position: relative;
+								height: 50px;
+								background-color: transparent;
+								list-style-type: none;
+								margin-bottom: 23px;
+								overflow: initial;
+								.item-inner {
+									border: none;
+									overflow: initial;
+									.input-wrapper {
+										ion-label {
+											height: 100%;
+											.img-people {
+												display: block;
+												width: 50px;
+												height: 50px;
+												border: 2px solid #fefefe;
+												border-radius: 15px; 
+												position: absolute;
+												img {
+													width: 100%;
+													height: 100%;
+													border: 2px solid #a3d461;
+													border-radius: 15px;
+												}
+											}
+											.main-content {
+												height: 100%;
+												padding-left: 63px;
+												.text-time {
+													color: #fff;
+													font-size: 14px;
+												}
+												.text-content {
+													display: block;
+													color: #fff;
+													font-size: 14px;
+													margin: 0;
+													width: 200px;
+													overflow: hidden;
+													white-space: nowrap;
+													text-overflow: ellipsis;
+												}
+												.icons {
+													display: none;
+													width: 36px;
+													height: 36px;
+													background-size: 36px;
+													position: absolute;
+													top: 7px;
+													right: 0;
+												}
+											}
+											
+										}
+									}
+								}
+								&.content-call {
+									.item-inner {
+										border: none;
+										overflow: initial;
+										.input-wrapper {
+											ion-label {
+												.main-content {
+													.icons {
+														display: block;
+														background-image: url(../assets/img/id31-callphone.png);
+													}
+												}
+											}
+										}
+									}
+								}
+								&.content-favourite {
+									.item-inner {
+										border: none;
+										overflow: initial;
+										.input-wrapper {
+											ion-label {
+												.main-content {
+													.icons {
+														display: block;
+														background-image: url(../assets/img/id31-ylstar.png);
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-title>{{title}}</ion-title>
+  <div class="basic-form">
+    <div class="write-here">
+      <span ion-datepicker (ionChanged)="setDate($event);" [value]="dateSet" [min]="today" clear class="ScheduleDate">
+        <input type="text" name="Date" placeholder="Select Date" [(ngModel)]="txtDateSet">
+      </span>
+    </div>
+    <!-- end /write-here -->
+    <div class="write-here" (click)="showTimePicker()">
+      <input class="inputTimePicker" type="text" name="Time" placeholder="Select Time" [(ngModel)]="txtTimeSet">
+    </div>
+     <!-- end /write-here -->
+    <textarea type="text" name="text" [placeholder]="placeholderValue" [(ngModel)]="txtMsg"></textarea>
+  </div>
+  <!-- end /basic-form -->
+</ion-content> 
+<ion-footer>
+<button (click)="send()">Send</button>
+</ion-footer>  

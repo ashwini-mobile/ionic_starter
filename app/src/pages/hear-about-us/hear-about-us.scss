@@ -1,0 +1,328 @@
+page-hear-about-us {
+	.background-img {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background-image: url(../assets/img/bgc.png);
+		background-size: cover;
+	}
+	.background-color {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background : rgba(44, 62, 80, 0.84);
+	}
+	ion-content {
+		background:transparent !important;
+		// Unique
+		.hol-x {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.ver-y {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+		}
+		.mix-xy {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.clear, .clear:before, .clear:after {
+			clear: both;
+		}
+		@mixin iinput ($color,$fontsize,$colorplace) {
+			display: block;
+			height: 100%;
+			width: 100%;
+			color: $color;
+			font-size: $fontsize;
+			border: none;
+			outline: none;
+			background:transparent;
+			margin: 0;
+			padding: 0;
+			&::-webkit-input-placeholder {
+				color: $colorplace;
+				opacity: 1;
+			}
+			&::-moz-placeholder  {
+				color: $colorplace;
+				opacity: 1;
+			}
+			&:-ms-input-placeholder {
+				color: $colorplace;
+				opacity:1;
+			}
+			&:-moz-placeholder {
+				color: $colorplace;
+				opacity: 1;
+			}
+			&:focus::-webkit-input-placeholder {
+				color: transparent; 
+			}
+			&:focus:-moz-placeholder {
+				color: transparent; 
+			}
+			&:focus::-moz-placeholder {
+				color: transparent; 
+			}
+			&:focus:-ms-input-placeholder {
+				color: transparent; 
+			}
+		}
+		.scroll-content{
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display:table;
+			-webkit-flex-direction: column;
+			flex-direction:column;
+			-webkit-flex: 1;
+			-ms-flex: 1;
+			flex:1;
+			width: 100%;
+			height: 100%;
+			background:transparent !important;
+		}
+
+		// About-Us Page
+		// IphoneX
+		.aboutus-page {
+			background:transparent !important;
+			width: 100%;
+			padding:16px 0px;
+			 display: -webkit-flex;
+			display: -ms-flexbox;
+			display:flex;
+			-webkit-flex-direction: column;
+			flex-direction:column;
+			-webkit-flex: 1;
+			-ms-flex: 1;
+			flex:1;
+			position: relative;
+			display: table-cell;
+ 			vertical-align: middle;
+			* {
+				font-family: 'Myriad Pro';
+				font-weight: normal;
+			}
+			&:before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			// Top Intro
+			.top-intro {
+				width: 100%;
+				margin-bottom: 5px;
+				position: relative;
+				flex:0 0 auto;
+				p {
+					width: 250px;
+					margin: 0 auto;
+					font-size: 19px;
+					color: #fff;
+					text-align: center;
+				}
+			}
+			// Middle Shapes
+			.middle-shapes {
+				width: 100%;
+				/*padding: 15px 50px 0;*/
+				position: relative;
+				flex:1;
+				overflow-y:auto;
+				@media only screen 
+					and (device-width : 375px) 
+					and (device-height : 812px) 
+					and (-webkit-device-pixel-ratio : 3) { 
+						margin-top: 40px;
+					}
+				margin-top: 20px;
+				.cover-all {
+					/*width: 275px;
+					margin: 0 auto 7px;
+					padding-right: 9px;
+					position: relative;*/
+					ul {
+						/*float: left;*/
+						/*margin: 0;*/
+						margin:auto;
+						 display: -webkit-flex;
+						display: -ms-flexbox;
+						display:flex;
+						-webkit-flex-wrap: wrap;
+						flex-wrap:wrap;
+						width:267px;
+						padding: 0;
+						position: relative;
+						li {
+							display: -webkit-box;
+							display: -ms-flexbox;
+							display: flex;
+							-webkit-box-align: center;
+							-ms-flex-align: center;
+							align-items: center;
+							-webkit-box-pack: center;
+							-ms-flex-pack: center;
+							justify-content: center;
+
+							/*width: 133px;*/
+							height: 82px;
+							float: left;
+							margin-bottom: 9px;
+							padding-top: 3px;
+							border-radius: 8px;
+							border: 1px solid rgba(255,255,255,0.5);
+							background-color: rgba(255,255,255,0.05);
+							overflow: hidden;
+							position: relative;
+							&:nth-child(even) {
+								left: 9px;
+							}
+							&:before {
+								content: '';
+								display: none;
+								width: 100%;
+								height: 3px;
+								background-color: #fff;
+								position: absolute;
+								bottom: 0;
+								left: 0;
+							}
+							.title {
+								display: block;
+								font-size: 13px;
+								color: #fff;
+								text-align: center;
+							}
+							.invisible {
+								display: block;
+								width: 100%;
+								height: 100%;
+								position: absolute;
+								top: 0;
+								left: 0;
+								z-index: 10;
+							}
+							img {
+								width: 50%;
+								height: auto;
+								margin: 0 auto 10px;
+								background-size: cover;
+								&.img01 {
+									display: block;
+								}
+								&.img02 {
+									display: none;
+								}
+							}
+
+							&.active {
+								border: 0;
+								background-color: rgba(51,51,51,0.45);
+								&:before {
+									display: block;
+								}
+								img {
+									&.img01 {
+										display: none;
+									}
+									&.img02 {
+										display: block;
+									}
+								}
+							}
+						}
+					}
+				}
+				.typing-here {
+					/*width: 100%;*/
+					height: 38px;
+					margin-bottom: 0;
+					padding: 0 10px;
+					border-radius: 8px;
+					background-color: rgba(255,255,255,0.05);
+					border: 1px solid rgba(255,255,255,0.5);
+					visibility: hidden;
+					position: relative;
+					&.show-me {
+						visibility: visible;
+						/*margin-bottom: 20px;*/
+						width:267px;
+						margin:auto;
+					}
+					input {
+						@include iinput(#fff,13px,rgba(255,255,255,1));
+					}
+				}
+			}
+			// Bottom Button
+		// IphoneX
+			.bottom-button {
+				@media only screen 
+					and (device-width : 375px) 
+					and (device-height : 812px) 
+					and (-webkit-device-pixel-ratio : 3) { 
+						margin-top: 50px;
+					}
+				margin-top: 30px;
+				width: 100%;
+				position: relative;
+				left: 0;
+				z-index: 10;
+				flex:0 0 auto;
+				.btn-white {
+					width: 40px;
+					height: 40px;
+					float: left;
+					margin-right: 10px;
+					border-radius: 50%;
+					background-color: #fff;
+					position: relative;
+					img {
+						display: block;
+						width: 12px;
+						height: auto;
+						background-size: cover;
+					}
+				}
+				.btn-signup {
+					width: 182px;
+					height: 40px;
+					float: left;
+					margin: 0;
+					padding: 0;
+					font-size: 15px;
+					color: #fff;
+					text-align: center;
+					text-decoration: none;
+					text-transform: none;
+					border-radius: 200px;
+					background : -moz-linear-gradient(0% 50% 0deg,rgba(0, 196, 255, 1) 0%,rgba(0, 187, 255, 1) 19.98%,rgba(0, 161, 255, 1) 53.2%,rgba(0, 120, 255, 1) 95.33%,rgba(0, 115, 255, 1) 100%);
+					background : -webkit-linear-gradient(0deg, rgba(0, 196, 255, 1) 0%, rgba(0, 187, 255, 1) 19.98%, rgba(0, 161, 255, 1) 53.2%, rgba(0, 120, 255, 1) 95.33%, rgba(0, 115, 255, 1) 100%);
+					background : linear-gradient(90deg, rgba(0, 196, 255, 1) 0%, rgba(0, 187, 255, 1) 19.98%, rgba(0, 161, 255, 1) 53.2%, rgba(0, 120, 255, 1) 95.33%, rgba(0, 115, 255, 1) 100%);
+				}
+			}
+		}
+	}
+}

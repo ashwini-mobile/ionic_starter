@@ -1,0 +1,152 @@
+.modal-page-filter-detail{
+	top: 70px;
+	background-color: transparent;
+	ion-backdrop {
+		background-color: transparent;
+	}
+	.modal-wrapper {
+		.ion-page {
+			&.show-page {
+				background-color: transparent;
+				.content {
+					background-color: transparent;
+				}
+			}
+		}
+		// filter Page
+		.detail-filter{
+			padding-bottom: 70px;
+
+			.sub-header-filter {
+				width: 305px;
+				height: 20px;
+				margin: 0 auto 28px;
+				position: relative;
+				h1 {
+					line-height: 1;
+					margin: 0;
+					padding: 0;
+					font-size: 17px;
+					font-family: 'Myriad Pro';
+					font-weight: 500;
+					color: #fff;
+					text-align: center;
+				}
+				.btn-back {
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 10;
+					img {
+						display: block;
+						width: 10.5px;
+						height: auto;
+						background-size: cover;
+					}
+				}
+			}
+			.main-filter-detail {
+				width: 100%;
+				position: relative;
+				overflow-y: auto;
+				.bigbox-value {
+					width: 305px;
+					margin: 0 auto;
+					position: relative;
+					padding-bottom: 30px;
+					.list-option {
+						width: 100%;
+						padding: 15px;
+						padding-right: 0;
+						border-radius : 0 5px 5px 0;
+						background-color: rgba(255,255,255,0.15);
+						position: relative;
+						.top-title {
+							display: block;
+							margin-bottom: 7px;
+							font-size: 16px;
+							font-family: "Myriad Pro";
+							font-weight: 500;
+							color: #fff;
+						}
+						.cover-all {
+							width: 100%;
+							position: relative;
+							.gen01 {
+								margin: 0;
+								padding: 0;
+								list-style-type: none;
+								position: relative;
+								.gen-child01 {
+									width: 100%;
+									height: 20px;
+									float: none;
+									margin-bottom: 10px;
+									position: relative;
+									&:last-child {
+										margin-bottom: 0;
+									}
+									.item-block {
+										height: 20px;
+										min-height: 20px;
+										padding: 0;
+										background-color: transparent;
+										position: relative;
+										.checkbox {
+											margin: 0;
+											margin-right: 10px;
+											.checkbox-icon {
+												width: 20px;
+												height: 20px;
+												border-radius: 2px;
+												border: 1px solid #fff;
+												background-color: transparent;
+												&.checkbox-checked {
+													border-color: #fff;
+													background-size: cover;
+												}
+												.checkbox-inner {
+													top: 0;
+													left: 5px;
+													width: 8px;
+													height: 15px;
+													transform: rotate(40deg);
+												}
+											}
+										}
+										.item-inner {
+											padding: 0;
+											border: 0;
+											.input-wrapper {
+												.label {
+													font-family: "Myriad Pro";
+													font-size: 16px;
+													font-weight: 500;
+													color: #fff;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					.btn-more {
+						width: 100%;
+						height: 36px;
+						font-family: "Myriad Pro";
+						font-size: 16px;
+						font-weight: 500;
+						color: #fff;
+						text-align: center;
+						text-decoration: none;
+						border-radius : 0 5px 5px 0;
+						background-color: rgba(255,255,255,0.29);
+						position: relative;
+					}
+				}
+			}
+		}
+	}
+}

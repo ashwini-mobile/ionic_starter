@@ -1,0 +1,13 @@
+<ion-content *ngIf="arraySelect">
+    <ion-title>{{title}}</ion-title>
+    <div class="item-group">
+      <ul #mainContent>
+        <li *ngFor="let item of arraySelect">
+          <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.isSelected}" (click)="toogleItem(item)">{{item.name}}<i></i></a>
+        </li>
+      </ul>
+    </div>
+</ion-content>
+<ion-footer>
+  <button (click)="dismiss()">Ok</button>
+</ion-footer> 

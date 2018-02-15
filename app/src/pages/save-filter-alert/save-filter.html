@@ -1,0 +1,22 @@
+<div class="detail-filter">
+	<div class="sub-header-filter mix-xy">
+		<a href="javascript:;" class="btn-back" (click)="dimissFunc()">
+			<img src="assets/img/id120-back.png" alt="Ionic">
+		</a>
+		<h1>Saved Custom Filters</h1>
+		<a href="javascript:;" class="icon-edit">
+			<img src="assets/img/id34-edit.png" alt="Ionic">
+		</a>
+	</div>
+	<!-- end /sub-header-filter -->
+	<div class="main-filter-detail">
+		<ul class="gen01">
+			<li class="gen-child01 mix-xy" *ngFor="let item of filterData">
+				<a href="javascript:;" class="big-hand" (click)="loadSearchFilter(item)"></a>
+				<span class="title">{{item.name}}</span>
+			</li>
+		</ul>
+	</div>
+	<!-- end /main-filter-detail -->
+</div>
+<!-- end /detail-filter -->

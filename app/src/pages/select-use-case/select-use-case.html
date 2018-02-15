@@ -1,0 +1,31 @@
+<div class="background-img"></div>
+<div class="background-color"></div>
+<ion-content no-bounce>
+	<div class="select-case-page">
+		<img class="top-img" src="assets/img/logo03.png" alt="Ionic">
+		<span class="tell-me">How can we help you?</span>
+		<div class="main-content">
+			<div class="choose-case mix-xy">
+				<ion-checkbox class="little-circle ver-y" [(ngModel)]="selectedItemOne" (click)="selectedCheckOne(1)"></ion-checkbox>
+				<ion-label class="little-title"><img src="assets/img/case01.png" alt="Ionic">Create a business profile</ion-label>
+			</div>
+			<!-- end /choose-case -->
+			<div class="choose-case clone mix-xy">
+				<ion-checkbox class="little-circle ver-y" [(ngModel)]="selectedItemTwo" (click)="selectedCheckOne(2)"></ion-checkbox>
+				<ion-label class="little-title"><img src="assets/img/case02.png" alt="Ionic">Create an employee profile</ion-label>
+			</div>
+			<!-- end /choose-case -->
+		</div>
+		<!-- end /main-content -->
+		<div class="bottom-button mix-xy">
+			<a class="btn-white mix-xy" href="javascript:;" (click)="goBack()">
+				<img src="assets/img/blue-arrow.png" alt="Ionic">
+			</a>
+			<button class="btn-signup mix-xy" ion-button round (click)="goPracticeProfile()">Let's Start</button>
+			<div class="clear"></div>
+		</div>
+		<!-- end /bottom-button -->
+	</div>
+	<!-- end /select-case-page -->
+</ion-content>
+<!-- end /ion-content -->

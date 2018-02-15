@@ -1,0 +1,35 @@
+<ion-content>
+	<div class="image-picker-page" [style.height.px]="heightWindow">
+		<div class="top-intro">
+			<p>Select Images</p>
+		</div>
+		<!-- end /top-intro -->
+		<div class="middle-shapes">
+			<div class="cover-all">
+				<ul>
+					<li *ngFor="let item of images; let i = index" [ngClass]="{ active: item.isSelected }">
+						<div>
+						<img class="img01" src="assets/img/social-bw00.png" alt="Ionic" [src]="item.url">
+						<span class="title">{{item.value || item.name}}</span>
+						<a class="invisible" href="javascript:;" (click)="selectFunc(i)"></a>
+						</div>
+					</li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- end /middle-shapes -->
+		<div class="bottom-button mix-xy">
+			<div>
+				<a class="btn-white mix-xy" href="javascript:;" (click)="closeModal()">
+					<img src="assets/img/blue-arrow.png" alt="Ionic">
+				</a>
+				<button class="btn-select mix-xy" ion-button round (click)="submitSelected()">SELECT</button>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- end /group-btn -->
+	</div>
+	<!-- end /image-picker-page -->
+</ion-content>
+<!-- end /ion-content -->

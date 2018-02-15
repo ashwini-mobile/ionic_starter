@@ -1,0 +1,42 @@
+<div no-bounce class="login-page">
+	<div class="login-content" style="display:flex;flex-direction:column;flex:1;overflow-y:auto;">
+		<img class="main-logo" src="assets/img/logo02.png" alt="Ionic">
+		
+		<div class="basic-form">
+	<p [ngClass]="{'error':errorLogin}" [innerHTML]="errorMessage"></p>
+			<div class="typing-here" [ngClass]="{'error-ver':errorEmail}">
+				<input type="text" placeholder="E-mail" [(ngModel)]="txtEmail" (click)="errorEmail=false"/>
+			</div>
+			<!-- end /typing-here -->
+			<div class="typing-here only" [ngClass]="{'error-ver':errorPassWord}">
+				<input type="password" placeholder="Password" [(ngModel)]="txtPassWord" (click)="errorPassWord=false"/>
+			</div>
+			<!-- end /typing-here -->
+		</div>
+		<!-- end /basic-form -->
+		<div class="group-btn mix-xy">
+			<a class="btn-white mix-xy" href="javascript:;" (click)="closeLogin.emit();">
+				<img src="assets/img/blue-arrow.png" alt="Ionic">
+			</a>
+			<button class="twin signup" ion-button round (click)="login()">Login</button>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="register-here ">
+			<span class="title">Login using:</span>
+			<div class="choose-acc mix-xy">
+				<div>
+					<a class="acc01" href="javascript:;" (click)="loginLinkedIn()">
+						<img src="assets/img/link01.png" alt="Ionic">
+					</a>
+					<a class="acc02" href="javascript:;" (click)="loginFacebook()">
+						<img src="assets/img/link02.png" alt="Ionic">
+					</a>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<!-- end /register-here -->
+	</div>
+</div>
+<!-- end /signup-page -->

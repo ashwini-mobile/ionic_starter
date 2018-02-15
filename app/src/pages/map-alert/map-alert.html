@@ -1,0 +1,29 @@
+<ion-content no-bounce ion-fixed>
+		<div class="map-page">
+			<div class="sub-header">
+				<div class="group-one ver-y">
+					<a href="javascript:;" class="iclose">
+						<img src="assets/img/i-close.png" alt="Ionic" (click)="dismiss()">
+					</a>
+					<a href="javascript:;" class="i-marker">
+						<img src="assets/img/i-marker.png" alt="Ionic" (click)="moveToCurrentLocation()">
+					</a>
+					<div class="search-location">
+						<input type="text" placeholder="Search a Location" [(ngModel)]="fullAddress" (keyup)="updateSearchResults()">
+					</div>
+					<ion-list class="group-select-address" [hidden]="listAddressFilter.length == 0">
+						<ion-item *ngFor="let item of listAddressFilter" tappable (click)="chooseItem(item)">
+						  {{ item.description }}
+						</ion-item>
+					</ion-list>
+				</div>
+				<!-- end /group-one -->
+			</div>
+			<div class="main-content">
+				<div class="map-alert" #mapElement>
+				</div>
+			</div>
+		</div>
+		<!-- end /menu-page -->
+	</ion-content>
+	<!-- end /ion-content -->

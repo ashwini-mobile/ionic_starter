@@ -1,0 +1,42 @@
+<ion-content>
+	<div class="offices-page"  [ngClass]="{'grid-ver':isShowGrid}">
+		<div class="sub-header">
+			<div class="group-one">
+				<a href="javascript:;" class="iback">
+					<img src="assets/img/id38-back.png" alt="Ionic" (click)="dismiss()">
+				</a>
+				<a href="javascript:;" class="i-mlist" (click)="isShowGrid=!isShowGrid">
+					<img src="assets/img/id38-mlist.png" alt="Ionic">
+				</a>
+				<a href="javascript:;" class="i-mgrid" (click)="isShowGrid=!isShowGrid">
+					<img src="assets/img/id38-mgrid.png" alt="Ionic">
+				</a>
+				<h1>Offices</h1>
+			</div>
+			<!-- end /group-one -->
+			<div class="group-two">
+				<input type="text" name="Search" placeholder="Search..." [(ngModel)]="querySearch" (keyup)="searchFunc()">
+			</div>
+			<!-- end /group-two -->
+		</div>
+		<!-- end /sub-header -->
+		<div class="mainn-content">
+			<div class="part-one-list">
+				<ion-list no-lines>
+					<office-component *ngFor="let item of listOffices" [office]="item" (onSelectOffice)="goProfilePage()"></office-component>
+				</ion-list>
+			</div>
+			<!-- end /part-one-list -->
+			<div class="part-two-grid">
+				<ul>
+					<office-component [typeCard]="'grid'" *ngFor="let item of listOffices" [office]="item" (onSelectOffice)="goProfilePage()"></office-component>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<!-- end /part-two-grid -->
+		</div>
+		<!-- end /mainn-content -->
+	</div>
+	<!-- end /menu-page -->
+</ion-content>
+<!-- end /ion-content -->

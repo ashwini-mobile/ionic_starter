@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="activity-page">
+    <div class="sub-header">
+      <div class="group-one">
+        <a href="javascript:;" class="iback">
+          <img src="assets/img/id120-back.png" alt="Ionic" (click)="dismiss()">
+        </a>
+        <span class="i-activity"></span>
+        <h1>Activity</h1>
+      </div>
+      <!-- end /group-one -->
+    </div>
+    <!-- end /sub-header -->
+    <div class="group-content">
+      <div class="card-group" [style.height.px]="heightIndex">
+        <ion-item class="item-card" *ngFor="let item of listActivity" [ngClass]="{'content-call':item.activity==='call','content-favourite':item.activity==='favourite'}">
+          <a href="javascript:;" class="img-people" (click)="goProfilePage(item)">
+            <img [src]="item.avata" alt="Ionic">
+          </a>
+          <div class="main-content ver-y">
+            <div>
+              <span class="text-time">{{item.time}}</span>
+              <p class="text-content">{{item.status}}</p>
+              <a href="javascript:;" class="icons"></a>
+            </div>
+          </div>
+        </ion-item>
+      </div>
+    </div>
+    <!-- end /group-content -->
+  </div>
+  <!-- end /menu-page -->
+</ion-content>
+<!-- end /ion-content -->

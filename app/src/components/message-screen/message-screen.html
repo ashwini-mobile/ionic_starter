@@ -1,0 +1,53 @@
+<ion-content ionic-fixed>
+	<div class="sub-header" ion-fixed>
+		<div class="group-one">
+			<a href="javascript:;" class="iback">
+				<img src="assets/img/id38-back.png" alt="Ionic" (click)="dismissView()">
+			</a>
+			<a *ngIf="showEdit" href="javascript:;" class="iedit" (click)="editPeople = !editPeople">
+				<img src="assets/img/id80-edit.png" alt="Ionic">
+			</a>
+			<h1 class="title-youlike">{{title}}<span>({{arrayData.length}})</span></h1>
+		</div>
+		<!-- end /group-one -->
+	</div>
+	<!-- end /sub-header -->
+	<div class="endorsements-page">
+		<div class="group-content">
+			<div class="gen01 scroll-table">
+				<ion-item class="gen-child01" *ngFor="let item of arrayData; let i = index" [ngClass]="{'active': editPeople}">
+					<div class="about-acc">
+						<div class="left-group">
+							<div class="your-ava">
+								<img [src]="item.img" alt="Ionic">
+								<span class="point"></span>
+							</div>
+						</div>
+						<!-- end /left-group -->
+						<div class="right-group ver-y">
+							<div>
+								<p>{{item.name}}</p>
+								<span class="jobs">{{item.location}}</span>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<!-- end /about-acc -->
+					<div class="about-feedback">
+						<p>{{item.desc}}</p>
+						<textarea name="text">{{item.desc}}</textarea>
+						<img src="assets/img/id80-triangle.png" alt="Ionic">
+					</div>
+					<!-- end /about-feedback -->
+					<a href="javascript:;" class="delete-content" (click)="removeItemFromList(i)"><img src="assets/img/id101-close.png" alt="Ionic"></a>
+				</ion-item>
+			</div>
+		</div>
+	</div>
+	<!-- end /endorsements-page -->
+	<ion-fab  bottom right>
+		<button class="green-circle" ion-fab mini (click)="showAddMessenger()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-content>
+<!-- end /ion-content -->
+	

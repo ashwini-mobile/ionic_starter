@@ -1,0 +1,44 @@
+<div class="background-img"></div>
+<div class="background-color"></div>
+<ion-content no-bounce ion-fixed>
+	<div class="aboutus-page">
+		<div class="top-intro">
+			<p>Almost there.</p>
+			<p>Just curious. How did you hear about us ?</p>
+		</div>
+		<!-- end /top-intro -->
+		<div class="middle-shapes">
+			<div class="cover-all">
+				<ul>
+					<li *ngFor="let item of (answerOptions || arrayData); let i = index" [ngClass]="{ active: item.isActive }">
+						<div>
+						<img class="img01" src="assets/img/social-bw00.png" alt="Ionic" [src]="item.img">
+						<img class="img02" src="assets/img/social-cl00.png" alt="Ionic" [src]="item.imgActive">
+						<span class="title">{{item.value || item.name}}</span>
+						<a class="invisible" href="javascript:;" (click)="selectFunc(i)"></a>
+						</div>
+					</li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<!-- end /cover-all -->
+			<div class="typing-here show-me" *ngIf="selectOther">
+				<input type="text" [(ngModel)]="other" placeholder="Other (Please Mention)" />
+			</div>
+			<!-- end /typing-here -->
+		</div>
+		<!-- end /middle-shapes -->
+		<div class="bottom-button mix-xy">
+			<div>
+				<a class="btn-bottom btn-white mix-xy" href="javascript:;" (click)="goBack()">
+					<img src="assets/img/blue-arrow.png" alt="Ionic">
+				</a>
+				<button class="btn-bottom btn-signup mix-xy" ion-button round (click)="goSelectUseCase()">Now the fun begins !</button>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- end /group-btn -->
+	</div>
+	<!-- end /aboutus-page -->
+</ion-content>
+<!-- end /ion-content -->

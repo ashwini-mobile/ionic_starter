@@ -1,0 +1,16 @@
+<!--ion content-->
+<ion-content>
+	<ion-title>{{alertTitle}}</ion-title>
+	<div class="group-input">
+		<div>
+			<div class="input-content">
+				<input type="text" placeholder="{{fieldTitle}}" [(ngModel)]="fieldValue" [ngClass]="{'error-ver': errorField}" (focus)="errorField = false">
+			</div>
+		</div>
+	</div>
+</ion-content>
+<!--ion footer-->
+<ion-footer>
+	<button (click)="dismiss()">{{backBtnTitle}}</button>
+	<button (click)="save()">{{saveBtnTitle}}</button>
+</ion-footer>

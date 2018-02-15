@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    //close error for co( function * (){});
+    "func-names": 0,
+    //sometimes don't need yield in function *
+    "require-yield": 0,
+    // need update entity that from request.body
+    "no-param-reassign": 0,
+    "no-use-before-define": 0,
+    "max-len": [
+      2,
+      130
+    ]
+  }
+}

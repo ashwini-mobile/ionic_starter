@@ -1,0 +1,49 @@
+
+<div no-bounce class="signup-page" [style.height.px]="heightWindow">
+	<div class="signup-content" style="display:flex;flex-direction:column;flex:1;overflow-y:auto;">
+		<img class="main-logo" src="assets/img/logo02.png" alt="Ionic">
+		
+		<div class="basic-form">
+			<div class="typing-here" [ngClass]="{'error-ver':errorFullName}">
+				<input type="text" placeholder="Full Name" [(ngModel)]="txtFullName" (focus)="errorFullName=false" #fullNameInput="ngModel" required/>
+			</div>
+			<!-- end /typing-here -->
+			<div class="typing-here" [ngClass]="{'error-ver':errorEmail}">
+				<input type="email" placeholder="E-mail" [(ngModel)]="txtEmail" (focus)="errorEmail=false" #emailInput="ngModel" required/>
+			</div>
+			<!-- end /typing-here -->
+			<div class="typing-here" [ngClass]="{'error-ver':errorPassword}">
+				<input type="password" placeholder="Password" [(ngModel)]="txtPassword" (focus)="errorPassword=false" #passInput="ngModel" required/>
+			</div>
+			<div class="typing-here only" [ngClass]="{'error-ver':errorPasswordConfirm}">
+				<input type="password" placeholder="Confirm Password" [(ngModel)]="txtPasswordConfirm" (focus)="errorPasswordConfirm=false" #confirmPassInput="ngModel" required/>
+			</div>
+			<!-- end /typing-here -->
+		</div>
+		<!-- end /basic-form -->
+		<div class="group-btn mix-xy">
+			<a class="btn-white mix-xy" href="javascript:;" (click)="closeSignup.emit();">
+				<img src="assets/img/blue-arrow.png" alt="Ionic">
+			</a>
+			<button class="twin signup" ion-button round (click)="signup()">Sign Up</button>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="register-here ">
+			<span class="title">Register using:</span>
+			<div class="choose-acc mix-xy">
+				<div>
+					<a class="acc01" href="javascript:;">
+						<img src="assets/img/link01.png" alt="Ionic" (click)="loginLinkedIn()">
+					</a>
+					<a class="acc02" href="javascript:;">
+						<img src="assets/img/link02.png" alt="Ionic" (click)="loginFacebook()">
+					</a>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<!-- end /register-here -->
+	</div>
+</div>
+<!-- end /signup-page -->

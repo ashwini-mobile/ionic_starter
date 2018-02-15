@@ -1,0 +1,12 @@
+<ion-content no-bounce class="dashboard-page" [ngClass]="{'tab-friends':titleTabSelected==='friends','tab-benches':titleTabSelected==='benches','tab-profiles':titleTabSelected==='profiles','tab-menu':titleTabSelected==='menu','tab-search':titleTabSelected==='search'}">
+	<div class="mask-background-color"></div>
+	<div id="background-color" class="background-color-dashboard" [ngClass]="{'tab-friends':titleTabSelected==='friends','tab-benches':titleTabSelected==='benches','tab-profiles':titleTabSelected==='profiles','tab-menu':titleTabSelected==='menu','tab-search':titleTabSelected==='search'}"></div>
+	<super-tabs id="mainTabs" [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" selectedTabIndex="2" toolbarBackground="dark" indicatorColor="yellow" badgeColor="yellow" (tabSelect)="onTabSelect($event)">
+		<super-tab [root]="page1" [icon]="showIcons? 'menu': ''"></super-tab> 
+		<super-tab [root]="page2" [title]="showTitles? 'friends' : ''" ></super-tab>
+		<super-tab class="tab-profile" [root]="page3" [title]="showTitles? 'Profiles' : ''" ></super-tab> 
+		<super-tab [root]="page4" [title]="showTitles? 'benches' : ''" ></super-tab>
+		<super-tab [root]="page5" [icon]="showIcons? 'search': ''"></super-tab>
+	</super-tabs>
+	
+</ion-content>

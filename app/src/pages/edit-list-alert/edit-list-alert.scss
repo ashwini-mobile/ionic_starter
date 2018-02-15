@@ -1,0 +1,135 @@
+.modal-share-profile.show-page {
+	.modal-wrapper {
+			display:flex;
+			flex-direction:column;
+			justify-content:center;
+			align-items:center;
+		edit-list-alert.ion-page {
+			width: 302px;
+			height: 300px;
+			height: auto;
+			position:relative;
+			background-color: #fff;
+			overflow: hidden;
+			border-radius: 10px;
+			/*top: calc(50% - 275px);
+			left: calc(50% - 151px);*/
+			ion-content {
+				.scroll-content {
+					overflow-y: hidden;
+					ion-title {
+						display: -webkit-box;
+						display: -ms-flexbox;
+						display: flex;
+						-webkit-box-align: center;
+						-ms-flex-align: center;
+						align-items: center;
+						height: 59px;
+						background-color: #5ec6c7;
+						text-align: center;
+						.toolbar-title {
+							font-size: 18px;
+							font-weight: 500;
+							color: #fff;
+							text-transform: uppercase;
+							text-overflow: initial;
+							white-space: initial;
+						}
+					}
+					.item-group {
+						ul {
+							max-height: 418px;
+							padding-left: 0;
+							overflow-y: auto;
+							li {
+								width: 100%;
+								float: none;
+								margin: 0;
+								position: relative;
+								height: 30px;
+								list-style-type: none;
+								a.checkbox {
+									display: block;
+									font-size: 15px;
+									font-weight: 300;
+									color: #a6a6a6;
+									position: absolute;
+									text-decoration: none;
+									line-height: 30px;
+									white-space: nowrap;
+									text-overflow: ellipsis;
+									overflow: hidden;
+									width: 100%;
+									top: 0;
+									left: 0;
+									padding-left: 19px;
+
+									i {
+											position: absolute;
+											right: 19px;
+											top: 50%;
+											width: 17px;
+											height: 17px;
+											background: url("../assets/icon/check.png") 50% 50%;
+											background-size: 17px;
+											margin-top: -8px;
+
+									}
+
+									&.icon-before {
+											padding: 11px 0 11px 29px;
+											i {
+													right: auto;
+													left: 0;
+													margin-top: -11px;
+													width: 22px;
+													height: 22px;
+													background: url("../assets/icon/check-mark.png") 50% 50%;
+													background-size: 22px;
+											}
+									}
+
+									&.checked {
+											i {
+													background-image: url("../assets/icon/radio-checked.png");
+											}
+											&.icon-before {
+
+													i {
+															background-image: url("../assets/icon/check-mark-checked.png");
+													}
+											}
+									}
+							}
+							}
+						}
+					}
+				}
+			}
+			ion-footer {
+				height: 50px;
+				padding: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				button {
+					width: 130px;
+					height: 32px;
+					padding: 0;
+					margin: 0;
+					border-radius: 6px;
+					color: #fff;
+					font-weight: 500;
+					background-color: #1ac88d;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+}

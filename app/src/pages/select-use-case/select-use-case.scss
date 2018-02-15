@@ -1,0 +1,277 @@
+page-select-use-case {
+	.background-img {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background-image: url(../assets/img/bgc.png);
+		background-size: cover;
+	}
+	.background-color {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background : rgba(44, 62, 80, 0.84);
+	}
+
+	ion-content {
+		background:transparent !important;
+		// Unique
+		.scroll-content{
+			display: table;
+			width: 100%;
+			height: 100%;
+			-webkit-flex-direction: column;
+			flex-direction:column;
+			-webkit-flex: 1;
+			-ms-flex: 1;
+			flex:1;
+		}
+		.hol-x {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.ver-y {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+		}
+		.mix-xy {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.clear, .clear:before, .clear:after {
+			clear: both;
+		}
+		@mixin iinput ($color,$fontsize,$colorplace) {
+			display: block;
+			height: 100%;
+			width: 100%;
+			color: $color;
+			font-size: $fontsize;
+			border: none;
+			outline: none;
+			background:transparent;
+			margin: 0;
+			padding: 0;
+			&::-webkit-input-placeholder {
+				color: $colorplace;
+				opacity: 1;
+			}
+			&::-moz-placeholder  {
+				color: $colorplace;
+				opacity: 1;
+			}
+			&:-ms-input-placeholder {
+				color: $colorplace;
+				opacity:1;
+			}
+			&:-moz-placeholder {
+				color: $colorplace;
+				opacity: 1;
+			}
+			&:focus::-webkit-input-placeholder {
+				color: transparent; 
+			}
+			&:focus:-moz-placeholder {
+				color: transparent; 
+			}
+			&:focus::-moz-placeholder {
+				color: transparent; 
+			}
+			&:focus:-ms-input-placeholder {
+				color: transparent; 
+			}
+		}
+
+		// Select Case Page
+		// IphoneX
+		.select-case-page {
+			width: 100%;
+			height: 100%;
+			display: table-cell;
+			vertical-align: middle;
+			padding-top: 0px;
+			flex-direction:column;
+			position: relative;
+			overflow: hidden;
+			* {
+				font-family: 'Myriad Pro';
+				font-weight: normal;
+			}
+			&:before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				-webkit-filter: blur(10px);
+				filter: blur(10px);
+				-webkit-transform: scale(1.2);
+				transform: scale(1.2);
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+			&:after {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 10;
+			}
+
+			.top-img {
+				display: block;
+				flex:0 0 auto;
+				width: 118px;
+				margin: 32px auto 35px;
+				background-size: cover;
+				position: relative;
+				z-index: 20;
+			}
+			.tell-me {
+				display: block;
+				flex:0 0 auto;
+				width: 100%;
+				margin-bottom: 45px;
+				font-size: 19px;
+				color: #fff;
+				text-align: center;
+				position: relative;
+				z-index: 20;
+			}
+			// Main Content
+			.main-content {
+				width: 100%;
+				padding: 0 38px;
+				flex:0 0 auto;
+				position: relative;
+				z-index: 20;
+				.choose-case {
+					width: 100%;
+					height: 58px;
+					border-radius: 8px;
+					background-color: rgba(51,51,51,0.45);
+					position: relative;
+					&.clone {
+						margin-top: 10px;
+						.little-title {
+							img {
+								width: 17px;
+							}
+						}
+					}
+					.little-title {
+						display: -webkit-box;
+						display: -ms-flexbox;
+						display: flex;
+						-webkit-box-align: center;
+						-ms-flex-align: center;
+						align-items: center;
+
+						height: 100%;
+						font-size: 16px;
+						color: #fff;
+						margin: 0;
+						padding: 0;
+						position: absolute;
+						top: 0;
+						left: 50px;
+						img {
+							display: block;
+							width: 20px;
+							height: auto;
+							margin-right: 10px;
+							background-size: cover;
+						}
+					}
+					.little-circle {
+						width: 100%;
+						height: 100%;
+						position: relative;
+						z-index: 50;
+						&.checkbox {
+							.checkbox-icon {
+								width: 17px;
+								height: 17px;
+								border-radius: 50%;
+								border: 1px solid #fff;
+								background-color: transparent;
+								position: relative;
+								left: 20px;
+								&.checkbox-checked {
+									border-color: transparent;
+									background-color: #2dcc70;
+									position: relative;
+									.checkbox-inner {
+										display: block;
+										width: 7.5px;
+										height: 6px;
+										border: 0;
+										-webkit-transform: rotate(0);
+										transform: rotate(0);
+										background-size: cover;
+										background-image: url(../assets/img/sm-tick.png);
+										position: absolute;
+										left: 3px;
+										top: 4px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			// Bottom Button
+			.bottom-button {
+				margin-top: 90px;
+				width: 100%;
+				position: relative;
+				flex:1;
+				left: 0;
+				z-index: 20;
+				.btn-white {
+					width: 40px;
+					height: 40px;
+					margin-right: 10px;
+					border-radius: 50%;
+					background-color: #fff;
+					position: relative;
+					img {
+						display: block;
+						width: 12px;
+						height: auto;
+						background-size: cover;
+					}
+				}
+				.btn-signup {
+					width: 182px;
+					height: 40px;
+					font-size: 15px;
+					text-align: center;
+					text-decoration: none;
+					border-radius: 20px;
+					background-color: #456db3;
+					text-transform: none;
+				}
+			}
+		}
+	}
+}

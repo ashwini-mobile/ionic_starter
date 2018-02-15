@@ -1,0 +1,422 @@
+<video class="video" autoplay playsinline muted loop src="assets/video/welcome_video.mp4"></video>
+<ion-content no-bounce>
+  <!--background video-->
+  <div class="header">Complete Your Personal Profile</div>
+  <!--employee builder-->
+  <!--step 1-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[0].open, 'complete': profileBuildSteps[0].complete}">
+    <ion-item-divider>
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(0, isValid(currentStep)); updateScrollPage(0, isValid(twoStepsBack), $event)">1</a>{{profileBuildSteps[0].data.name}}
+    </ion-item-divider>
+    <form class="item-group step-one" #form1="ngForm">
+      <ion-item>
+        <label>{{profileBuildSteps[0].data.label}}<span>({{profileBuildSteps[0].data.text}})</span></label>
+      </ion-item>
+      <ion-item>
+	<ion-datetime displayFormat="MM" pickerFormat="MM" (ionChange)="changeDob($event);errorDobMonth=false" [(ngModel)]="profileBuildSteps[0].data.month" [ngModelOptions]="{standalone: true}" placeholder="Month" [ngClass]="{'error-ver': errorDobMonth}" (focus)="errorDobMonth = false"></ion-datetime>
+        <ion-datetime displayFormat="DD" pickerFormat="DD" (ionChange)="changeDob($event);errorDobDay=false" [(ngModel)]="profileBuildSteps[0].data.day" [ngModelOptions]="{standalone: true}" placeholder="Day" [ngClass]="{'error-ver': errorDobDay}" (focus)="errorDobDay = false"></ion-datetime>
+        <ion-datetime displayFormat="YYYY" pickerFormat="YYYY" (ionChange)="changeDob($event)" [(ngModel)]="profileBuildSteps[0].data.year" [ngModelOptions]="{standalone: true}" placeholder="Year"></ion-datetime>
+      </ion-item>
+      <ion-item *ngIf="errorDobMonth || errorDobDay">
+        <div class="error-message third">{{ errorDobMonth? 'Required' : '' }}</div>
+        <div class="error-message third">{{ errorDobDay? 'Required' : '' }}</div>
+        <div class="error-message third">&nbsp;</div>
+      </ion-item>
+    </form>
+    <form class="item-group step-one-location">
+      <ion-item>
+        <label>Location</label>
+      </ion-item>
+      <ion-item class="employee-location-group">
+        <div class="half" style="min-width:115px;">
+          <input name="city" type="text" placeholder="City" [(ngModel)]="profileBuildSteps[0].data.city" [ngClass]="{'error-ver': errorCity && city.invalid}" (focus)="errorCity = false" required #city="ngModel">
+          <div class="error-message" *ngIf="(city.touched || errorCity) && !city.valid">Required</div>
+        </div>
+        <div class="half" style="min-width:115px;">
+          <input name="state" type="text" style="min-width:115px;" placeholder="State" [(ngModel)]="profileBuildSteps[0].data.state" [ngClass]="{'error-ver': errorState && state.invalid}" (focus)="errorState = false" required #state="ngModel">
+          <div class="error-message" *ngIf="(state.touched || errorState) && !state.valid">Required</div>
+        </div>
+        <div class="half">
+          <input name="zip-code" pattern="[0-9]{5,6}" placeholder="Postal Code" [(ngModel)]="profileBuildSteps[0].data.zipcode" [ngClass]="{'error-ver': errorZipCode && zipcode.invalid}" required #zipcode="ngModel">
+          <div class="error-message" *ngIf="(zipcode.touched || errorZipCode) && !zipcode.valid">
+            <div class="error-message" *ngIf="zipcode.errors.required">Required</div>
+            <div class="error-message" *ngIf="zipcode.errors.pattern">Min. 5 digits postal code</div>
+          </div>
+        </div>
+      </ion-item>
+    </form>
+    <div class="item-group item-checkbox">
+      <ion-item>
+        <ion-label class="label-checkbox">
+          Languages Spoken
+          <div *ngIf="(languagesSpokenTouched && getLanguagesSpoken().length === 0) || errorLanguagesSpoken" class="error-message">Required</div>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngFor="let item of profileBuildSteps[0].data.specializedIn">
+          <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.value}" (click)="toogleItem(item);languagesSpokenTouched=true;errorLanguagesSpoken=false">{{item.name}}<i></i></a>
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 2-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[1].open, 'complete': profileBuildSteps[1].complete}">
+    <ion-item-divider>
+        <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(1, isValid(currentStep)); updateScrollPage(1, isValid(twoStepsBack), $event)">2</a>{{profileBuildSteps[1].data.name}}
+    </ion-item-divider>
+    <div class="item-group">
+      <div *ngIf="errorDentalWorldSpecializedIn" class="error-message">Required</div>
+      <ion-item *ngFor="let item of profileBuildSteps[1].data.specializedIn">
+        <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.value}" (click)="toogleItem(item, 1);errorDentalWorldSpecializedIn=false">{{item.name}}<i></i></a>
+      </ion-item>
+      <ion-item class="column">
+        <label><span>(Sales,Accounting,Consulting etc.)</span></label>
+        <input type="text" placeholder="Other" [(ngModel)]="profileBuildSteps[1].data.other" (change)="uncheckItems(1)">
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 3-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[2].open, 'complete': profileBuildSteps[2].complete}">
+    <ion-item-divider>
+        <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(2, isValid(currentStep)); updateScrollPage(2, isValid(twoStepsBack), $event)">3</a>{{profileBuildSteps[2].data.name}}
+    </ion-item-divider>
+    <div class="item-group step-three group-item step-3">
+      <div *ngIf="errorWorkAvailability" class="error-message">Required at least Monday</div>
+      <ion-item class="" *ngFor="let item of profileBuildSteps[2].data.workAbility; let i = index">
+        <ion-label>{{item.label}}</ion-label>
+        <ion-datetime displayFormat="hh:mm A" (ionChange)="changeStartDate(i)" [(ngModel)]="profileBuildSteps[2].data.workAbility[i].start" class="auto-width step-3" placeholder="Start"></ion-datetime>
+        <ion-datetime displayFormat="hh:mm A" (ionChange)="changeEndDate(i)" [(ngModel)]="profileBuildSteps[2].data.workAbility[i].end" class="auto-width step-3" placeholder="End"></ion-datetime>
+        <ion-select class="auto-width" placeholder="Type" [(ngModel)]="profileBuildSteps[2].data.workAbility[i].type" (ionChange)="changeTypeDate(i)" multiple="false">
+          <ion-option value="full">Full Time</ion-option>
+          <ion-option value="partTime">Part Time</ion-option>
+          <ion-option value="temp">Temp</ion-option>
+          <ion-option value="fillIn">Fill-In</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 4-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[3].open, 'complete': profileBuildSteps[3].complete}">
+    <ion-item-divider>
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(3, isValid(currentStep)); updateScrollPage(3, isValid(twoStepsBack), $event)">4</a>{{profileBuildSteps[3].data.name}}
+    </ion-item-divider>
+    <div class="item-group">
+      <ion-item>
+        <label>{{profileBuildSteps[3].data.desc}}</label>
+      </ion-item>
+      <ion-item>
+        <ion-grid class="photo-holder">
+          <ion-row>
+            <ion-col class="large">
+              <div class="holder">
+                <a href="javascript:" (click)="addPhoto(0)" *ngIf="!profileBuildSteps[3].data.photos[0 + '-']" class="add-photo">Profile Picture</a>
+                <img *ngIf="profileBuildSteps[3].data.photos[0 + '-']" src="{{profileBuildSteps[3].data.photos[0 + '-'].url}}" alt="pic">
+                <a href="javascript:" class="remove" (click)="removePhoto(0)" *ngIf="profileBuildSteps[3].data.photos[0 + '-']"></a>
+              </div>
+            </ion-col>
+            <ion-col>
+              <ion-row>
+                <ion-col class="small">
+                  <div class="holder">
+                    <a href="javascript:" (click)="addPhoto(1)" *ngIf="!profileBuildSteps[3].data.photos[1 + '-']" class="add-photo"></a>
+                    <img *ngIf="profileBuildSteps[3].data.photos[1 + '-']" src="{{profileBuildSteps[3].data.photos[1 + '-'].url}}" alt="pic">
+                    <a href="javascript:" class="remove" (click)="removePhoto(1)" *ngIf="profileBuildSteps[3].data.photos[1 + '-']"></a>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="small">
+                  <div class="holder">
+                    <a href="javascript:" (click)="addPhoto(2)" *ngIf="!profileBuildSteps[3].data.photos[2 + '-']" class="add-photo"></a>
+                    <img *ngIf="profileBuildSteps[3].data.photos[2 + '-']" src="{{profileBuildSteps[3].data.photos[2 + '-'].url}}" alt="pic">
+                    <a href="javascript:" class="remove" (click)="removePhoto(2)" *ngIf="profileBuildSteps[3].data.photos[2 + '-']"></a>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="small">
+              <div class="holder">
+                <a href="javascript:" (click)="addPhoto(3)" *ngIf="!profileBuildSteps[3].data.photos[3 + '-']" class="add-photo"></a>
+                <img *ngIf="profileBuildSteps[3].data.photos[3 + '-']" src="{{profileBuildSteps[3].data.photos[3 + '-'].url}}" alt="pic">
+                <a href="javascript:" class="remove" (click)="removePhoto(3)" *ngIf="profileBuildSteps[3].data.photos[3 + '-']"></a>
+              </div>
+            </ion-col>
+            <ion-col class="small">
+              <div class="holder">
+                <a href="javascript:" (click)="addPhoto(4)" *ngIf="!profileBuildSteps[3].data.photos[4 + '-']" class="add-photo"></a>
+                <img *ngIf="profileBuildSteps[3].data.photos[4 + '-']" src="{{profileBuildSteps[3].data.photos[4 + '-'].url}}" alt="pic">
+                <a href="javascript:" class="remove" (click)="removePhoto(4)" *ngIf="profileBuildSteps[3].data.photos[4 + '-']"></a>
+              </div>
+            </ion-col>
+            <ion-col class="small">
+              <div class="holder">
+                <a href="javascript:" (click)="addPhoto(5)" *ngIf="!profileBuildSteps[3].data.photos[5 + '-']" class="add-photo"></a>
+                <img *ngIf="profileBuildSteps[3].data.photos[5 + '-']" src="{{profileBuildSteps[3].data.photos[5 + '-'].url}}" alt="pic">
+                <a href="javascript:" class="remove" (click)="removePhoto(5)" *ngIf="profileBuildSteps[3].data.photos[5 + '-']"></a>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="allPhotosFill" class="more-row">
+            <ion-col class="small" >
+              <div class="holder">
+                <a href="javascript:" (click)="addPhoto(6)" *ngIf="!profileBuildSteps[3].data.photos[6 + '-']" class="add-photo"></a>
+                <img *ngIf="profileBuildSteps[3].data.photos[6  + '-']" src="{{profileBuildSteps[3].data.photos[6  + '-'].url}}" alt="pic">
+                <a href="javascript:" class="remove" (click)="removePhoto(6);" *ngIf="profileBuildSteps[3].data.photos[6]"></a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 5-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[4].open, 'complete': profileBuildSteps[4].complete}">
+    <ion-item-divider class="group-step-five">
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(4, isValid(currentStep)); updateScrollPage(4, isValid(twoStepsBack), $event)">5</a>{{profileBuildSteps[4].data.name}}
+      <a href="javascript:" class="skip" *ngIf="currentStep === 4" (click)="skipForm(4); updateScrollPageOnSkip(5, true, $event)">SKIP</a>
+    </ion-item-divider>
+    <div class="item-group">
+      <ion-item *ngFor="let item of profileBuildSteps[4].data.specializedIn">
+        <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.value}" (click)="toogleItem(item)">{{item.name}}<i></i></a>
+      </ion-item>
+      <ion-item class="column">
+        <input type="text" placeholder="Other" [(ngModel)]="profileBuildSteps[4].data.other">
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 6-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[5].open, 'complete': profileBuildSteps[5].complete}">
+    <ion-item-divider>
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(5, isValid(currentStep)); updateScrollPage(5, isValid(twoStepsBack), $event)">6</a>{{profileBuildSteps[5].data.name}}
+      <a href="javascript:" class="skip" *ngIf="currentStep === 5" (click)="skipForm(5); updateScrollPageOnSkip(6, true, $event)">SKIP</a>
+    </ion-item-divider>
+    <div class="item-group">
+      <ion-item *ngFor="let item of profileBuildSteps[5].data.specializedIn">
+        <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.value}" (click)="toogleItem(item)">{{item.name}}<i></i></a>
+      </ion-item>
+      <ion-item class="column">
+        <input type="text" placeholder="Other" [(ngModel)]="profileBuildSteps[5].data.other">
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 7-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[6].open, 'complete': profileBuildSteps[6].complete}">
+    <ion-item-divider>
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(6, isValid(currentStep)); updateScrollPage(6, isValid(twoStepsBack), $event)">7</a>{{profileBuildSteps[6].data.name}}
+      <a href="javascript:" class="skip" *ngIf="currentStep === 6" (click)="skipForm(6); updateScrollPageOnSkip(7, true, $event)">SKIP</a>
+    </ion-item-divider>
+    <div class="item-group">
+      <ion-item *ngFor="let item of profileBuildSteps[6].data.specializedIn">
+        <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.value}" (click)="toogleItem(item)">{{item.name}}<i></i></a>
+      </ion-item>
+      <ion-item class="column">
+        <input type="text" placeholder="Other (Please Mention)" [(ngModel)]="profileBuildSteps[6].data.other">
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 8-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[7].open, 'complete': profileBuildSteps[7].complete}">
+    <ion-item-divider>
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(7, isValid(currentStep)); updateScrollPage(7, isValid(twoStepsBack), $event)">8</a>{{profileBuildSteps[7].data.name}}
+      <a href="javascript:" class="skip" *ngIf="currentStep === 7" (click)="skipForm(7); updateScrollPageOnSkip(8, true, $event)">SKIP</a>
+    </ion-item-divider>
+    <div class="item-group">
+      <ion-item *ngFor="let item of profileBuildSteps[7].data.specializedIn">
+        <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.value}" (click)="toogleItem(item)">{{item.name}}<i></i></a>
+      </ion-item>
+      <ion-item class="column">
+	<form (ngSubmit)="addOtherGeneralSkills()">
+        <input type="text" name="other" placeholder="Other (Please Mention)" [(ngModel)]="profileBuildSteps[7].data.other">
+	<button type="submit" style="display:none;"></button>
+	</form>
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 9-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[8].open, 'complete': profileBuildSteps[8].complete}">
+    <ion-item-divider>
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(8, isValid(currentStep)); updateScrollPage(8, isValid(twoStepsBack), $event)">9</a>{{profileBuildSteps[8].data.name}}
+      <a href="javascript:" class="skip" *ngIf="currentStep === 8" (click)="skipForm(8); updateScrollPageOnSkip(9, true, $event)">SKIP</a>
+    </ion-item-divider>
+    <div class="item-group">
+      <ion-item *ngFor="let item of profileBuildSteps[8].data.specializedIn">
+        <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.value}" (click)="toogleItem(item)">{{item.name}}<i></i></a>
+      </ion-item>
+      <ion-item class="column">
+        <input type="text" placeholder="Other" [(ngModel)]="profileBuildSteps[8].data.other">
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 10-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[9].open, 'complete': profileBuildSteps[9].complete}">
+    <ion-item-divider>
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(9, isValid(currentStep)); updateScrollPage(9, isValid(twoStepsBack), $event)">10</a>{{profileBuildSteps[9].data.name}}
+      <a href="javascript:" class="skip" *ngIf="currentStep === 9" (click)="skipForm(9); updateScrollPageOnSkip(10, true, $event)">SKIP</a>
+    </ion-item-divider>
+    <div class="item-group">
+      <ion-item *ngFor="let item of profileBuildSteps[9].data.specializedIn">
+        <a href="javascript:" class="checkbox" [ngClass]="{'checked' : item.value}" (click)="toogleItem(item)">{{item.name}}<i></i></a>
+      </ion-item>
+      <ion-item class="column">
+        <input type="text" placeholder="Other (Please Mention)" [(ngModel)]="profileBuildSteps[9].data.other">
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!-- step 11 -->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[10].open, 'complete': profileBuildSteps[10].complete}">
+      <ion-item-divider>
+        <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(10, isValid(currentStep)); updateScrollPage(10, isValid(twoStepsBack), $event)">11</a>{{profileBuildSteps[10].data.name}}
+        <a href="javascript:" class="skip" *ngIf="currentStep === 10" (click)="skipForm(10); updateScrollPageOnSkip(11, true, $event)">SKIP</a>
+      </ion-item-divider>
+      <div class="item-group step-eleven" [ngClass]="{'config-auto':arrayBusinessFilter.length>0}">
+        <ion-item>
+          <input name="businessName" placeholder="Business Name" type="text" [(ngModel)]="profileBuildSteps[10].data.businessName" (keyup)="searchAutoBusinessName()" [ngClass]="{'error-ver': errorBusinessName}" (focus)="errorBusinessName = false">
+          <div class="group-select" *ngIf="arrayBusinessFilter.length>0" (click)="$event.stopPropagation()">
+            <ul>
+                <li *ngFor="let item of arrayBusinessFilter"><a href="javascript:;" (click)="profileBuildSteps[10].data.businessName =item.title;arrayBusinessFilter=[]">{{item.title}}</a></li>
+            </ul>
+          </div>
+        </ion-item>
+        <ion-item>
+          <input name="title" class="" placeholder="Job title" type="text" [(ngModel)]="profileBuildSteps[10].data.title" [ngClass]="{'error-ver': errorJobTitle}" (focus)="errorJobTitle = false">
+        </ion-item>
+        <ion-item class="group-datepicker">
+          <span ion-datepicker (ionChanged)="setDateStartStepEleven($event);" [value]="dateSetStartStepEleven" [max]="dateSetEndStepEleven" clear class="ScheduleDate one">
+            <input type="text" name="Date" placeholder="Start Date" [(ngModel)]="txtDateSetStartStepEleven" [ngClass]="{'error-ver': errorJobStartDate}">
+          </span>
+          <span ion-datepicker (ionChanged)="setDateEndStepEleven($event);" [value]="dateSetEndStepEleven" [max]="today" clear class="ScheduleDate">
+            <input type="text" name="Date" placeholder="End Date" [(ngModel)]="txtDateSetEndStepEleven" [ngClass]="{'error-ver': errorJobEndDate}">
+          </span>
+        </ion-item>
+        <ion-item>
+          <button class="button" (click)="addEmployer(10)">ADD ANOTHER EMPLOYER</button>
+        </ion-item>
+      </div>
+  </ion-item-group>
+
+  <!--step 12-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[11].open, 'complete': profileBuildSteps[11].complete}">
+    <ion-item-divider class="with-action">
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(11, isValid(currentStep)); updateScrollPage(11, isValid(twoStepsBack), $event)">12</a>{{profileBuildSteps[11].data.name}}
+      <a href="javascript:" class="skip" *ngIf="currentStep === 11" (click)="skipForm(11); updateScrollPageOnSkip(12, true, $event)">SKIP</a>
+    </ion-item-divider>
+    <form #form12="ngForm" class="item-group">
+      <ion-item>
+          <label>{{profileBuildSteps[11].data.desc}}</label>
+      </ion-item>
+      <ion-item>
+        <input name="firstName" class="half" placeholder="First Name" type="text" [(ngModel)]="profileBuildSteps[11].data.firstName" [ngClass]="{'error-ver': errorEndorseFirstName}" (focus)="errorEndorseFirstName = false">
+        <input name="lastName" class="half" placeholder="Last Name" type="text" [(ngModel)]="profileBuildSteps[11].data.lastName" [ngClass]="{'error-ver': errorEndorseLastName}" (focus)="errorEndorseLastName = false">
+      </ion-item>
+      <ion-item>
+        <input name="email" placeholder="Add E-mail / Mobile Number" type="text" [(ngModel)]="profileBuildSteps[11].data.email" [ngClass]="{'error-ver': errorEndorseContact}" (focus)="errorEndorseContact = false">
+      </ion-item>
+	    <ion-item>
+        <a href="javascript:" class="checkbox icon-before" [ngClass]="{'checked' : profileBuildSteps[11].data.isCanContact}"
+            (click)="toogleContactCheckBox()">We may contact these references and if it is okay to do so please check this box<i></i></a>
+      </ion-item>
+      <ion-item>
+          <button class="button" (click)="addEndorsement(11)">ADD ANOTHER ENDORSEMENT</button>
+      </ion-item>
+    </form>
+  </ion-item-group>
+
+  <!--step 13-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[12].open, 'complete': profileBuildSteps[12].complete}" (click)="listSchoolFilter=[]">
+    <ion-item-divider class="with-action">
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(12, isValid(currentStep)); updateScrollPage(12, isValid(twoStepsBack), $event)">13</a>{{profileBuildSteps[12].data.name}}
+      <a href="javascript:" class="skip" *ngIf="currentStep === 12" (click)="skipForm(12); updateScrollPageOnSkip(13, true, $event)">SKIP</a>
+    </ion-item-divider>
+    <div class="item-group step-thirteen">
+      <div class="group-select-school" *ngIf="listSchoolFilter.length>0" (click)="$event.stopPropagation()">
+        <ul>
+            <li *ngFor="let item of listSchoolFilter"><a href="javascript:;" (click)="profileBuildSteps[12].data.school=item.name;listSchoolFilter=[]">{{item.name}}</a></li>
+        </ul>
+      </div>
+      <ion-item>
+        <input name="school" placeholder="School" type="text" [(ngModel)]="profileBuildSteps[12].data.school" [ngClass]="{'error-ver': errorSchoolName}" (focus)="errorSchoolName = false" (keyup)="searchAutoSchoolName()">
+      </ion-item>
+      <ion-item class="degree-width">
+        <ion-select placeholder="Degree" [(ngModel)]="profileBuildSteps[12].data.degree" [ngModelOptions]="{standalone: true}" [selectOptions]="{title: 'Degree'}" [ngClass]="{'error-ver': errorDegree}" (focus)="errorDegree = false">
+          <ion-option value="bachelor">Bachelor</ion-option>
+          <ion-option value="master">Master</ion-option>
+          <ion-option value="doctor">Doctor</ion-option>
+	  <ion-option value="ged">GED</ion-option>
+	  <ion-option value="high school diploma"> High School Diploma</ion-option>
+	  <ion-option value="associates degree">Associates Degree</ion-option>
+	  <ion-option value="trade school">Trade School</ion-option>
+	  <ion-option value="certificate program">Certificate Program</ion-option>
+	  <ion-option value="other">Other</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="group-datepicker">
+        <span ion-datepicker (ionChanged)="setDateStart($event);" [value]="dateSetStart" [max]="dateSetEnd" clear class="ScheduleDate one">
+          <input type="text" name="Date" placeholder="Start Date" [(ngModel)]="txtDateSetStart" [ngClass]="{'error-ver': errorDegreeStartDate}">
+        </span>
+        <span ion-datepicker (ionChanged)="setDateEnd($event);" [value]="dateSetEnd" [max]="today" clear class="ScheduleDate">
+          <input type="text" name="Date" placeholder="Graduation Date" [(ngModel)]="txtDateSetEnd" [ngClass]="{'error-ver': errorDegreeEndDate}">
+        </span>
+      </ion-item>
+      <ion-item>
+        <input name="activities" placeholder="Activities and Societies" type="text" [(ngModel)]="profileBuildSteps[12].data.activities" [ngClass]="{'error-ver': errorDegreeActivities}" (focus)="errorDegreeActivities = false">
+      </ion-item>
+      <ion-item>
+        <input name="description" placeholder="Description" type="text" [(ngModel)]="profileBuildSteps[12].data.desc" [ngClass]="{'error-ver': errorDegreeDesc}" (focus)="errorDegreeDesc = false">
+      </ion-item>
+      <ion-item>
+          <button class="button" (click)="addSchool(12)">ADD ANOTHER SCHOOL</button>
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 14-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[13].open, 'complete': profileBuildSteps[13].complete}">
+    <ion-item-divider class="with-action">
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(13, isValid(currentStep)); updateScrollPage(13, isValid(twoStepsBack), $event)">14</a>{{profileBuildSteps[13].data.name}}
+      <a href="javascript:" class="skip" (click)="toogleStep(14, true);">SKIP</a>
+    </ion-item-divider>
+    <div class="item-group step-fourteen">
+      <ion-item>
+        <label>{{profileBuildSteps[13].data.label}}</label>
+      </ion-item>
+      <ion-item class="address" *ngFor="let address of profileBuildSteps[13].data.location, let i = index" (click)="updateLocationFunc(address);">
+        <input type="text" name="location" [(ngModel)]="profileBuildSteps[13].data.location[i].address" disabled>
+        <span class="icons-marker"></span>
+      </ion-item>
+      <ion-item>
+        <button class="button" (click)="addAnotherLocationFunc()">ADD LOCATION</button>
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <!--step 15-->
+  <ion-item-group [ngClass]="{'open': profileBuildSteps[14].open, 'complete': profileBuildSteps[14].complete}">
+    <ion-item-divider class="with-action">
+      <a href="javascript:" class="number" (click)="setCurrentForm(form1, form12); toogleStep(14, isValid(currentStep)); updateScrollPage(13, isValid(twoStepsBack), $event)">15</a>{{profileBuildSteps[14].data.name}}
+    </ion-item-divider>
+    <div class="item-group">
+      <ion-item>
+        <textarea cols="30" (focus)="profileBuildSteps[14].data.textarea=''" rows="10" [(ngModel)]="profileBuildSteps[14].data.textarea">{{profileBuildSteps[14].data.textarea}}</textarea>
+      </ion-item>
+    </div>
+  </ion-item-group>
+  <div class="btn-button">
+    <button class="button" (click)="submitFunc()">Submit</button>
+  </div>
+</ion-content>
+<!--footer-->
+<ion-footer >
+  <div class="progress-bar">
+    <div class="bar" [ngStyle]="getProgress()"></div>
+  </div>
+</ion-footer>

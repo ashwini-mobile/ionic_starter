@@ -1,0 +1,513 @@
+<a href="javascript:;" class="btn-back" (click)="dimissFunc()">
+	<img src="assets/img/id101-back02.png" alt="Ionic">
+</a>
+<ion-content>
+		<div class="page-employer-profile edit-ver" *ngIf="dataProfileDetail" [ngClass]="{'subs-ver':isSubcription}">
+			<div class="moon-slides">
+				<ion-slides pager >
+					<ion-slide *ngFor="let slide of employerProfile.photos; let index = index">
+						<div class="small-piece"  [ngClass]="{'diff-ver': index!==0}">
+							<!-- end /top-info -->
+							<div class="bottom-img">
+								<img [src]="slide.url" onerror="if (this.src != 'assets/img/profile-pic.jpg') this.src = 'assets/img/profile-pic.jpg';" alt="Ionic" [ngClass]="{'big-logo': index===0, 'same-size': index!==0}">
+							</div>
+							<!-- end /bottom-img -->
+						</div>
+						<!-- end /small-piece -->
+					</ion-slide>
+				</ion-slides>
+				<div class="group-curve">
+					<svg class="main-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 50.01"><defs></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1 cls-2" d="M0,0C200.12,98.53,375,0,375,0V195H.12Z"/></g></g></svg>
+				</div>
+			</div>
+			<!-- end /moon-slides -->
+			<div class="mainn-content">
+				<div class="part-one">
+					<div class="group-info">
+						<span class="text01">{{employerProfile.businessName}} <img src="assets/img/social-tick.png" alt="Ionic"></span>
+						<!--span class="text02">{{dataProfileDetail.description}}</span-->
+						<span class="text03"><img src="assets/img/id101-loca.png" alt="Ionic"> {{employerProfile.offices[0] ? employerProfile.offices[0].address.locality.locality : ''}}, {{employerProfile.offices[0] ? employerProfile.offices[0].address.locality.state : ''}}</span>
+						<span class="text04"><img src="assets/img/id101-clock.png" alt="Ionic"> {{dataProfileDetail.dateOpen}}</span>
+					</div>
+					<!-- end /group-info -->
+					<div class="group-admin">
+						<div class="top-title">
+							<img src="assets/img/icons8-Settings-64.png" alt="Ionic">
+							<span class="name">ADMINISTRATORS</span>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-info">
+							<ul class="gen01">
+								<li class="gen-child01 ver-y" *ngFor="let item of employerProfile.officeManagers; let i=index">
+									<img class="little-line" src="assets/img/id101-line.png" alt="Ionic">
+									<span class="title">{{item.firstName + ' ' + item.lastName}}</span>
+									<a href="javascript:;" class="iclose" (click)="deletedAdminFunc(i)">
+										<img class="little-line" src="assets/img/id101-close.png" alt="Ionic">
+									</a>
+								</li>
+							</ul>
+							<!-- end /gen01 -->
+							<a href="javascript:;" class="btn-edit mix-xy" (click)="showModalAddFunc('admin')">Add Administrators</a>
+						</div>
+						<!-- end /bottom-info -->
+					</div>
+					<!-- end /group-admin -->
+					<div class="group-subscription">
+						<div class="top-title">
+							<img src="assets/img/icons8-Membership-64.png" alt="Ionic">
+							<span class="name">SUBSCRIPTION</span>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-info">
+							<div class="beautiful-box" [ngClass]="{'green-ver':dataProfileDetail.profileSubscription.subscription.id===2,'orange-ver':dataProfileDetail.profileSubscription.subscription.id===3}" *ngIf="dataProfileDetail.profileSubscription">
+								<div class="left-group mix-xy">
+									<div>
+									<p><i>$</i> {{dataProfileDetail.profileSubscription.subscription.pricePerMonth}}</p>
+									<span class="text01">per</span>
+									<span class="text02">month</span>
+									</div>
+								</div>
+								<!-- end /left-group -->
+								<div class="right-group ver-y">
+									<p>{{dataProfileDetail.profileSubscription.subscription.title}}</p>
+								</div>
+								<!-- end /right-group -->
+								<div class="clear"></div>
+							</div>
+							<!-- end /beautiful-box -->
+							<a href="javascript:;" class="btn-edit mix-xy" (click)="editSubscriptionFunc()">Edit Subscription</a>
+						</div>
+						<!-- end /bottom-info -->
+					</div>
+					<!-- end /group-subscription -->
+					<div class="group-photos">
+						<div class="top-title">
+							<img src="assets/img/id101-photos.png" alt="Ionic">
+							<span class="name">Photos</span>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-info">
+							<ul class="gen01">
+								<li class="gen-child01" *ngFor="let item of dataProfileDetail.images; let i=index">
+									<a href="javascript:;" class="iclose" (click)="deletePhoto(i)">
+										<img src="assets/img/id101-close.png" alt="Ionic">
+									</a>
+									<img class="demo-thumb" [src]="item.image" alt="Ionic">
+								</li>
+								<li class="gen-child01">
+									<a href="javascript:;" class="btn-add mix-xy" (click)="addPhoto()">Add</a>
+								</li>
+							</ul>
+							<!-- end /gen01 -->
+							<div class="clear"></div>
+						</div>
+						<!-- end /bottom-info -->
+						<div class="clear"></div>
+					</div>
+					<!-- end /group-photos -->
+					<div class="group-loca">
+						<div class="map-here map-class">
+							<div id="map" [style.height.px]="181.67" #mapElement></div>
+						</div>
+						<!-- end /map-here -->
+	
+						<a href="javascript:;" class="btn-edit mix-xy">
+							<img src="assets/img/id101-edit.png" alt="Ionic">
+						</a>
+					</div>
+					<!-- end /group-loca -->
+					<div class="work-availability">
+						<div class="top-title">
+							<img src="assets/img/id101-work.png" alt="Ionic">
+							<span class="name">Office hours</span>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-datetime">
+							<ion-item>
+								<ion-label>Monday</ion-label>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.mondayStart" class="auto-width" placeholder="Start"></ion-datetime>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.mondayEnd" class="auto-width" placeholder="End"></ion-datetime>
+							</ion-item>
+							<ion-item>
+								<ion-label>Tuesday</ion-label>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.tuesdayStart" class="auto-width" placeholder="Start"></ion-datetime>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.tuesdayEnd" class="auto-width" placeholder="End"></ion-datetime>
+							</ion-item>
+							<ion-item>
+								<ion-label>Wednesday</ion-label>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.wednesdayStart" class="auto-width" placeholder="Start"></ion-datetime>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.wednesdayEnd" class="auto-width" placeholder="End"></ion-datetime>
+							</ion-item>
+							<ion-item>
+								<ion-label>Thursday</ion-label>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.thursdayStart" class="auto-width" placeholder="Start"></ion-datetime>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.thursdayEnd" class="auto-width" placeholder="End"></ion-datetime>
+							</ion-item>
+							<ion-item>
+								<ion-label>Friday</ion-label>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.fridayStart" class="auto-width" placeholder="Start"></ion-datetime>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.fridayEnd" class="auto-width" placeholder="End"></ion-datetime>
+							</ion-item>
+							<ion-item>
+								<ion-label>Saturday</ion-label>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.saturdayStart" class="auto-width" placeholder="Start"></ion-datetime>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.saturdayEnd" class="auto-width" placeholder="End"></ion-datetime>
+							</ion-item>
+							<ion-item>
+								<ion-label>Sunday</ion-label>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.sundayStart" class="auto-width" placeholder="Start"></ion-datetime>
+								<ion-datetime displayFormat="HH" [(ngModel)]="employerProfile.schedule.sundayEnd" class="auto-width" placeholder="End"></ion-datetime>
+							</ion-item>
+						</div>
+						<!-- end /bottom-datetime -->
+					</div>
+					<!-- end /work-availability -->
+				</div>
+				<!-- end /part-one -->
+				<div class="part-two">
+					<div class="top-title">
+						<img src="assets/img/id101-mem.png" alt="Ionic">
+						<span class="name">About Us</span>
+						<a href="javascript:;" class="edit-me" (click)="isEditAboutUs = !isEditAboutUs;$event.stopPropagation()">
+							<img src="assets/img/id101-edit.png" alt="Ionic">
+						</a>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="group-description" (click)="$event.stopPropagation();">
+						<p *ngIf="!isEditAboutUs">{{employerProfile.officeCultureDescription}}</p>
+						<textarea *ngIf="isEditAboutUs" [(ngModel)]="employerProfile.officeCultureDescription"></textarea>
+					</div>
+					<!-- end /group-description -->
+				</div>
+				<!-- end /part-two -->
+				<div class="part-three">
+					<div class="top-title">
+						<img src="assets/img/id101-chat.png" alt="Ionic">
+						<span class="name">Recent Reviews</span>
+						<div class="clear"></div>
+					</div>
+					<!-- end /top-title -->
+					<div class="bottom-feedback">
+						<ul class="gen01">
+							<li class="gen-child01" *ngFor="let item of dataProfileDetail.recentReviews">
+								<div class="about-acc">
+									<div class="left-group">
+										<div class="your-ava">
+											<img [src]="item.avata" alt="Ionic">
+											<span class="point"></span>
+										</div>
+									</div>
+									<!-- end /left-group -->
+									<div class="right-group ver-y">
+										<div>
+										<div class="name-star">
+											<p>Kylie Bourne</p>
+											<ul class="gen02 ver-y">
+												<li class="gen-child02" *ngIf="item.rate >= 1">
+													<img src="assets/img/id101-star01.png" alt="Ionic">
+												</li>
+												<li class="gen-child02" *ngIf="item.rate >= 2">
+													<img src="assets/img/id101-star01.png" alt="Ionic">
+												</li>
+												<li class="gen-child02" *ngIf="item.rate >= 3">
+													<img src="assets/img/id101-star01.png" alt="Ionic">
+												</li>
+												<li class="gen-child02" *ngIf="item.rate >= 4">
+													<img src="assets/img/id101-star01.png" alt="Ionic">
+												</li>
+												<li class="gen-child02" *ngIf="item.rate >= 5">
+													<img src="assets/img/id101-star01.png" alt="Ionic">
+												</li>
+											</ul>
+											<div class="clear"></div>
+										</div>
+										<span class="jobs">{{item.status}}</span>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<!-- end /about-acc -->
+								<div class="about-feedback">
+									<p>{{item.desc}}</p>
+									<img src="assets/img/id101-triangle.png" alt="Ionic">
+								</div>
+								<!-- end /about-feedback -->
+							</li>
+						</ul>
+					</div>
+					<!-- end /bottom-feedback -->
+				</div>
+				<!-- end /part-three -->
+				<div class="part-four">
+					<div class="list-members">
+						<div class="top-title">
+							<img src="assets/img/id101-chat.png" alt="Ionic">
+							<span class="name">EXTERNAL ENDORSEMENTS</span>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-members">
+							<div class="wrapper-all">
+								<a href="javascript:;" class="btn-total mix-xy" *ngIf="!isShowVMExternal" (click)="isShowVMExternal=true">+{{dataProfileDetail.externalFriends.length-7}}</a>
+								<ul class="gen01" *ngIf="!isShowVMExternal">
+									<li class="gen-child01" *ngFor="let item of dataProfileDetail.externalFriends; let i=index;" 
+									[ngClass]="{hide:i>=limitExternalFriends}" [ngStyle]="{'z-index':dataProfileDetail.externalFriends.length+i,'left':'-'+(15*i)+'px'}">
+										<img [src]="item.avata" alt="Ionic" >
+									</li>
+								</ul>
+								<slick-carousel class="carousel gen01" typeSlick="endorsement" *ngIf="isShowVMExternal">
+									<div slick-carousel-item  *ngFor="let item of dataProfileDetail.externalFriends">
+										<li class="gen-child01">
+											<img [src]="item.avata" alt="Ionic" >
+										</li>
+									</div>
+								</slick-carousel>
+								<div class="clear"></div>
+							</div>
+							<!-- end /wrapper-all -->
+							<div class="clear"></div>
+						</div>
+						<!-- end /bottom-members -->
+					</div>
+					<!-- end /list-members -->
+					<div class="list-members clone">
+						<div class="top-title">
+							<img src="assets/img/id101-chat.png" alt="Ionic">
+							<span class="name">INTERNAL ENDORSEMENTS</span>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-members">
+							<div class="wrapper-all">
+								<a href="javascript:;" class="btn-total mix-xy" *ngIf="!isShowVMInternal" (click)="isShowVMInternal=true">+{{dataProfileDetail.internalFriends.length-7}}</a>
+								<ul class="gen01" *ngIf="!isShowVMInternal">
+									<li class="gen-child01" *ngFor="let item of dataProfileDetail.internalFriends; let i=index;" 
+									[ngClass]="{hide:i>=limitInternalFriends}" [ngStyle]="{'z-index':dataProfileDetail.internalFriends.length+i,'left':'-'+(15*i)+'px'}">
+										<img [src]="item.avata" alt="Ionic" >
+									</li>
+								</ul>
+								<slick-carousel class="carousel gen01" typeSlick="endorsement" *ngIf="isShowVMInternal">
+									<div slick-carousel-item  *ngFor="let item of dataProfileDetail.internalFriends">
+										<li class="gen-child01">
+											<img [src]="item.avata" alt="Ionic" >
+										</li>
+									</div>
+								</slick-carousel>
+								<div class="clear"></div>
+							</div>
+							<!-- end /wrapper-all -->
+							<div class="clear"></div>
+						</div>
+						<!-- end /bottom-members -->
+					</div>
+					<!-- end /list-members -->
+					<a href="javascript:;" class="btn-edit mix-xy" (click)="addNewEndorementFunc()">Add Endorsement</a>
+					<div class="contact-us">
+						<ul class="gen01">
+							<li class="gen-child01 ver-y" [ngClass]="{'error-ver': contactPhone}">
+								<img class="iphone" src="assets/img/id101-phone.png" alt="Ionic">
+								<span class="text" *ngIf="!isShowEditPhone">{{employerProfile.contactPhone}}</span>
+								<input class="write-here" type="text" name="Phone" [(ngModel)]="employerProfile.contactPhone" (focus)="removeErrorFunc($event,'phone')" (click)="removeErrorFunc($event,'phone')" *ngIf="isShowEditPhone"  #phoneInput="ngModel" required>
+								<a href="javascript:;" class="edit-me" (click)="editPhoneFunc($event);">
+									<img src="assets/img/id101-edit.png" alt="Ionic">
+								</a>
+							</li>
+							<li class="gen-child01 ver-y" [ngClass]="{'error-ver': errorEmail}">
+								<img class="imail" src="assets/img/id101-mail.png" alt="Ionic">
+								<span class="text" *ngIf="!isShowEditEmail">{{employerProfile.contactEmail}}</span>
+								<input class="write-here" type="email" name="Email" [(ngModel)]="employerProfile.contactEmail" (focus)="removeErrorFunc($event,'email')" (click)="removeErrorFunc($event,'email')" *ngIf="isShowEditEmail" #emailInput="ngModel" required email>
+								<a href="javascript:;" class="edit-me" (click)="editEmailFunc($event);">
+									<img src="assets/img/id101-edit.png" alt="Ionic">
+								</a>
+							</li>
+							<li class="gen-child01 ver-y" [ngClass]="{'error-ver': errorWebsite}">
+								<img class="iglobal" src="assets/img/id101-global.png" alt="Ionic">
+								<span class="text" *ngIf="!isShowEditWebsite">{{employerProfile.website}}</span>
+								<input class="write-here" type="text" name="Web" [(ngModel)]="employerProfile.website" (focus)="removeErrorFunc($event,'website')" (click)="removeErrorFunc($event,'website')" *ngIf="isShowEditWebsite" #websiteInput="ngModel" required>
+								<a href="javascript:;" class="edit-me" (click)="editWebsiteFunc($event);">
+									<img src="assets/img/id101-edit.png" alt="Ionic">
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- end /contact-us -->
+				</div>
+				<!-- end /part-four -->
+				<div class="part-five">
+					<div class="technologies-used">
+						<div class="top-title">
+							<img src="assets/img/icons8-Cloud-64.png" alt="Ionic">
+							<span class="name">TECHNOLOGIES USED</span>
+							<a href="javascript:;" class="edit-me" (click)="showModalAddFunc('techUse')">
+								<img src="assets/img/id101-edit.png" alt="Ionic">
+							</a>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-info">
+							<ul class="gen01">
+								<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.technolegies">
+									<img src="assets/img/id101-line.png" alt="Ionic">
+									<span class="title">{{item.name}}</span>
+								</li>
+							</ul>
+						</div>
+						<!-- end /bottom-info -->
+					</div>
+					<!-- end /technologies-used -->
+					<div class="technologies-used detal-trainnings">
+						<div class="top-title">
+							<img src="assets/img/icons8-Cloud-64.png" alt="Ionic">
+							<span class="name">DENTAL PHILOSOPHIES/TRAININGS</span>
+							<a href="javascript:;" class="edit-me" (click)="showModalAddFunc('dentalPhilEmplyrEdit')">
+								<img src="assets/img/id101-edit.png" alt="Ionic">
+							</a>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-info">
+							<ul class="gen01">
+								<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.dentalPhil">
+									<img src="assets/img/id101-line.png" alt="Ionic">
+									<span class="title">{{item.name}}</span>
+								</li>
+							</ul>
+						</div>
+						<!-- end /bottom-info -->
+					</div>
+					<!-- end /technologies-used -->
+					<div class="technologies-used structure">
+						<div class="top-title">
+							<img src="assets/img/icons8-Genealogy-64.png" alt="Ionic">
+							<span class="name">ORGANIZATIONAL STRUCTURE</span>
+							<a href="javascript:;" class="edit-me" (click)="isShowName = !isShowName">
+								<img src="assets/img/id101-edit.png" alt="Ionic">
+							</a>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-info" *ngIf="dataChart">
+							<div class="chart-holder" *ngIf="!isShowName">
+								<div class="chart-container">
+									<div class="row first-floor">
+										<div class="block">
+											<input type="text" class="organization" [(ngModel)]="dataChart.name" disabled>
+										</div>
+									</div>
+									<div class="row content-row second-floor">
+										<span class="line-block" #secondLineChart></span>
+										<ng-container *ngFor="let branch of dataChart.branches;">
+											<div class="col" *ngIf="branch.name !== ''">
+													<div class="header-row">
+														<div class="block no-border-top" [ngClass]="{'fix-border-chart':checkBranch(branch)}">
+															<input type="text" class="organization" placeholder="Add Title" [(ngModel)]="branch.name" disabled>
+														</div>
+													</div>
+													<div class="row third-floor">
+														<ng-container *ngFor="let section of branch.sections">
+															<div class="col" *ngIf="section.name !== ''">
+																	<div class="block" [ngClass]="{'fix-border-chart-section':checkSection(branch)}">
+																		<input type="text" class="organization" placeholder="Add Title"	[(ngModel)]="section.name" disabled>
+																	</div>
+																	<ng-container *ngFor="let group of section.groups">
+																			<div class="block" *ngIf="group.name !== ''">
+																				<input type="text" class="organization" placeholder="Add Title"	[(ngModel)]="group.name" disabled>
+																			</div>
+																	</ng-container>
+																	
+																</div>
+														</ng-container>
+													</div>
+												</div>
+										</ng-container>
+										
+									</div>
+								</div>
+							</div>
+							<div class="chart-holder" *ngIf="isShowName">
+								<div class="chart-container">
+									<div class="row first-floor">
+										<div class="block">
+											<input type="text" class="organization" placeholder="Click to add Title" [(ngModel)]="dataChart.name">
+										</div>
+									</div>
+									<div class="row content-row second-floor">
+										<span class="line-block" #secondLineChart></span>
+										<div class="col" *ngFor="let branch of dataChart.branches; let first = first; let last = last">
+											<div class="header-row">
+												<div class="block no-border-top-left" *ngIf="first" (click)="addBranchBefore()" #secondLeftElChart>
+													<button class="add"></button>
+												</div>
+												<div class="block no-border-top">
+													<input type="text" class="organization" placeholder="Add Title"	[(ngModel)]="branch.name">
+												</div>
+												<div class="block no-border-top-right" *ngIf="last"	(click)="addBranchafter()" #secondRightElChart>
+													<button class="add"></button>
+												</div>
+											</div>
+											<div class="row third-floor">
+												<div class="col" *ngFor="let section of branch.sections">
+													<div class="block">
+														<input type="text" class="organization" placeholder="Add Title"	[(ngModel)]="section.name">
+													</div>
+													<div class="block" *ngFor="let group of section.groups">
+														<input type="text" class="organization" placeholder="Add Title"	[(ngModel)]="group.name">
+													</div>
+													<div class="block">
+														<button class="add" (click)="addGroup(section)"></button>
+													</div>
+												</div>
+												<div class="col">
+													<div class="block">
+														<button class="add" (click)="addSection(branch)"></button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end /bottom-info -->
+					</div>
+					<!-- end /technologies-used -->
+					<div class="technologies-used positions">
+						<div class="top-title">
+							<img src="assets/img/id101-mem.png" alt="Ionic">
+							<span class="name">POSITIONS</span>
+							<a href="javascript:;" class="edit-me" (click)="showModalAddFunc('position')">
+								<img src="assets/img/id101-edit.png" alt="Ionic">
+							</a>
+							<div class="clear"></div>
+						</div>
+						<!-- end /top-title -->
+						<div class="bottom-info">
+							<ul class="gen01">
+								<li class="gen-child01 ver-y" *ngFor="let item of dataProfileDetail.position">
+									<img src="assets/img/id101-line.png" alt="Ionic">
+									<span class="title">{{item.name}}</span>
+								</li>
+							</ul>
+						</div>
+						<!-- end /bottom-info -->
+					</div>
+					<!-- end /technologies-used -->
+					<div class="bottom-logo">
+						<a href="javascript:;" class="click-me" (click)="showModalShareFunc()">
+							<img src="assets/img/id101-logo.png" alt="Ionic">
+						</a>
+					</div>
+					<!-- end /bottom-logo -->
+				</div>
+				<!-- end /part-five -->
+			</div>
+			<!-- end /mainn-content -->
+		</div>
+		<!-- end /menu-page -->
+	</ion-content>
+	<!-- end /ion-content -->

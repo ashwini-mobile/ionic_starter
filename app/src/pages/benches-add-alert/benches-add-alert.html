@@ -1,0 +1,16 @@
+<!--ion content-->
+<ion-content>
+	<ion-title>Add a Bench</ion-title>
+	<div class="group-input">
+		<div>
+			<div class="input-content">
+				<input type="text" placeholder="Enter Bench Name" [(ngModel)]="titleBenches" (focus)="titleBenches=''">
+			</div>
+		</div>
+	</div>
+</ion-content>
+<!--ion footer-->
+<ion-footer>
+	<button (click)="dismiss()">Cancel</button>
+	<button (click)="dismiss()">Add</button>
+</ion-footer>

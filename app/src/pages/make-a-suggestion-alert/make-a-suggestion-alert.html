@@ -1,0 +1,22 @@
+<ion-content>
+    <ion-title>Make a suggestion</ion-title>
+    <span class="desc-here">
+        We are always looking for ways to make your experience better. Please let us know how to best do that.
+    </span>
+    <div class="basic-form">
+        <div class="write-here">
+            <input type="text" name="Name" placeholder="Your Full Name" [(ngModel)]="txtFullName">
+        </div>
+        <!-- end /write-here -->
+        <div class="write-here">
+            <input type="text" name="Email" placeholder="Your Email Address" [(ngModel)]="txtEmail">
+        </div>
+        <!-- end /write-here -->
+        <textarea type="text" name="text" placeholder="Please provide a description of your query" [(ngModel)]="txtDesc"></textarea>
+    </div>
+    <!-- end /basic-form -->
+</ion-content>
+<ion-footer>
+    <button (click)="dismiss()">Back</button>
+    <button (click)="send()">Send</button>
+</ion-footer>

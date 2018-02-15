@@ -1,0 +1,8 @@
+{
+  "name": "MJOLNIR App",
+  "app_id": "23c7ff4f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

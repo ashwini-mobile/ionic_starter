@@ -1,0 +1,188 @@
+.modal-sos-alert {
+	.modal-wrapper {
+		page-sos-alert.ion-page {
+			/*width: 276px;
+			height: 254px;
+			top: calc(50% - 147px);
+			left: calc(50% - 136px);
+			background: #fff;*/
+			width: 283px;
+ 			height: 294px;
+ 			top: calc(50% - 147px);
+ 			left: calc(50% - 144px);
+			border-radius: 15px;
+ 			background: transparent;
+			overflow: hidden;
+			position: relative;
+			.close {
+ 				position: absolute;
+ 				right: 10px;
+ 				top: 10px;
+ 				width: 28px;
+ 				height: 28px;
+ 				z-index: 999;
+ 			}
+ 			
+			ion-content.content  {
+				width: 100%;
+				height: 100%;
+				background: #fff;
+				position: relative;
+				.scroll-content {
+					width: 100%;
+					height: 100%;
+					overflow-y: hidden;
+					position: relative;
+					// Main Content
+					.mainn-content {
+						width: 100%;
+						height: 100%;
+						padding: 20px 24px 0;
+						position: relative;
+						.top-question {
+							margin: 0;
+							margin-bottom: 18px;
+							padding: 0;
+							font-size: 16px;
+							font-family: 'Myriad Pro';
+							color: #606060;
+						}
+						.choose-value {
+							width: 100%;
+							margin-bottom: 30px;
+							position: relative;
+							z-index: 100;
+							.first-group {
+								width: 100%;
+								height: 32px;
+								border-radius: 6px;
+								border: 1px solid #d4d4d4;
+								position: relative;
+								.title {
+									display: block;
+									font-size: 14px;
+									font-family: 'Myriad Pro';
+									color: #828282;
+									text-indent: 10px;
+									position: relative;
+									top: 2px;
+								}
+								.big-hand {
+									display: block;
+									width: 100%;
+									height: 100%;
+									position: absolute;
+									top: 0;
+									left: 0;
+									z-index: 10;
+								}
+								.down-arr {
+									display: block;
+									width: 11.5px;
+									height: auto;
+									background-size: cover;
+									position: absolute;
+									top: 13px;
+									right: 10px;
+								}
+								.up-arr {
+									display: none;
+									width: 11.5px;
+									height: auto;
+									background-size: cover;
+									position: absolute;
+									top: 13px;
+									right: 10px;
+								}
+							}
+							.second-group {
+								display: none;
+								width: 100%;
+								height: 60px;
+								padding-top: 10px;
+								padding-right: 30px;
+								overflow-y: auto;
+								border: 1px solid #d4d4d4;
+								background-color: #fff;
+								position: absolute;
+								top: 33px;
+								left: 0;
+								.gen01 {
+									width: 100%;
+									margin: 0;
+									padding: 0;
+									list-style-type: none;
+									position: relative;
+									.gen-child01 {
+										width: 100%;
+										margin: 0;
+										padding: 0;
+										position: relative;
+										.value {
+											height: 22px;
+											font-size: 14px;
+											font-family: 'Myriad Pro';
+											color: #828282;
+											text-indent: 10px;
+										}
+										.big-hand {
+											display: block;
+											width: 100%;
+											height: 100%;
+											position: absolute;
+											top: 0;
+											left: 0;
+											z-index: 10;
+										}
+									}
+								}
+							}
+							&.active {
+								.first-group {
+									.down-arr {
+										display: none;
+									}
+									.up-arr {
+										display: block;
+									}
+								}
+								.second-group {
+									display: block;
+								}
+							}
+						}
+						.read-me {
+							margin: 0;
+							padding: 0;
+							font-size: 15px;
+							font-family: 'Myriad Pro';
+							color: #606060;
+							text-align: center;
+						}
+						.btn-send {
+							width: 100%;
+							height: 48px;
+							font-size: 16px;
+							font-family: 'Myriad Pro';
+							font-weight: 500;
+							color: #fff;
+							text-align: center;
+							text-transform: uppercase;
+							text-decoration: none;
+							border-radius: 0 0 15px 15px;
+
+							background : -moz-linear-gradient(0% 50% 0deg,rgba(19, 106, 138, 1) 0%,rgba(150, 228, 176, 1) 100%);
+							background : -webkit-linear-gradient(0deg, rgba(19, 106, 138, 1) 0%, rgba(150, 228, 176, 1) 100%);
+							background : -webkit-gradient(linear,0% 50% ,100% 50% ,color-stop(0,rgba(19, 106, 138, 1) ),color-stop(1,rgba(150, 228, 176, 1) ));
+							background : linear-gradient(90deg, rgba(19, 106, 138, 1) 0%, rgba(150, 228, 176, 1) 100%);
+
+							position: absolute;
+							bottom: 0;
+							left: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

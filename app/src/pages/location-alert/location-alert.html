@@ -1,0 +1,13 @@
+<!--ion header-->
+<ion-header *ngIf="!noHeader"></ion-header>
+<!--ion content-->
+<ion-content padding="">
+    <img *ngIf="image" src="{{image}}" alt="image">
+    <ion-title style="margin-bottom:20px;">{{title}}</ion-title>
+    <div>{{text}}</div>
+</ion-content>
+<!--ion footer-->
+<ion-footer>
+    <button class="btn2" (click)="dismiss()">{{buttonText? buttonText : 'OK'}}</button>
+    <button class="btn2 btn-left" (click)="settings()">{{buttonText? buttonText : 'SETTINGS'}}</button>
+</ion-footer>

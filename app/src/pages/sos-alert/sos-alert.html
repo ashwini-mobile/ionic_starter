@@ -1,0 +1,28 @@
+<img src="assets/img/bg-close.png" class="close" (click)="dimissFunc()">
+<ion-content >
+	<div class="mainn-content">
+		<p class="top-question">Are you in need of a Fill In ASAP?</p>
+		<div class="choose-value" [ngClass]="{active: isShowdropdown}">
+			<div class="first-group ver-y">
+				<a href="javascript:;" class="big-hand" (click)="showSelectedPosition()" ></a>
+				<span class="title">{{titlePosition}}</span>
+				<img class="down-arr" src="assets/img/id42-arrow01.png" alt="Ionic">
+				<img class="up-arr" src="assets/img/id42-arrow02.png" alt="Ionic">
+			</div>
+			<!-- end /first-group -->
+			<div class="second-group">
+				<ul class="gen01">
+					<li class="gen-child01" *ngFor="let item of listPosition" (click)="selectPosition(item)" >
+						<a href="javascript:;" class="big-hand"></a>
+						<span class="value ver-y">{{item.title}}</span>
+					</li>
+				</ul>
+			</div>
+			<!-- end /second-group -->
+		</div>
+		<!-- end /choose-value -->
+		<p class="read-me">Press this if you want for us to send out as SOS to every Fill In Detal Hygienist within a 45 mile radius to aid you in your time of crisis.</p>
+		<a href="javascript:;" class="btn-send mix-xy" (click)="dimissFunc()">Send</a>
+	</div>
+	<!-- end /mainn-content -->
+</ion-content> 

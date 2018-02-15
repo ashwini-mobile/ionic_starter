@@ -1,0 +1,38 @@
+<ion-content *ngIf="listFriend">
+  <div class="benches-alert-page">
+    <div class="sub-header">
+      <div class="group-one">
+        <a href="javascript:;" class="iback">
+          <img src="assets/img/id38-back.png" alt="Ionic" (click)="dismiss()">
+        </a>
+        <a href="javascript:;" class="iedit">
+          <img src="assets/img/id80-edit.png" alt="Ionic">
+        </a>
+        <h1 class="title-youlike">You like <span>({{listFriend.length}})</span></h1>
+      </div>
+      <!-- end /group-one -->
+    </div>
+    <!-- end /sub-header -->
+    <div class="group-content">
+      <ul>
+        <li *ngFor="let item of listFriend">
+          <div class="group-people">
+            <a href="javascript:;" class="img-people">
+              <img style="border-radius:24%;" [src]="item.avata" alt="Ionic">
+              <span class="circle-online"></span>
+            </a>
+            <div class="main-content ver-y">
+              <div>
+                <p class="text-name">{{item.name}}</p>
+                <span class="text-location">{{item.status}}</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>  
+    <!-- end /group-content -->
+  </div>
+  <!-- end /menu-page -->
+</ion-content>
+<!-- end /ion-content -->

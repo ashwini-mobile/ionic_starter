@@ -1,0 +1,137 @@
+.modal-notification{
+  top: 0;
+	background-color: transparent;
+	ion-backdrop {
+		background-color: transparent;
+	}
+	.modal-wrapper {
+		.ion-page {
+			&.show-page {
+				background-color: transparent;
+				.content {
+					background-color: transparent;
+				}
+			}
+		}
+		page-notification-received-match {
+			ion-content {		
+				// Offices Page
+				.notification-page {
+          width: 100%;
+          height: auto;
+          background-color: rgba(0, 0, 0, 0.59);
+          border-radius: 0 0 12px 12px;
+          padding-top: 23px;
+          padding-bottom: 14px;
+					position: relative;
+					* {
+						font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+          }
+          ion-title {
+            .toolbar-title {
+              color: #fff;
+              font-size: 20px;
+              font-weight: 100;
+              text-align: left;
+							padding-left: 19px;
+							padding-bottom: 20px;
+            }
+            .i-close {
+              width: 27px;
+              height: 27px;
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 19px;
+            }
+          }
+					.item-group {
+						.group-card-people {
+							margin-bottom: 0;
+							padding: 0 19px;
+							.card-people {
+								position: relative;
+								height: 60px;
+								margin: 0 auto 31px;
+								background-color: transparent;
+								overflow: initial;
+								padding: 0;
+								.item-inner {
+									border: none;
+									overflow: initial;
+									padding: 0; 
+									.input-wrapper {
+										ion-label {
+											height: 100%;
+											.group-people {
+												width: 277px;
+												height: 100%;
+												background-color: #ffffff;
+												border-radius: 15px; 
+												.img-people {
+													display: block;
+													width: 60px;
+													height: 60px;
+													border-radius: 15px; 
+													position: absolute;
+													img {
+														width: 100%;
+														height: 100%;
+													}
+												}
+												.main-content {
+													height: 100%;
+													padding-left: 74px;
+													.text-name {
+														display: block;
+														color: #333333;
+														font-size: 18px;
+														margin: 0;
+													}
+													.text-location {
+														display: block;
+														color: #333333;
+														font-size: 16px;
+														margin: 0;
+													}
+												}
+											}
+											.group-tick {
+												display: block;
+												position: absolute;
+												top: 2px;
+												right: 0;
+												.i-tick {
+													display: block;
+													width: 26px;
+													height: auto;
+													background-size: cover;
+													border-radius: 50%;
+													img {
+														width: 100%;
+														border-radius: 50%;
+													}
+												}
+												.i-cancel {
+													display: block;
+													width: 26px;
+													height: auto;
+													background-size: cover;
+													border-radius: 50%;
+													img {
+														width: 100%;
+														border-radius: 50%;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

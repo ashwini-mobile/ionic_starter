@@ -1,0 +1,73 @@
+<div class="fake-div-to-remove-external-white"></div>
+<ion-content>
+	<div class="background-mask"></div>
+	<div class="background-page" [ngClass]="{'slide-n1': slideIndex=== 0, 'slide-n2': slideIndex=== 1, 'slide-n3': slideIndex=== 2, 'slide-n4': slideIndex === 3, 'slide-n5': slideIndex === 4}"></div>
+	<div class="landing-page">
+		<div class="beautiful-slide" [ngClass]="{'slide-n1': slideIndex=== 0, 'slide-n2': slideIndex=== 1, 'slide-n3': slideIndex=== 2, 'slide-n4': slideIndex === 3, 'slide-n5': slideIndex === 4}">
+			<ion-slides pager #landingSlides (ionSlideDidChange)="ionSlideWillChange($event)">
+				<ion-slide *ngFor="let slide of arraySlides; let index = index">
+					<div class="small-piece"  [ngClass]="{'diff-ver': index!==0}">
+						<div class="top-info mix-xy" >
+							<div>
+								<h1>{{slide.title}}</h1>
+								<p>{{slide.description}}</p>
+							</div>
+						</div>
+						<!-- end /top-info -->
+						<div class="bottom-img">
+							<img [src]="slide.image" alt="Ionic" [ngClass]="{'big-logo': index===0, 'same-size': index!==0}">
+						</div>
+						<!-- end /bottom-img -->
+					</div>
+					<!-- end /small-piece -->
+				</ion-slide>
+			</ion-slides>
+
+			<div class="group-curve">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="0" height="0">
+					<linearGradient id="gradient01" x1="0%" y1="50%" x2="100%" y2="50%" > 
+						<stop offset="0%" style="stop-color:rgb(105,129,191);stop-opacity:1" />
+						<stop offset="100%" style="stop-color:rgb(104,128,190);stop-opacity:1" />
+					</linearGradient> 
+
+					<linearGradient id="gradient02" x1="21%" y1="0%" x2="79%" y2="100%" > 
+						<stop offset="0%" style="stop-color:rgb(115,162,206);stop-opacity:1" />
+						<stop offset="100%" style="stop-color:rgb(93,185,198);stop-opacity:1" />
+					</linearGradient> 
+
+					<linearGradient id="gradient03" x1="3%" y1="0%" x2="97%" y2="100%" > 
+						<stop offset="0%" style="stop-color:rgb(95,176,161);stop-opacity:1" />
+						<stop offset="100%" style="stop-color:rgb(133,211,171);stop-opacity:1" />
+					</linearGradient> 
+
+					<linearGradient id="gradient04" x1="21%" y1="0%" x2="79%" y2="100%" > 
+						<stop offset="0%" style="stop-color:rgb(76,148,188);stop-opacity:1" />
+						<stop offset="100%" style="stop-color:rgb(85,173,193);stop-opacity:1" />
+					</linearGradient> 
+
+					<linearGradient id="gradient05" x1="0%" y1="14%" x2="100%" y2="86%" > 
+						<stop offset="0%" style="stop-color:rgb(49,176,169);stop-opacity:1" />
+						<stop offset="100%" style="stop-color:rgb(77,219,205);stop-opacity:1" />
+					</linearGradient> 
+				</svg>
+
+				<svg class="bg-svg" [ngClass]="{'slide-n1': previousSlideIndex=== 0, 'slide-n2': previousSlideIndex=== 1, 'slide-n3': previousSlideIndex=== 2, 'slide-n4': previousSlideIndex === 3, 'slide-n5': previousSlideIndex === 4}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 195.01"><defs></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1 cls-2" d="M0,0C200.12,98.53,375,0,375,0V195H.12Z"/></g></g></svg> 
+				<svg class="main-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 195.01"><defs></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1 cls-2" d="M0,0C200.12,98.53,375,0,375,0V195H.12Z"/></g></g></svg> 
+				<svg class="clone-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 195.01"><defs></defs><title>Asset 1</title><g data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1 cls-2" d="M0,0C200.12,98.53,375,0,375,0V195H.12Z"/></g></g></svg>  
+			</div>
+			<!-- end /group-curve -->
+			<div class="multi-points mix-xy">
+				<div>
+					<ul>
+						<li class="w-bullet" *ngFor="let slide of arraySlides; let index = index" [ngClass]="{'active': index === slideIndex}" (click)="goSlide(index)"></li>
+					</ul>
+				</div>
+			</div>
+			<!-- end /multi-points -->
+			<span class="bb-title" (click)="openWelcome()">Get Started</span>
+		</div>
+		<!-- end /beautiful-slide -->
+	</div>
+	<!-- end /landing-page -->
+</ion-content>
+<!-- end /ion-content -->

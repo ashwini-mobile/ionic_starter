@@ -1,0 +1,14 @@
+<!--ion header-->
+<ion-header></ion-header>
+<!--ion content-->
+<ion-content>
+    <ion-title>{{title}}</ion-title>
+    <div class="accounts">
+        <a href="javascript:" [ngClass]="link.class" *ngFor="let link of links" (click)="optionSelected(link.text)">{{link.text}}</a>
+    </div>
+</ion-content>
+<!--ion footer-->
+<ion-footer>
+    <button (click)="dismiss()">OK</button>
+    <button (click)="dismiss()">SKIP</button>
+</ion-footer>

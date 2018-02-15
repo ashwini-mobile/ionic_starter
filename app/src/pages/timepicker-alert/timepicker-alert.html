@@ -1,0 +1,51 @@
+<ion-content >
+	<div class="top-header ver-y">
+		<div>
+			<span class="current-year">{{dateSet |  date : "yyyy"}}</span>
+			<p>{{dateSet | date : "EEE, d MMMM"}}</p>
+		</div>
+	</div>
+	<!-- end /top-header -->
+	<div class="bottom-detail">
+		<div class="main-content hol-x">
+			<div class="wrapper-all">
+				<div class="choose-value">
+					<div class="ihour ver-y"  [ngClass]="{'fix-arrow':hourSet>=10}">
+						<span class="value">{{hourSet}}</span>
+						<a href="javascript:;" class="up-arrow" (click)="upHourFunc()"><img  src="assets/img/id44-arrow01.png" alt="Ionic"></a>
+						<a href="javascript:;" class="down-arrow" (click)="downHourFunc()"><img src="assets/img/id44-arrow02.png" alt="Ionic"></a>
+					</div>
+					<!-- end /ihour -->
+					<div class="idots ver-y">
+						<span class="value">:</span>
+					</div>
+					<!-- end /idots -->
+					<div class="iminute fix-arrow ver-y">
+						<span class="value">{{minuteSet | number:'2.0'}}</span>
+						<a href="javascript:;" class="up-arrow" (click)="upMinuteFunc()"><img  src="assets/img/id44-arrow01.png" alt="Ionic"></a>
+						<a href="javascript:;" class="down-arrow" (click)="downMinuteFunc()"><img src="assets/img/id44-arrow02.png" alt="Ionic"></a>
+					</div>
+					<!-- end /ihour -->
+					<div class="clear"></div>
+				</div>
+				<!-- end /choose-value -->
+				<div class="choose-type mix-xy">
+					<div>
+						<span class="text01" [ngClass]="{active: amOrPm==='AM'}" (click)="amOrPm='AM'">AM</span>
+						<span class="text02" [ngClass]="{active: amOrPm==='PM'}" (click)="amOrPm='PM'">PM</span>
+					</div>
+				</div>
+				<!-- end /choose-type -->
+				<div class="clear"></div>
+			</div>
+			<!-- end /wrapper-all -->
+		</div>
+		<!-- end /main-content -->
+		<div class="double-btn">
+			<a href="javascript:;" class="same-style btn-ok" (click)="selectTimePicker()">OK</a>
+			<a href="javascript:;" class="same-style btn-cancel" (click)="closeTimepicker()">Cancel</a>
+		</div>
+		<!-- end /double-btn -->
+	</div>
+	<!-- end /bottom-detail -->
+</ion-content> 

@@ -1,0 +1,49 @@
+<ion-content>
+	<div class="subscription-page">
+		<div class="sub-header-filter mix-xy">
+			<a href="javascript:;" class="btn-back" (click)="dismiss()">
+				<img src="assets/img/id120-back.png" alt="Ionic">
+			</a>
+			<h1>Select Subscription</h1>
+		</div>
+		<!-- end /sub-header-filter -->
+		<div class="mainn-content">
+			<ul class="gen01">
+				<li class="gen-child01" *ngFor="let item of listSubcriptions" 
+				[ngClass]="{
+					'first-opt':item.id===1,
+					'second-opt':item.id===2,
+					'third-opt':item.id===3}" (click)="selectSubcription(item)">
+					<div class="left-group mix-xy">
+						<div>
+						<span class="text01"><i>$</i>{{item.pricePerMonth}}</span>
+						<span class="text02">per</span>
+						<span class="text03">month</span>
+						</div>
+					</div>
+					<div class="right-group mix-xy">
+						<div *ngIf="item.id===1">
+							<!--<p><span class="month">12</span> month subscription</p>-->
+							<p>{{item.title}}</p>
+							<p><span class="percent">{{item.discount}}%</span> off</p>
+						</div>
+						<div *ngIf="item.id===2">
+							<!--<p><span class="month">6</span> month subscription</p>-->
+							<p>{{item.title}}</p>
+							<p><span class="percent">{{item.discount}}%</span> off</p>
+						</div>
+						<div *ngIf="item.id===3">
+							<p>{{item.title}}</p>
+							<p>{{item.description}}</p>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+			</ul>
+		</div>
+		<!-- end /mainn-content -->
+		<a href="javascript:;" class="lets-go mix-xy">Great, let's go!</a>
+	</div>
+	<!-- end /subscription-page -->
+</ion-content>
+<!-- end /ion-content -->

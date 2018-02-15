@@ -1,0 +1,19 @@
+<ion-content>
+    <ion-title>Contact Us</ion-title>
+    <div class="basic-form">
+        <div class="write-here">
+            <input type="text" name="Topic" placeholder="What is this regarding?" [(ngModel)]="txtTopic">
+        </div>
+        <!-- end /write-here -->
+        <div class="write-here">
+            <input type="text" name="Email" placeholder="Your Email Address" [(ngModel)]="txtEmail">
+        </div>
+        <!-- end /write-here -->
+        <textarea type="text" name="text" placeholder="Please provide a description of your query" [(ngModel)]="txtDesc"></textarea>
+    </div>
+    <!-- end /basic-form -->
+</ion-content>
+<ion-footer>
+    <button (click)="dismiss()">Back</button>
+    <button (click)="send()">Send</button>
+</ion-footer>

@@ -1,0 +1,14 @@
+page-location-alert {
+    &.ion-page {
+		&.show-page {
+			position: absolute;
+	    		width: 268px;
+	    		left: 50%;
+	    		margin-left: -134px;
+            height:390px;
+            .ion-header {
+                position: relative;
+            }
+		}
+	}
+}
