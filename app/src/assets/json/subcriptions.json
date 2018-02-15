@@ -1,0 +1,20 @@
+[
+  {
+    "id":1,
+    "name":"12 month subcription",
+    "desc":"30% off",
+    "value":34.99
+  },
+  {
+    "id":2,
+    "name":"6 month subcription",
+    "desc":"12% off",
+    "value":42.99
+  },
+  {
+    "id":3,
+    "name":"month to month subcription",
+    "desc":"Feel free to cancel any time",
+    "value":49.99
+  }
+]

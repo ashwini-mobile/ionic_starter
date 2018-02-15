@@ -1,0 +1,17 @@
+[
+  {
+    "title":"Google Reviews",
+    "img":"assets/img/social-sm01.png",
+    "smallImg":"assets/img/social-sm05.png"
+  },
+  {
+    "title":"Yelp Reviews",
+    "img":"assets/img/social-sm02.png",
+    "smallImg":"assets/img/social-sm06.png"
+  },
+  {
+    "title":"Facebook Reviews",
+    "img":"assets/img/social-sm03.png",
+    "smallImg":"assets/img/social-sm07.png"
+  }
+]

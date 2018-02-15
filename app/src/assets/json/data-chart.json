@@ -1,0 +1,30 @@
+{
+  "name": "Dentist",
+  "branches": [
+    {
+      "name": "Office Manager",
+      "sections": [
+        {
+          "name":"Assistant",
+          "groups": []
+        },
+        {
+          "name":"Assistant",
+          "groups": []
+        },
+        {
+          "name":"",
+          "groups":[]
+        },
+        {
+          "name":"Hygienist",
+          "groups": []
+        },
+        {
+          "name":"Front Desk",
+          "groups": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "images":[
+    {
+      "image":"assets/img/house01.jpg"
+    },
+    {
+      "image":"assets/img/house02.jpg"
+    },
+    {
+      "image":"assets/img/house03.jpg"
+    }
+  ],
+  "name":"Texas General Hospital",
+  "description":"PEDODONTICS & DENTISTRY",
+  "city":"Dallas",
+  "state":"TX",
+  "dateOpen":"Monday - Friday 8:00AM - 5:00PM",
+  "geo":{
+    "lat":32.733207,
+    "long":-97.049401
+  },
+  "workAbility":[
+    {
+      "label": "Monday",
+      "start": "08:00",
+      "end": "17:00",
+      "type": ""
+    },
+    {
+      "label": "Tuesday",
+      "start": "08:00",
+      "end": "17:00",
+      "type": ""
+    },
+    {
+      "label": "Wednesday",
+      "start": "08:00",
+      "end": "17:00",
+      "type": ""
+    },
+    {
+      "label": "Thursday",
+      "start": "08:00",
+      "end": "17:00",
+      "type": ""
+    },
+    {
+      "label": "Friday",
+      "start": "08:00",
+      "end": "17:00",
+      "type": ""
+    },
+    {
+      "label": "Saturday",
+      "start": "08:00",
+      "end": "17:00",
+      "type": ""
+    },
+    {
+      "label": "Sunday",
+      "start": "08:00",
+      "end": "17:00",
+      "type": ""
+    }
+  ],
+  "administrators":[
+    {
+      "name":"Jake Warren"
+    },
+    {
+      "name":"Joseph Stalin"
+    },
+    {
+      "name":"Ray Parkour"
+    }
+  ],
+  "subcriptionID":1,
+  "aboutUS":"We're a group of passionate specialists that erai it volute teger mollis nisl dictum lectus pulvinar temp and . Donecti feugiat bibendum magna vela tincunt. Sed sit amet irisus mollis luctus",
+  "recentReviews":[
+    {
+      "name":"Kylie Bourne",
+      "rate":5,
+      "avata":"assets/img/sm-stock01.png",
+      "status":"ORTHODONTIST",
+      "desc":"It’s rare that you come across a standout talent like Lyanna teger mollis nisl dictum lectus pulvinar temp and . Donecti feugiat bibendum magna vela tinmont"
+    },
+    {
+      "name":"Kylie Brown",
+      "rate":5,
+      "avata":"assets/img/sm-stock01.png",
+      "status":"DENTAL HYGIENIST",
+      "desc":"It’s rare that you come across a standout talent like Lyanna teger mollis nisl dictum lectus pulvinar temp and . Donecti feugiat bibendum magna vela tinmont"
+    }
+  ],
+  "externalFriends":[
+    {
+      "avata":"assets/img/sm-stock01.png"
+    },
+    {
+      "avata":"assets/img/sm-stock02.png"
+    },
+    {
+      "avata":"assets/img/sm-stock03.png"
+    },
+    {
+      "avata":"assets/img/sm-stock04.png"
+    },
+    {
+      "avata":"assets/img/sm-stock05.png"
+    },
+    {
+      "avata":"assets/img/sm-stock06.png"
+    },
+    {
+      "avata":"assets/img/sm-stock01.png"
+    },
+    {
+      "avata":"assets/img/sm-stock03.png"
+    },
+    {
+      "avata":"assets/img/sm-stock05.png"
+    }
+  ],
+  "internalFriends":[
+    {
+      "avata":"assets/img/sm-stock01.png"
+    },
+    {
+      "avata":"assets/img/sm-stock02.png"
+    },
+    {
+      "avata":"assets/img/sm-stock03.png"
+    },
+    {
+      "avata":"assets/img/sm-stock04.png"
+    },
+    {
+      "avata":"assets/img/sm-stock05.png"
+    },
+    {
+      "avata":"assets/img/sm-stock06.png"
+    },
+    {
+      "avata":"assets/img/sm-stock01.png"
+    },
+    {
+      "avata":"assets/img/sm-stock03.png"
+    },
+    {
+      "avata":"assets/img/sm-stock05.png"
+    }
+  ],
+  "phone":"123-456-1754",
+  "email":"email@texasgeneral.com",
+  "website":"www.texasgeneral.com",
+  "technolegies":[
+    {
+      "name":"CADCAM Restorations"
+    },
+    {
+      "name":"DEXIS"
+    },
+    {
+      "name":"Gendex"
+    },
+    {
+      "name":"Intraoral Camera"
+    }
+  ],
+  "dentalPhil":[
+    {
+      "name":"AACD"
+    },
+    {
+      "name":"AADSM"
+    },
+    {
+      "name":"AAID"
+    },
+    {
+      "name":"ACE"
+    }
+  ],
+  "position":[
+    {
+      "name":"Dentist"
+    },
+    {
+      "name":"Office Manager"
+    },
+    {
+      "name":"Assitant"
+    },
+    {
+      "name":"Hygienist"
+    },
+    {
+      "name":"Front Desk"
+    }
+  ]
+
+}

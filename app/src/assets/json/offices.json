@@ -1,0 +1,43 @@
+[
+ {
+  "name":"ET Medical Centre",
+  "city":"Tampa",
+  "state":"FL"
+ },
+ {
+  "name":"ET Medical Centre",
+  "city":"Boston",
+  "state":"MA",
+  "image":"assets/img/id38-thumb.png"
+ },
+ {
+  "name":"ZT Medical",
+  "city":"Quuens",
+  "state":"NY",
+  "image":"assets/img/id38-thumb.png"
+ },
+ {
+  "name":"ET Medical Centre",
+  "city":"Brooklyn",
+  "state":"NY",
+  "image":"assets/img/id38-thumb.png"
+ },
+ {
+  "name":"ET Medical Centre",
+  "city":"Manhattan",
+  "state":"NY",
+  "image":"assets/img/id38-thumb.png"
+ },
+ {
+  "name":"ET Medical Centre",
+  "city":"Hamptons",
+  "state":"FL",
+  "image":"assets/img/id38-thumb.png"
+ },
+ {
+  "name":"ET Medical Centre",
+  "city":"Tampa",
+  "state":"FL",
+  "image":"assets/img/id38-thumb.png"
+ }
+]

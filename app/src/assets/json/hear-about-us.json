@@ -1,0 +1,42 @@
+[
+  {
+    "name":"Word of Mouth",
+    "img":"assets/img/social-bw00.png",
+    "imgActive":"assets/img/social-cl00.png"
+  },
+  {
+    "name":"Google",
+    "img":"assets/img/social-bw01.png",
+    "imgActive":"assets/img/social-cl01.png"
+  },
+  {
+    "name":"Facebook",
+    "img":"assets/img/social-bw03.png",
+    "imgActive":"assets/img/social-cl03.png"
+  },
+  {
+    "name":"Twitter",
+    "img":"assets/img/social-bw02.png",
+    "imgActive":"assets/img/social-cl02.png"
+  },
+  {
+    "name":"LinkedIn",
+    "img":"assets/img/social-bw06.png",
+    "imgActive":"assets/img/social-cl06.png"
+  },
+  {
+    "name":"Instagram",
+    "img":"assets/img/social-bw04.png",
+    "imgActive":"assets/img/social-cl04.png"
+  },
+  {
+    "name":"Other",
+    "img":"assets/img/social-bw07.png",
+    "imgActive":"assets/img/social-cl07.png"
+  },
+  {
+    "name":"Google Plus",
+    "img":"assets/img/social-bw05.png",
+    "imgActive":"assets/img/social-cl05.png"
+  }
+]

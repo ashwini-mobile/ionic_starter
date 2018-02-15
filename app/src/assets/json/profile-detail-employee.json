@@ -1,0 +1,202 @@
+{
+  "images":[
+    {
+      "image":"assets/img/profile-00.png"
+    },
+    {
+      "image":"assets/img/profile-00.png"
+    },
+    {
+      "image":"assets/img/profile-00.png"
+    }
+  ],
+  "name":"Lyanna Stark",
+  "description":"Dental Hygienist",
+  "city":"Dallas",
+  "state":"TX",
+  "dateOpen":"Monday - Friday 8:00AM - 5:00PM",
+  "geo":{
+    "lat":32.733207,
+    "long":-97.049401
+  },
+  "administrators":[
+    {
+      "name":"Jake Warren"
+    },
+    {
+      "name":"Joseph Stalin"
+    },
+    {
+      "name":"Ray Parkour"
+    }
+  ],
+  "employmentHistory":[
+    {
+      "title":"Texas Health",
+      "note":"Intership",
+      "year":"2003-2007"
+    },
+    {
+      "title":"Northwest Texas",
+      "note":"Resident Dr",
+      "year":"2007-20017"
+    },
+    {
+      "title":"ET Medical Centre",
+      "note":"Resident Dr",
+      "year":"2007-Now"
+    }
+  ],
+  "educationHistory":[
+    {
+      "title":"Southern California University",
+      "note":"Bachelors in Pedodotics",
+      "year":"2003-2007"
+    },
+    {
+      "title":"Michigan State University",
+      "note":"Major in Pedodontics",
+      "year":"2007-20017"
+    },
+    {
+      "title":"Michigan State University",
+      "note":"Resident Dr",
+      "year":"2007-Now"
+    }
+  ],
+  "subcriptionID":1,
+  "aboutUS":"We're a group of passionate specialists that erai it volute teger mollis nisl dictum lectus pulvinar temp and . Donecti feugiat bibendum magna vela tincunt. Sed sit amet irisus mollis luctus",
+  "recentReviews":[
+    {
+      "name":"Kylie Bourne",
+      "rate":5,
+      "avata":"assets/img/sm-stock01.png",
+      "status":"ORTHODONTIST",
+      "desc":"It’s rare that you come across a standout talent like Lyanna teger mollis nisl dictum lectus pulvinar temp and . Donecti feugiat bibendum magna vela tinmont"
+    },
+    {
+      "name":"Kylie Brown",
+      "rate":5,
+      "avata":"assets/img/sm-stock01.png",
+      "status":"DENTAL HYGIENIST",
+      "desc":"It’s rare that you come across a standout talent like Lyanna teger mollis nisl dictum lectus pulvinar temp and . Donecti feugiat bibendum magna vela tinmont"
+    }
+  ],
+  "endorsements":[
+    {
+      "avata":"assets/img/sm-stock01.png"
+    },
+    {
+      "avata":"assets/img/sm-stock02.png"
+    },
+    {
+      "avata":"assets/img/sm-stock03.png"
+    },
+    {
+      "avata":"assets/img/sm-stock04.png"
+    },
+    {
+      "avata":"assets/img/sm-stock05.png"
+    },
+    {
+      "avata":"assets/img/sm-stock06.png"
+    },
+    {
+      "avata":"assets/img/sm-stock01.png"
+    },
+    {
+      "avata":"assets/img/sm-stock03.png"
+    },
+    {
+      "avata":"assets/img/sm-stock05.png"
+    }
+  ],
+  "phone":"123-456-1754",
+  "email":"email@texasgeneral.com",
+  "website":"www.texasgeneral.com",
+  "practiceSoft":[
+    {
+      "name":"ADSTRAs"
+    },
+    {
+      "name":"Axex Dnetal"
+    },
+    {
+      "name":"Carertream Dental"
+    },
+    {
+      "name":"Datacon"
+    }
+  ],
+  "dentalTechSkills":[
+    {
+      "name":"AACD"
+    },
+    {
+      "name":"AADSM"
+    },
+    {
+      "name":"Gendex"
+    },
+    {
+      "name":"Intraoral Camera"
+    }
+  ],
+  "ortherSoft":[
+    {
+      "name":"Blue Sky Plan"
+    },
+    {
+      "name":"Dental Bision"
+    },
+    {
+      "name":"Edge Imaging"
+    },
+    {
+      "name":"ImageXL"
+    }
+  ],
+  "generalSkills":[
+    {
+      "name":"Alveoloplasty"
+    },
+    {
+      "name":"Dental Bision"
+    },
+    {
+      "name":"Alveoloplasty"
+    },
+    {
+      "name":"ImageXL"
+    }
+  ],
+  "administrtiveSkill":[
+    {
+      "name":"Communication Skills"
+    },
+    {
+      "name":"File Mainenance"
+    },
+    {
+      "name":"Reception"
+    },
+    {
+      "name":"Typing"
+    }
+  ],
+  "dentalPhil":[
+    {
+      "name":"AACD"
+    },
+    {
+      "name":"AADSM"
+    },
+    {
+      "name":"AAID"
+    },
+    {
+      "name":"Cerec Doctors"
+    }
+  ]
+
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "avata":"assets/img/sm-stock01.png",
+    "time":"3:25 PM",
+    "activity":"normal",
+    "status":"Liam Barnes matched with you"
+  },
+  {
+    "avata":"assets/img/sm-stock02.png",
+    "time":"3:25 PM",
+    "activity":"call",
+    "status":"Missed Call from Sophia Smith"
+  },
+  {
+    "avata":"assets/img/sm-stock03.png",
+    "time":"3:25 PM",
+    "activity":"call",
+    "status":"Noah Johnson called you"
+  },
+  {
+    "avata":"assets/img/sm-stock02.png",
+    "time":"3:25 PM",
+    "activity":"normal",
+    "status":"Olivia Williams endorsed you"
+  },
+  {
+    "avata":"assets/img/sm-stock03.png",
+    "time":"3:25 PM",
+    "activity":"favourite",
+    "status":"Simon Teper mark you as favourite"
+  },
+  {
+    "avata":"assets/img/sm-stock02.png",
+    "time":"3:25 PM",
+    "activity":"normal",
+    "status":"Liam Barnes matched with you"
+  },
+  {
+    "avata":"assets/img/sm-stock01.png",
+    "time":"3:25 PM",
+    "activity":"normal",
+    "status":"Liam Barnes matched with you"
+  }
+]

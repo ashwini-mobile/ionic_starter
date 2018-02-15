@@ -1,0 +1,106 @@
+[
+  {
+    "name":"Parkland Hospital",
+    "status":"Proctodontist, Dentist & Orthodontist",
+    "rate":4,
+    "image":"assets/img/house01.jpg",
+    "city":"Dallas",
+    "state":"TX",
+    "distance": "5,9 mi",
+    "employees":[
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      }
+    ]
+  },
+  {
+    "name":"Texas General Hospital",
+    "status":"Proctodontist, Dentist & Orthodontist",
+    "rate":4,
+    "image":"assets/img/house01.jpg",
+    "city":"San Francisco",
+    "state":"CA",
+    "distance": "5,9 mi",
+    "employees":[
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      }
+    ]
+  },
+  {
+    "name":"Parkland Hospital",
+    "status":"Proctodontist, Dentist & Orthodontist",
+    "rate":4,
+    "image":"assets/img/house01.jpg",
+    "city":"San Francisco",
+    "state":"CA",
+    "distance": "5,9 mi",
+    "employees":[
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      }
+    ]
+  },
+  {
+    "name":"Parkland Hospital",
+    "status":"Proctodontist, Dentist & Orthodontist",
+    "rate":4,
+    "image":"assets/img/house01.jpg",
+    "city":"San Francisco",
+    "state":"CA",
+    "distance": "5,9 mi",
+    "employees":[
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      },
+      {
+        "image":"assets/img/sm-thumbnail01.png"
+      }
+    ]
+  }
+]
